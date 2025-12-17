@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<siTest:testDSIXML
+	xmlns:siTest="https://ptb.de/si/examples"
+	xmlns:si="https://ptb.de/si"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="https://ptb.de/si/examples https://www.ptb.de/si/v2.2.1/examples/SI_Format_TestData.xsd">
+
+    <siTest:testData id="complex_with_cartesian_coordinate_form">
+		<si:complex>
+			<si:valueReal>-10.310</si:valueReal>
+	    	<si:valueImag>5.010</si:valueImag>
+	    	<si:unit>\metre</si:unit>
+	    	<si:rectangularRegion>
+	    		<si:covarianceMatrix>
+	    			<si:column>
+	    				<si:covariance>
+	    					<si:value>1.0</si:value>
+	    					<si:unit>\metre\metre</si:unit>
+	    				</si:covariance>
+	    				<si:covariance>
+	    					<si:value>0.</si:value>
+	    					<si:unit>\metre\metre</si:unit>
+	    				</si:covariance>
+	    			</si:column>
+	    			<si:column>
+	    				<si:covariance>
+	    					<si:value>0.</si:value>
+	    					<si:unit>\metre\metre</si:unit>
+	    				</si:covariance>
+	    				<si:covariance>
+	    					<si:value>1.0</si:value>
+	    					<si:unit>\metre\metre</si:unit>
+	    				</si:covariance>
+	    			</si:column>
+	    		</si:covarianceMatrix>
+	    		<si:coverageFactor>1.5</si:coverageFactor>
+	    		<si:coverageProbability>0.95</si:coverageProbability>
+	    	</si:rectangularRegion>
+		</si:complex>
+	</siTest:testData>
+
+</siTest:testDSIXML>

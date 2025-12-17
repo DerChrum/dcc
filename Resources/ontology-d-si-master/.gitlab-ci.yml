@@ -1,0 +1,115 @@
+stages:
+  - test
+  - build
+  - deploy
+
+proxy:
+  stage: .pre
+  script:
+    - touch build.env
+    - if [[ "$CI_RUNNER_TAGS" == *"behind_proxy"* ]]; then
+    -   echo "behind_proxy=true" >> build.env
+    -   echo "http_proxy=http://webproxy.bs.ptb.de:8080/" >> build.env
+    -   echo "https_proxy=http://webproxy.bs.ptb.de:8080/" >> build.env
+    -   echo "HTTP_PROXY=$http_proxy" >> build.env
+    -   echo "HTTPS_PROXY=$https_proxy" >> build.env
+    - fi
+  artifacts:
+    reports:
+      dotenv: build.env
+
+# Job to run Python tests
+pytest:
+  stage: test
+  image: python:3.9  # Use a Python Docker image
+  before_script:
+    # proxy settings
+    - if [[ "$behind_proxy" == true ]]; then
+    -   export http_proxy="$http_proxy"
+    -   export https_proxy="$https_proxy"
+    - fi
+    - python -m pip install --upgrade pip  # Upgrade pip
+    - pip install -r requirements.txt  # Install dependencies
+  script:
+    - pytest --verbose  # Run tests with verbose output
+
+# 🔧 Build WIDOCO documentation
+build-docs:
+  stage: build
+  image: ruby:3.2
+  script:
+    # proxy settings
+    - if [[ "$behind_proxy" == true ]]; then
+        export http_proxy="$http_proxy";
+        export https_proxy="$https_proxy";
+      fi
+
+    # Clean previous output
+    - rm -rf public/* || true
+
+    # Install system dependencies
+    - if [[ "$CI_SERVER_HOST" == "gitlab.com" ]]; then
+        apt-get update && apt-get install -y openjdk-21-jre wget unzip pandoc gawk python3 python3-venv;
+        else apt-get update && apt-get install -y openjdk-17-jre wget unzip pandoc gawk python3 python3-venv;
+      fi
+
+    # Create Python virtual environment
+    - python3 -m venv venv
+    - source venv/bin/activate
+
+    # Install rdflib in the venv
+    - pip install rdflib
+
+    # Download WIDOCO
+    - wget https://github.com/dgarijo/Widoco/releases/download/v1.4.25/widoco-1.4.25-jar-with-dependencies_JDK-17.jar -O widoco.jar
+
+    # Create output folder
+    - mkdir -p public
+
+    # Run WIDOCO to generate base HTML
+    - java -jar widoco.jar -ontFile SI_Format.ttl -outFolder public -getOntologyMetadata -webVowl -uniteSections -rewriteAll
+    - mv public/doc/* public/
+    # Rename default page
+    - mv public/index-en.html public/index.html
+
+    # 🔧 Inject markdown content
+    - gawk -i inplace -v r="$(cat documentation/1.Introduction.md)" '{gsub(/This is a place holder text for the introduction. The introduction should briefly describe the ontology, its motivation, state of the art and goals./,r)}1' public/index.html
+    - gawk -i inplace -v r="$(cat documentation/3.Description.md)" '{gsub(/This is a placeholder text for the description of your ontology. The description should include an explanation and a diagram explaining how the classes are related, examples of usage, etc./,r)}1' public/index.html
+    - gawk -i inplace -v r="$(cat documentation/5.References.md|sed 's/&/\\\\&/')" '{gsub(/Add your references here. It is recommended to have them as a list./,r)}1' public/index.html
+    - gawk -i inplace -v r="<span class=\"markdown\">$(cat documentation/7.Acknowledgements.md)</span>" '{gsub(/(The authors would like to thank.*documentation\.)/,r)}1' public/index.html
+
+    - echo "Converting markdown sections into html sections so that they appear in the table of content in the index.html"
+    - sed -i -E -e 's/### ([[:digit:]]\.[[:digit:]]+\.) (.*)/<\/span><h3 id="\1" class="list">\2<\/h3><span class="markdown">/g' public/index.html
+
+    # 🔁 Generate HTML redirects
+    # - if [[ "$CI_COMMIT_BRANCH" = "develop" ]]; then
+    #    REDIRECT_BASE="https://ptb.gitlab.io/dcc/ontology-d-si/";
+    #    else REDIRECT_BASE="https://ptb.de/sis/";
+    #  fi
+    # - venv/bin/python generate_redirects.py --redirect_base "$REDIRECT_BASE"
+
+    # Generate per-term HTML and TTL pages
+    - venv/bin/python generate_per_term_html_pages.py --out public SI_Format.ttl
+    - venv/bin/python generate_per_term_ttls.py SI_Format.ttl public
+
+    # Deploy ontology file and htaccess for content negotiation
+    - cp SI_Format.ttl public/ontology.ttl
+    # - cp config/.htaccess public/.htaccess
+
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "master"'
+    - if: '$CI_COMMIT_BRANCH == "develop"'
+
+# 🚀 Deploy to GitLab Pages
+pages:
+  stage: deploy
+  script:
+    - echo "Deploying WIDOCO docs to GitLab Pages"
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "develop" && $CI_SERVER_HOST == "gitlab.com"'

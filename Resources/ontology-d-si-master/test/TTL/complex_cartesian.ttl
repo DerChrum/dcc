@@ -1,0 +1,57 @@
+@prefix sis: <https://ptb.de/sis/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix sirp: <https://si-digital-framework.org/SI#> .
+@prefix units: <https://si-digital-framework.org/SI/units/> .
+@prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
+@prefix ex: <http://example.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:43ff48b9-e3d5-4c36-bce4-bd0f027e41ea a sis:ComplexCartesian ;
+   sis:hasValueReal "-10.310"^^xsd:double ;
+   sis:hasValueImag "5.010"^^xsd:double ;
+   sis:hasUnitIdentifier "\\metre"^^xsd:string ;
+   sis:hasSIMeasurementUnit units:metre ;
+   sis:hasMeasurementUncertaintyMultivariate ex:1401a82a-f1ad-44b0-b734-99f5228bac60 .
+
+ex:1401a82a-f1ad-44b0-b734-99f5228bac60 a sis:RectangularRegion ;
+   sis:hasCovarianceMatrix ex:1401a82a-f1ad-44b0-b734-99f5228bac67 ;
+   sis:hasCoverageFactor "1.5"^^xsd:double ;
+   sis:hasCoverageProbability "0.95"^^xsd:double .
+
+ex:1401a82a-f1ad-44b0-b734-99f5228bac67 a sis:CovarianceMatrix ;
+   sis:hasCovariance ex:1401a82a-f1ad-44b0-b734-99f5228bac80 ;
+   sis:hasCovariance ex:1401a82a-f1ad-44b0-b734-99f5228bac83 ;
+   sis:hasCovariance ex:1401a82a-f1ad-44b0-b734-99f5228bac85 ;
+   sis:hasCovariance ex:1401a82a-f1ad-44b0-b734-99f5228bac87 .
+
+ex:1401a82a-f1ad-44b0-b734-99f5228bac80 a sis:Covariance ;
+   sis:hasColumnIndex "1"^^xsd:positiveInteger ;
+   sis:hasRowIndex "1"^^xsd:positiveInteger ;
+   sis:hasValue "1.0"^^xsd:double ;
+   sis:hasUnitIdentifier "\\metre\\metre"^^xsd:string ;
+   sis:hasSIMeasurementUnit units:metre.metre .
+
+ex:1401a82a-f1ad-44b0-b734-99f5228bac83 a sis:Covariance ;;
+   sis:hasColumnIndex "1"^^xsd:positiveInteger ;
+   sis:hasRowIndex "2"^^xsd:positiveInteger ;
+   sis:hasValue "0.0"^^xsd:double ;
+   sis:hasUnitIdentifier "\\metre\\metre"^^xsd:string ;
+   sis:hasSIMeasurementUnit units:metre.metre .
+
+ex:1401a82a-f1ad-44b0-b734-99f5228bac85 a sis:Covariance ;;
+   sis:hasColumnIndex "2"^^xsd:positiveInteger ;
+   sis:hasRowIndex "1"^^xsd:positiveInteger ;
+   sis:hasValue "0.0"^^xsd:double ;
+   sis:hasUnitIdentifier "\\metre\\metre"^^xsd:string ;
+   sis:hasSIMeasurementUnit units:metre.metre .
+
+ex:1401a82a-f1ad-44b0-b734-99f5228bac87 a sis:Covariance ;;
+   sis:hasColumnIndex "2"^^xsd:positiveInteger ;
+   sis:hasRowIndex "2"^^xsd:positiveInteger ;
+   sis:hasValue "1.0"^^xsd:double ;
+   sis:hasUnitIdentifier "\\metre\\metre"^^xsd:string ;
+   sis:hasSIMeasurementUnit units:metre.metre .
+
+units:metre.metre a sirp:UnitProduct ;
+   sirp:hasLeftUnitTerm   units:metre ;
+   sirp:hasRightUnitTerm  units:metre .

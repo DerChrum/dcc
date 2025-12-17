@@ -1,0 +1,26 @@
+@prefix sis: <https://ptb.de/sis/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix sirp: <https://si-digital-framework.org/SI#> .
+@prefix units: <https://si-digital-framework.org/SI/units/> .
+@prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
+@prefix ex: <http://example.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:43ff48b9-e3d5-4c36-bce4-bd0f027e41ea a sis:Constant ;
+    sis:hasLabel "Boltzman constant"^^xsd:string ;
+    sis:hasValue "1.380649e-23"^^xsd:double ;
+    sis:hasUnitIdentifier "\\joule\\kelvin\\tothe{-1}"^^xsd:string ;
+    sis:hasSIMeasurementUnit units:joule.kelvin-1 ;
+    sis:hasDateTime "2016-09-01T02:30:01.20+01:00"^^xsd:dateTime ;
+    sis:hasMeasurementUncertaintyUnivariate ex:1401a82a-f1ad-44b0-b734-99f5228bac58 .
+
+ex:1401a82a-f1ad-44b0-b734-99f5228bac58 a sis:StandardMU ;
+    sis:hasDistribution "normal"^^xsd:string ;
+    sis:hasValueStandardMU "5.7e-30"^^xsd:double .
+
+units:joule.kelvin-1 a sirp:UnitProduct ;
+   sirp:hasLeftUnitTerm   units:joule ;
+   sirp:hasRightUnitTerm  [ a sirp:UnitPower ;
+      sirp:hasNumericExponent  "-1"^^xsd:short ;
+      sirp:hasUnitBase         units:kelvin ;
+                        ] .

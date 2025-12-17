@@ -1,0 +1,45 @@
+# Enable rewrite engine
+RewriteEngine On
+
+# Set the base directory
+RewriteBase /sis/
+
+# ----------------------------------------
+# 1. Per-term dereferencing via 303 redirect
+#    e.g., https://ptb.de/sis/Unit → content negotiation
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{HTTP_ACCEPT} application/rdf\+xml [OR]
+RewriteCond %{HTTP_ACCEPT} application/xml [OR]
+RewriteCond %{HTTP_ACCEPT} text/xml
+RewriteRule ^([^/]+)$ ontology.rdf [R=303,L]
+
+RewriteCond %{HTTP_ACCEPT} text/turtle
+RewriteRule ^([^/]+)$ ontology.ttl [R=303,L]
+
+RewriteCond %{HTTP_ACCEPT} application/ld\+json
+RewriteRule ^([^/]+)$ ontology.jsonld [R=303,L]
+
+RewriteCond %{HTTP_ACCEPT} text/html
+RewriteRule ^([^/]+)$ index.html [R=303,L]
+
+# Default fallback (Turtle)
+RewriteRule ^([^/]+)$ ontology.ttl [R=303,L]
+
+# ----------------------------------------
+# 2. Content negotiation for the base URI (https://ptb.de/sis/)
+#    Serves HTML by default, but allows RDF content
+RewriteCond %{REQUEST_URI} ^/sis/?$
+RewriteCond %{HTTP_ACCEPT} application/rdf\+xml [OR]
+RewriteCond %{HTTP_ACCEPT} application/xml [OR]
+RewriteCond %{HTTP_ACCEPT} text/xml
+RewriteRule ^$ ontology.rdf [L]
+
+RewriteCond %{HTTP_ACCEPT} text/turtle
+RewriteRule ^$ ontology.ttl [L]
+
+RewriteCond %{HTTP_ACCEPT} application/ld\+json
+RewriteRule ^$ ontology.jsonld [L]
+
+# Default: serve the HTML documentation
+DirectoryIndex index.html

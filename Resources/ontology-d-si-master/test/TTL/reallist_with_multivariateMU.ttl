@@ -1,0 +1,79 @@
+@prefix sis: <https://ptb.de/sis/> .
+@prefix ex: <http://example.org/> .
+@prefix sirp: <https://si-digital-framework.org/SI#> .
+@prefix units: <https://si-digital-framework.org/SI/units/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:fe3ac438-a97c-426d-be85-13c5cbd59620 a sis:RealList ;
+    sis:hasMeasurementUncertaintyMultivariate ex:c583d09c-eafa-4927-a820-43f53fcd7e83 ;
+    sis:hasRealInList ex:02945123-ecff-43b6-8e5e-7c274f4edf8f,
+        ex:2d4fa71e-9283-4dc7-9f9d-7a43e3171be2 .
+
+ex:02945123-ecff-43b6-8e5e-7c274f4edf8f a sis:RealInList ;
+    sis:hasSIMeasurementUnit units:metre ;
+    sis:hasUnitIdentifier "\\metre"^^xsd:string ;
+    sis:hasValue "1.0"^^xsd:double ;
+    sis:hasListIndex "0"^^xsd:integer ;
+    sis:isInRealList ex:fe3ac438-a97c-426d-be85-13c5cbd59620 .
+
+ex:1060e194-09ca-41c0-ba7b-1da866b3c05b a sis:Covariance ;
+    sis:hasColumnIndex "1"^^xsd:positiveInteger ;
+    sis:hasRowIndex "2"^^xsd:positiveInteger ;
+    sis:hasSIMeasurementUnit units:metre.second ;
+    sis:hasUnitIdentifier "\\metre\\second"^^xsd:string ;
+    sis:hasValue "1.0"^^xsd:double .
+
+ex:2d4fa71e-9283-4dc7-9f9d-7a43e3171be2 a sis:RealInList ;
+    sis:hasSIMeasurementUnit units:second ;
+    sis:hasUnitIdentifier "\\second"^^xsd:string ;
+    sis:hasValue "1.0"^^xsd:double ;
+    sis:hasListIndex "1"^^xsd:integer ;
+    sis:isInRealList ex:fe3ac438-a97c-426d-be85-13c5cbd59620 .
+
+ex:5528a5eb-3f11-4d63-99af-7026ef4ddbe6 a sis:Covariance ;
+    sis:hasColumnIndex "2"^^xsd:positiveInteger ;
+    sis:hasRowIndex "1"^^xsd:positiveInteger ;
+    sis:hasSIMeasurementUnit units:second.metre ;
+    sis:hasUnitIdentifier "\\second\\metre"^^xsd:string ;
+    sis:hasValue "1.0"^^xsd:double .
+
+ex:a333aaf8-f93d-4810-8102-361d9486282f a sis:CovarianceMatrix ;
+    sis:hasCovariance ex:1060e194-09ca-41c0-ba7b-1da866b3c05b,
+        ex:5528a5eb-3f11-4d63-99af-7026ef4ddbe6,
+        ex:b66f0e9d-df0f-404f-946f-a128c14f31e2,
+        ex:e5288398-8b13-44cf-b808-cbd7d7d0b528 .
+
+ex:b66f0e9d-df0f-404f-946f-a128c14f31e2 a sis:Covariance ;
+    sis:hasColumnIndex "2"^^xsd:positiveInteger ;
+    sis:hasRowIndex "2"^^xsd:positiveInteger ;
+    sis:hasSIMeasurementUnit units:second.second ;
+    sis:hasUnitIdentifier "\\second\\second"^^xsd:string ;
+    sis:hasValue "1.0"^^xsd:double .
+
+ex:c583d09c-eafa-4927-a820-43f53fcd7e83 a sis:RectangularRegion ;
+    sis:hasCovarianceMatrix ex:a333aaf8-f93d-4810-8102-361d9486282f ;
+    sis:hasCoverageFactor "1.5"^^xsd:double ;
+    sis:hasCoverageProbability "0.95"^^xsd:double .
+
+ex:e5288398-8b13-44cf-b808-cbd7d7d0b528 a sis:Covariance ;
+    sis:hasColumnIndex "1"^^xsd:positiveInteger ;
+    sis:hasRowIndex "1"^^xsd:positiveInteger ;
+    sis:hasSIMeasurementUnit units:metre.metre ;
+    sis:hasUnitIdentifier "\\metre\\metre"^^xsd:string ;
+    sis:hasValue "1.0"^^xsd:double .
+
+units:metre.metre a sirp:UnitProduct ;
+    sirp:hasLeftUnitTerm units:metre ;
+    sirp:hasRightUnitTerm units:metre .
+
+units:metre.second a sirp:UnitProduct ;
+    sirp:hasLeftUnitTerm units:metre ;
+    sirp:hasRightUnitTerm units:second .
+
+units:second.metre a sirp:UnitProduct ;
+    sirp:hasLeftUnitTerm units:second ;
+    sirp:hasRightUnitTerm units:metre .
+
+units:second.second a sirp:UnitProduct ;
+    sirp:hasLeftUnitTerm units:second ;
+    sirp:hasRightUnitTerm units:second .

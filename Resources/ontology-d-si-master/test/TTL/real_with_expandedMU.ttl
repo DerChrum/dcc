@@ -1,0 +1,26 @@
+@prefix sis: <https://ptb.de/sis/> .
+@prefix prefixes: <https://si-digital-framework.org/SI/prefixes/> .
+@prefix sirp: <https://si-digital-framework.org/SI#> .
+@prefix units: <https://si-digital-framework.org/SI/units/> .
+@prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
+@prefix ex: <http://example.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:43ff48b9-e3d5-4c36-bce4-bd0f027e41ea a sis:Real ;
+    sis:hasLabel "temperature"^^xsd:string ;
+    sis:hasMeasurementUncertaintyUnivariate ex:1401a82a-f1ad-44b0-b734-99f5228bac58 ;
+    sis:hasUnitIdentifier "\\milli\\kelvin"^^xsd:string ;
+    sis:hasSIMeasurementUnit units:millikelvin ;
+    sis:hasValue "100.32"^^xsd:double ;
+    sis:hasSignificantDigit "2"^^xsd:integer ;
+    sis:hasDateTime "2020-01-01T00:00:00"^^xsd:dateTime .
+
+ex:1401a82a-f1ad-44b0-b734-99f5228bac58 a sis:ExpandedMU ;
+    sis:hasCoverageFactor "2"^^xsd:double ;
+    sis:hasCoverageProbability "0.95"^^xsd:double ;
+    sis:hasDistribution "normal"^^xsd:string ;
+    sis:hasValueExpandedMU "0.15"^^xsd:double .
+
+units:millikelvin a sirp:PrefixedUnit ;
+   sirp:hasNonPrefixedUnit units:kelvin ;
+   sirp:hasPrefix prefixes:milli .

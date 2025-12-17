@@ -1,0 +1,338 @@
+{
+    "real":
+        {
+            "type": "sis:Real",
+            "elements":
+                {
+                    "label": {"type": "xsd:string",
+                              "propertyName": "hasLabel",
+                              "propertyType": "data"},
+                    "quantityTypeQUDT": {"type": "qudt:QuantityKind",
+                                         "propertyName": "hasQuantityType",
+                                         "propertyType": "qudtQuantitykind"},
+                    "value": {"type": "xsd:double",
+                              "propertyName": "hasValue",
+                              "propertyType": "data"},
+                    "unit": {"type": "xsd:string",
+                             "propertyName": "hasUnitIdentifier",
+                             "propertyType": "unit"},
+                    "significantDigit": {"type": "xsd:integer",
+                                         "propertyName": "hasSignificantDigit",
+                                         "propertyType": "data"},
+                    "dateTime": {"type": "xsd:dateTime",
+                                 "propertyName": "hasDateTime",
+                                 "propertyType": "data"},
+                    "measurementUncertaintyUnivariate": {"type": "sis:MeasurementUncertaintyUnivariate",
+                                                         "propertyName": "hasMeasurementUncertaintyUnivariate",
+                                                         "propertyType": "superclass"}
+
+                }
+        },
+    "measurementUncertaintyUnivariate":
+        {
+            "type": "sis:MeasurementUncertaintyUnivariate",
+            "elements":
+                {
+                    "standardMU": {"type": "sis:StandardMU",
+                                   "propertyName": "hasMeasurementUncertaintyUnivariate",
+                                   "propertyType": "object"},
+                    "expandedMU": {"type": "sis:ExpandedMU",
+                                   "propertyName": "hasMeasurementUncertaintyUnivariate",
+                                   "propertyType": "object"},
+                    "coverageIntervalMU": {"type": "sis:CoverageIntervalMU",
+                                           "propertyName": "hasMeasurementUncertaintyUnivariate",
+                                           "propertyType": "object"}
+                }
+        },
+    "standardMU":
+        {
+            "type": "sis:StandardMU",
+            "elements":
+                {
+                    "valueStandardMU": {"type": "xsd:double",
+                                        "propertyName": "hasValueStandardMU",
+                                        "propertyType": "data"},
+                    "distribution": {"type": "xsd:string",
+                                     "propertyName": "hasDistribution",
+                                     "propertyType": "data"}
+                }
+        },
+    "expandedMU":
+        {
+            "type": "sis:expandedMU",
+            "elements":
+                {
+                    "valueExpandedMU": {"type": "xsd:double",
+                                        "propertyName": "hasValueExpandedMU",
+                                        "propertyType": "data"},
+                    "coverageFactor": {"type": "xsd:double",
+                                       "propertyName": "hasCoverageFactor",
+                                       "propertyType": "data"},
+                    "coverageProbability": {"type": "xsd:double",
+                                            "propertyName": "hasCoverageProbability",
+                                            "propertyType": "data"},
+                    "distribution": {"type": "xsd:string",
+                                     "propertyName": "hasDistribution",
+                                     "propertyType": "data"}
+                }
+        },
+    "coverageIntervalMU":
+        {
+            "type": "sis:CoverageIntervalMU",
+            "elements":
+                {
+                    "valueStandardMU": {"type": "xsd:double",
+                                        "propertyName": "hasValueStandardMU",
+                                        "propertyType": "data"},
+                    "intervalMin": {"type": "xsd:double",
+                                    "propertyName": "hasIntervalMin",
+                                    "propertyType": "data"},
+                    "intervalMax": {"type": "xsd:double",
+                                    "propertyName": "hasIntervalMax",
+                                    "propertyType": "data"},
+                    "coverageProbability": {"type": "xsd:double",
+                                            "propertyName": "hasCoverageProbability",
+                                            "propertyType": "data"},
+                    "distribution": {"type": "xsd:string",
+                                     "propertyName": "hasDistribution",
+                                     "propertyType": "data"}
+                }
+        },
+    "constant":
+        {
+            "type": "sis:Constant",
+            "elements":
+                {
+                    "label": {"type": "xsd:string",
+                              "propertyName": "hasLabel",
+                              "propertyType": "data"},
+                    "quantityTypeQUDT": {"type": "qudt:QuantityKind",
+                                         "propertyName": "hasQuantityType",
+                                         "propertyType": "qudtQuantitykind"},
+                    "value": {"type": "xsd:double",
+                              "propertyName": "hasValue",
+                              "propertyType": "data"},
+                    "unit": {"type": "xsd:string",
+                             "propertyName": "hasUnitIdentifier",
+                             "propertyType": "unit"},
+                    "significantDigit": {"type": "xsd:integer",
+                                         "propertyName": "hasSignificantDigit",
+                                         "propertyType": "data"},
+                    "dateTime": {"type": "xsd:dateTime",
+                                 "propertyName": "hasDateTime",
+                                 "propertyType": "data"},
+                    "valueStandardMU": {"type": "sis:StandardMU",
+                                        "propertyName": "hasMeasurementUncertaintyUnivariate",
+                                        "propertyType": "object"}
+                }
+        },
+    "complex":
+        {
+            "type": "sis:Complex",
+            "elements":
+                {}
+        },
+    "complexCartesian":
+        {
+            "type": "sis:ComplexCartesian",
+            "elements":
+                {
+                    "label": {"type": "xsd:string",
+                              "propertyName": "hasLabel",
+                              "propertyType": "data"},
+                    "quantityTypeQUDT": {"type": "qudt:QuantityKind",
+                                         "propertyName": "hasQuantityType",
+                                         "propertyType": "qudtQuantitykind"},
+                    "valueReal": {"type": "xsd:double",
+                                  "propertyName": "hasValueReal",
+                                  "propertyType": "data"},
+                    "valueImag": {"type": "xsd:double",
+                                  "propertyName": "hasValueImag",
+                                  "propertyType": "data"},
+                    "unit": {"type": "xsd:string",
+                             "propertyName": "hasUnitIdentifier",
+                             "propertyType": "unit"},
+                    "dateTime": {"type": "xsd:dateTime",
+                                 "propertyName": "hasDateTime",
+                                 "propertyType": "data"},
+                    "ellipsoidalRegion": {"type": "sis:EllipsoidalRegion",
+                                          "propertyName": "hasMeasurementUncertaintyMultivariate",
+                                          "propertyType": "newobject"},
+                    "rectangularRegion": {"type": "sis:RectangularRegion",
+                                          "propertyName": "hasMeasurementUncertaintyMultivariate",
+                                          "propertyType": "newobject"}
+                }
+        },
+    "complexPolar":
+        {
+            "type": "sis:ComplexPolar",
+            "elements":
+                {
+                    "label": {"type": "xsd:string",
+                              "propertyName": "hasLabel",
+                              "propertyType": "data"},
+                    "quantityTypeQUDT": {"type": "qudt:QuantityKind",
+                                         "propertyName": "hasQuantityType",
+                                         "propertyType": "qudtQuantitykind"},
+                    "unit": {"type": "xsd:string",
+                             "propertyName": "hasUnitIdentifier",
+                             "propertyType": "unit"},
+                    "valueMagnitude": {"type": "xsd:double",
+                                       "propertyName": "hasValueMagnitude",
+                                       "propertyType": "data"},
+                    "valuePhase": {"type": "xsd:double",
+                                   "propertyName": "hasValuePhase",
+                                   "propertyType": "data"},
+                    "unitPhase": {"type": "xsd:string",
+                                  "propertyName": "hasUnitPhaseIdentifier",
+                                  "propertyType": "data"},
+                    "dateTime": {"type": "xsd:dateTime",
+                                 "propertyName": "hasDateTime",
+                                 "propertyType": "data"},
+                    "ellipsoidalRegion": {"type": "sis:EllipsoidalRegion",
+                                          "propertyName": "hasMeasurementUncertaintyMultivariate",
+                                          "propertyType": "newobject"},
+                    "rectangularRegion": {"type": "sis:RectangularRegion",
+                                          "propertyName": "hasMeasurementUncertaintyMultivariate",
+                                          "propertyType": "newobject"}
+                }
+        },
+    "ellipsoidalRegion":
+        {
+            "type": "sis:EllipsoidalRegion",
+            "elements":
+                {
+                    "covarianceMatrix": {"type": "sis:CovarianceMatrix",
+                                         "propertyName": "hasCovarianceMatrix",
+                                         "propertyType": "covarianceMatrix"},
+                    "coverageFactor": {"type": "xsd:double",
+                                       "propertyName": "hasCoverageFactor",
+                                       "propertyType": "data"},
+                    "coverageProbability": {"type": "xsd:double",
+                                            "propertyName": "hasCoverageProbability",
+                                            "propertyType": "data"},
+                    "distribution": {"type": "xsd:string",
+                                     "propertyName": "hasDistribution",
+                                     "propertyType": "data"}
+                }
+        },
+    "rectangularRegion":
+        {
+            "type": "sis:RectangularRegion",
+            "elements":
+                {
+                    "covarianceMatrix": {"type": "sis:CovarianceMatrix",
+                                         "propertyName": "hasCovarianceMatrix",
+                                         "propertyType": "covarianceMatrix"},
+                    "coverageFactor": {"type": "xsd:double",
+                                       "propertyName": "hasCoverageFactor",
+                                       "propertyType": "data"},
+                    "coverageProbability": {"type": "xsd:double",
+                                            "propertyName": "hasCoverageProbability",
+                                            "propertyType": "data"},
+                    "distribution": {"type": "xsd:string",
+                                     "propertyName": "hasDistribution",
+                                     "propertyType": "data"}
+                }
+        },
+    "covarianceMatrix":
+        {
+            "type": "sis:CovarianceMatrix",
+            "elements":
+                {
+                    "column": {"type": "sis:Column",
+                               "propertyName": "hasColumn",
+                               "propertyType": "covarianceMatrix"}
+                }
+        },
+    "column":
+        {
+            "type": "sis:Column",
+            "elements":
+                {
+                    "covariance": {"type": "sis:Covariance",
+                                   "propertyName": "hasCovariance",
+                                   "propertyType": "newobject"}
+                }
+        },
+    "covariance":
+        {
+            "type": "sis:Covariance",
+            "elements":
+                {
+                    "value": {"type": "xsd:double",
+                              "propertyName": "hasValue",
+                              "propertyType": "data"},
+                    "unit": {"type": "xsd:string",
+                             "propertyName": "hasUnitIdentifier",
+                             "propertyType": "unit"}
+                }
+        },
+    "realList":
+        {
+            "type": "sis:RealList",
+            "elements":
+                {
+                    "label": {"type": "xsd:string",
+                              "propertyName": "hasLabel",
+                              "propertyType": "data"},
+                    "listQuantityTypeQUDT": {"type": "qudt:QuantityKind",
+                                             "propertyName": "hasQuantityType",
+                                             "propertyType": "qudtQuantitykind"},
+                    "value": {"type": "xsd:double",
+                              "propertyName": "hasValue",
+                              "propertyType": "data"},
+                    "listUnit": {"type": "xsd:string",
+                                 "propertyName": "hasUnitIdentifier",
+                                 "propertyType": "unit"},
+                    "real": {"type": "sis:RealInList",
+                             "propertyName": "hasRealInList",
+                             "propertyType": "newobject"},
+                    "listSignificantDigit": {"type": "xsd:integer",
+                                             "propertyName": "hasSignificantDigit",
+                                             "propertyType": "data"},
+                    "dateTime": {"type": "xsd:dateTime",
+                                 "propertyName": "hasDateTime",
+                                 "propertyType": "data"},
+                    "listMeasurementUncertaintyUnivariate": {"type": "sis:ListMeasurementUncertaintyUnivariate",
+                                                             "propertyName": "hasListMeasurementUncertaintyUnivariate",
+                                                             "propertyType": "superclass"},
+                    "ellipsoidalRegion": {"type": "sis:EllipsoidalRegion",
+                                          "propertyName": "hasMeasurementUncertaintyMultivariate",
+                                          "propertyType": "newobject"},
+                    "rectangularRegion": {"type": "sis:RectangularRegion",
+                                          "propertyName": "hasMeasurementUncertaintyMultivariate",
+                                          "propertyType": "newobject"}
+
+                }
+        },
+    "realInList":
+        {
+            "type": "sis:RealInList",
+            "elements":
+                {
+                    "label": {"type": "xsd:string",
+                              "propertyName": "hasLabel",
+                              "propertyType": "data"},
+                    "quantityTypeQUDT": {"type": "qudt:QuantityKind",
+                                         "propertyName": "hasQuantityType",
+                                         "propertyType": "qudtQuantitykind"},
+                    "value": {"type": "xsd:double",
+                              "propertyName": "hasValue",
+                              "propertyType": "data"},
+                    "unit": {"type": "xsd:string",
+                             "propertyName": "hasUnitIdentifier",
+                             "propertyType": "unit"},
+                    "significantDigit": {"type": "xsd:integer",
+                                         "propertyName": "hasSignificantDigit",
+                                         "propertyType": "data"},
+                    "dateTime": {"type": "xsd:dateTime",
+                                 "propertyName": "hasDateTime",
+                                 "propertyType": "data"},
+                    "measurementUncertaintyUnivariate": {"type": "sis:MeasurementUncertaintyUnivariate",
+                                                         "propertyName": "hasMeasurementUncertaintyUnivariate",
+                                                         "propertyType": "superclass"}
+
+                }
+        }
+}

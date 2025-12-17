@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<siTest:testDSIXML 
+	xmlns:siTest="https://ptb.de/si/examples"
+	xmlns:si="https://ptb.de/si"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="https://ptb.de/si/examples https://www.ptb.de/si/v2.2.1/examples/SI_Format_TestData.xsd">
+
+	<siTest:testData id="real_with_standardMU">
+		<si:real>
+			<si:label>temperature</si:label>
+			<si:value>100.32</si:value>
+			<si:unit>\milli\kelvin</si:unit>
+			<si:measurementUncertaintyUnivariate>
+				<si:standardMU>
+					<si:valueStandardMU>0.15</si:valueStandardMU>
+					<si:distribution>normal</si:distribution>
+				</si:standardMU>
+			</si:measurementUncertaintyUnivariate>
+		</si:real>
+	</siTest:testData>
+
+</siTest:testDSIXML>						

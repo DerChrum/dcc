@@ -1,0 +1,16 @@
+{
+    "sis": "https://ptb.de/sis/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "ex": "http://example.org/",
+    "sirp": "https://si-digital-framework.org/SI#",
+    "si": "https://ptb.de/si",
+    "units": "https://si-digital-framework.org/SI/units/",
+    "prefixes": "https://si-digital-framework.org/SI/prefixes/",
+    "quantities": "https://si-digital-framework.org/SI/quantities/",
+    "qudt": "https://qudt.org/schema/qudt/",
+    "quantitykind": "https://qudt.org/vocab/quantitykind/",
+    "owl": "http://www.w3.org/2002/07/owl",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "six": "https://ptb.de/si/"
+}

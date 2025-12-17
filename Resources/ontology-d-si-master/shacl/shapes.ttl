@@ -1,0 +1,675 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix sirp: <https://si-digital-framework.org/SI#> .
+@prefix sis: <https://ptb.de/sis/> .
+@prefix qudt: <https://qudt.org/schema/qudt/> .
+@prefix ex: <http://example.org/ns#> .
+
+sis:RealShape
+    a sh:NodeShape ;
+    sh:targetClass sis:Real ;
+    sh:property [
+        sh:path sis:hasLabel ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sis:hasQuantityType ;
+        sh:class sis:QuantityType ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sis:hasValue ;
+        sh:datatype xsd:double ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sis:hasUnitIdentifier ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    #sh:property [
+#        sh:path sis:hasSIMeasurementUnit ;
+#        sh:class sirp:MeasurementUnit ;
+#        sh:minCount 0 ;
+#        sh:maxCount 1 ;
+#    ] ;
+    sh:property [
+        sh:path sis:hasSignificantDigit ;
+        sh:datatype xsd:integer ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sis:hasDateTime ;
+        sh:datatype xsd:dateTime ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+    ] ;
+    # Declare the path sis:hasMeasurementUncertaintyUnivariate as optional
+    sh:property [
+        sh:path sis:hasMeasurementUncertaintyUnivariate ;
+        sh:class sis:MeasurementUncertaintyUnivariate ;
+        sh:maxCount 1 ; # It can appear at most once
+        sh:minCount 0 ; # But it's optional
+    ] ;
+
+    # If sis:hasMeasurementUncertaintyUnivariate is present, it must be either StandardMU, ExpandedMU or CoverageIntervalMU
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "If sis:hasMeasurementUncertaintyUnivariate is present, it must be either StandardMU, ExpandedMU or CoverageIntervalMU." ;
+        sh:select """
+            PREFIX sis: <https://ptb.de/sis/>
+            SELECT $this WHERE {
+                $this sis:hasMeasurementUncertaintyUnivariate ?mu .
+                FILTER NOT EXISTS { ?mu a sis:StandardMU } .
+                FILTER NOT EXISTS { ?mu a sis:ExpandedMU } .
+                FILTER NOT EXISTS { ?mu a sis:CoverageIntervalMU } .
+            }
+        """ ;
+    ] .
+
+sis:MeasurementUncertaintyUnivariateShape
+    a sh:NodeShape ;
+    sh:targetClass sis:MeasurementUncertaintyUnivariate ;
+.
+
+sis:StandardMUShape
+    a sh:NodeShape ;
+    sh:targetClass sis:StandardMU ;
+    sh:property [
+        sh:path sis:hasValueStandardMU ;
+        sh:datatype xsd:double ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sis:hasDistribution ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+    ] ;
+.
+
+sis:ExpandedMUShape
+    a sh:NodeShape ;
+    sh:targetClass sis:ExpandedMU ;
+    sh:property [
+        sh:path sis:hasValueExpandedMU ;
+        sh:datatype xsd:double ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sis:hasCoverageFactor ;
+        sh:datatype xsd:double ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    # Custom SPARQL constraint on the same property
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "The value of sis:hasCoverageFactor must match the required pattern." ;
+        sh:select """
+            PREFIX sis: <https://ptb.de/sis/>
+            SELECT ?this WHERE {
+                ?this sis:hasCoverageFactor ?val .
+                FILTER (!REGEX(STR(?val), "^[+-]?((\\\\d+(\\\\.\\\\d*)?)|(\\\\.\\\\d+))$"))
+            }
+        """ ;
+    ] ;
+    sh:property [
+        sh:path sis:hasCoverageProbability ;
+        sh:datatype xsd:double ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    # Custom SPARQL constraint on the same property
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "The value of sis:hasCoverageProbability must match the required pattern." ;
+        sh:select """
+            PREFIX sis: <https://ptb.de/sis/>
+            SELECT ?this WHERE {
+                ?this sis:hasCoverageProbability ?val .
+                FILTER (!REGEX(STR(?val), "^\\\\+?((0(\\\\.\\\\d*)?)|(1(\\\\.0*)?))|NaN$"))
+            }
+        """ ;
+    ] ;
+    sh:property [
+        sh:path sis:hasDistribution ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+    ] ;
+.
+
+sis:CoverageIntervalMUShape
+    a sh:NodeShape ;
+    sh:targetClass sis:CoverageIntervalMU ;
+    sh:property [
+        sh:path sis:hasValueStandardMU ;
+        sh:datatype xsd:double ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sis:hasIntervalMin ;
+        sh:datatype xsd:double ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sis:hasIntervalMax ;
+        sh:datatype xsd:double ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sis:hasCoverageProbability ;
+        sh:datatype xsd:double ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    # Custom SPARQL constraint on the same property
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "The value of sis:hasCoverageProbability must match the required pattern." ;
+        sh:select """
+            PREFIX sis: <https://ptb.de/sis/>
+            SELECT ?this WHERE {
+                ?this sis:hasCoverageProbability ?val .
+                FILTER (!REGEX(STR(?val), "^\\\\+?((0(\\\\.\\\\d*)?)|(1(\\\\.0*)?))|NaN$"))
+            }
+        """ ;
+    ] ;
+    sh:property [
+        sh:path sis:hasDistribution ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+    ] ;
+.
+
+sis:ConstantShape
+    a sh:NodeShape ;
+    sh:targetClass sis:Constant ;
+    sh:property [
+        sh:path sis:hasLabel ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sis:hasQuantityType ;
+        sh:class sis:QuantityType ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sis:hasValue ;
+        sh:datatype xsd:double ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sis:hasUnitIdentifier ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    
+    #sh:property [
+#       sh:path sis:hasSIMeasurementUnit ;
+#        sh:class sirp:MeasurementUnit ;
+#        sh:minCount 0 ;
+#        sh:maxCount 1 ;
+#    ] ;
+    sh:property [
+        sh:path sis:hasSignificantDigit ;
+        sh:datatype xsd:integer ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sis:hasDateTime ;
+        sh:datatype xsd:dateTime ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sis:hasStandardMU ;
+        sh:class sis:StandardMU ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+    ] ;
+.
+
+# Shapes for sis:Complex
+sis:ComplexPolarShape
+    a sh:NodeShape ;
+    sh:targetClass sis:ComplexPolar ;
+    sh:property [
+        sh:path sis:hasLabel ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sis:hasQuantityType ;
+        sh:class sis:QuantityType ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sis:hasUnitIdentifier ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sis:hasValueMagnitude ;
+        sh:datatype xsd:double ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sis:hasValuePhase ;
+        sh:datatype xsd:double ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sis:hasUnitPhaseIdentifier ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    #sh:property [
+#       sh:path sis:hasSIMeasurementUnit ;
+#        sh:class sirp:MeasurementUnit ;
+#        sh:minCount 0 ;
+#        sh:maxCount 1 ;
+#    ] ;
+    sh:property [
+        sh:path sis:hasDateTime ;
+        sh:datatype xsd:dateTime ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+    ] ;
+    # Declare the path sis:hasMeasurementUncertaintyMultivariate as optional
+    sh:property [
+        sh:path sis:hasMeasurementUncertaintyMultivariate ;
+        sh:class sis:MeasurementUncertaintyMultivariate ;
+        sh:maxCount 1 ; # It can appear at most once
+        sh:minCount 0 ; # But it's optional
+    ] ;
+
+    # If sis:hasMeasurementUncertaintyMultivariate is present, it must be either Rectangular or Ellipsoidal
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "If sis:hasMeasurementUncertaintyMultivariate is present, it must be either a RectangularRegion or an EllipsoidalRegion." ;
+        sh:select """
+            PREFIX sis: <https://ptb.de/sis/>
+            SELECT $this WHERE {
+                $this sis:hasMeasurementUncertaintyMultivariate ?mu .
+                FILTER NOT EXISTS { ?mu a sis:RectangularRegion } .
+                FILTER NOT EXISTS { ?mu a sis:EllipsoidalRegion } .
+            }
+        """ ;
+    ] .
+sis:ComplexCartesianShape
+    a sh:NodeShape ;
+    sh:targetClass sis:ComplexCartesian ;
+    sh:property [
+        sh:path sis:hasLabel ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sis:hasQuantityType ;
+        sh:class sis:QuantityType ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sis:hasUnitIdentifier ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sis:hasValueReal ;
+        sh:datatype xsd:double ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sis:hasValueImag ;
+        sh:datatype xsd:double ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    #sh:property [
+#       sh:path sis:hasSIMeasurementUnit ;
+#        sh:class sirp:MeasurementUnit ;
+#        sh:minCount 0 ;
+#        sh:maxCount 1 ;
+#    ] ;
+    sh:property [
+        sh:path sis:hasDateTime ;
+        sh:datatype xsd:dateTime ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+    ] ;
+    # Declare the path sis:hasMeasurementUncertaintyMultivariate as optional
+    sh:property [
+        sh:path sis:hasMeasurementUncertaintyMultivariate ;
+        sh:class sis:MeasurementUncertaintyMultivariate ;
+        sh:maxCount 1 ; # It can appear at most once
+        sh:minCount 0 ; # But it's optional
+    ] ;
+
+    # If sis:hasMeasurementUncertaintyMultivariate is present, it must be either Rectangular or Ellipsoidal
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "If sis:hasMeasurementUncertaintyMultivariate is present, it must be either a RectangularRegion or an EllipsoidalRegion." ;
+        sh:select """
+            PREFIX sis: <https://ptb.de/sis/>
+            SELECT $this WHERE {
+                $this sis:hasMeasurementUncertaintyMultivariate ?mu .
+                FILTER NOT EXISTS { ?mu a sis:RectangularRegion } .
+                FILTER NOT EXISTS { ?mu a sis:EllipsoidalRegion } .
+            }
+        """ ;
+    ] .
+
+# Shape for sis:RectangularRegion
+sis:RectangularRegionShape
+    a sh:NodeShape ;
+    sh:targetClass sis:RectangularRegion ;
+    sh:property [
+        sh:path sis:hasCovarianceMatrix ;
+        sh:class sis:CovarianceMatrix ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sis:hasCoverageFactor ;
+        sh:datatype xsd:double ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    # Custom SPARQL constraint on the same property
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "The value of sis:hasCoverageFactor must match the required pattern." ;
+        sh:select """
+            PREFIX sis: <https://ptb.de/sis/>
+            SELECT ?this WHERE {
+                ?this sis:hasCoverageFactor ?val .
+                FILTER (!REGEX(STR(?val), "^[+-]?((\\\\d+(\\\\.\\\\d*)?)|(\\\\.\\\\d+))$"))
+            }
+        """ ;
+    ] ;
+    sh:property [
+        sh:path sis:hasCoverageProbability ;
+        sh:datatype xsd:double ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    # Custom SPARQL constraint on the same property
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "The value of sis:hasCoverageProbability must match the required pattern." ;
+        sh:select """
+            PREFIX sis: <https://ptb.de/sis/>
+            SELECT ?this WHERE {
+                ?this sis:hasCoverageProbability ?val .
+                FILTER (!REGEX(STR(?val), "^\\\\+?((0(\\\\.\\\\d*)?)|(1(\\\\.0*)?))|NaN$"))
+            }
+        """ ;
+    ] ;
+    sh:property [
+        sh:path sis:hasDistribution ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+    ] .
+
+# Shape for sis:EllipsoidalRegion
+sis:EllipsoidalRegionShape
+    a sh:NodeShape ;
+    sh:targetClass sis:EllipsoidalRegion ;
+    sh:property [
+        sh:path sis:hasCovarianceMatrix ;
+        sh:class sis:CovarianceMatrix ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sis:hasCoverageFactor ;
+        sh:datatype xsd:double ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    # Custom SPARQL constraint on the same property
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "The value of sis:hasCoverageFactor must match the required pattern." ;
+        sh:select """
+            PREFIX sis: <https://ptb.de/sis/>
+            SELECT ?this WHERE {
+                ?this sis:hasCoverageFactor ?val .
+                FILTER (!REGEX(STR(?val), "^[+-]?((\\\\d+(\\\\.\\\\d*)?)|(\\\\.\\\\d+))$"))
+            }
+        """ ;
+    ] ;
+    sh:property [
+        sh:path sis:hasCoverageProbability ;
+        sh:datatype xsd:double ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    # Custom SPARQL constraint on the same property
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "The value of sis:hasCoverageProbability must match the required pattern." ;
+        sh:select """
+            PREFIX sis: <https://ptb.de/sis/>
+            SELECT ?this WHERE {
+                ?this sis:hasCoverageProbability ?val .
+                FILTER (!REGEX(STR(?val), "^\\\\+?((0(\\\\.\\\\d*)?)|(1(\\\\.0*)?))|NaN$"))
+            }
+        """ ;
+    ] ;
+    sh:property [
+        sh:path sis:hasDistribution ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+    ] .
+
+# Shape for sis:CovarianceMatrix
+sis:CovarianceMatrixShape
+    a sh:NodeShape ;
+    sh:targetClass sis:CovarianceMatrix ;
+    sh:property [
+        sh:path sis:hasCovariance ;
+        sh:class sis:Covariance ;
+        sh:minCount 4 ;  # Assuming at least a 2x2 matrix
+    ] .
+
+# Shape for sis:Covariance
+sis:CovarianceShape
+    a sh:NodeShape ;
+    sh:targetClass sis:Covariance ;
+    sh:property [
+        sh:path sis:hasColumnIndex ;
+        sh:datatype xsd:positiveInteger  ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sis:hasRowIndex ;
+        sh:datatype xsd:positiveInteger  ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sis:hasValue ;
+        sh:datatype xsd:double ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sis:hasUnitIdentifier ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] .
+    #sh:property [
+#       sh:path sis:hasSIMeasurementUnit ;
+#        sh:class sirp:MeasurementUnit ;
+#        sh:minCount 0 ;
+#        sh:maxCount 1 ;
+#    ] .
+
+sis:RealListShape
+    a sh:NodeShape ;
+    sh:targetClass sis:RealList ;
+    sh:property [
+        sh:path sis:hasLabel ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sis:hasQuantityType ;
+        sh:class sis:QuantityType ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sis:hasUnitIdentifier ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+    ] ;
+    #sh:property [
+#       sh:path sis:hasSIMeasurementUnit ;
+#        sh:class sirp:MeasurementUnit ;
+#        sh:minCount 0 ;
+#        sh:maxCount 1 ;
+#    ] ;
+    sh:property [
+       sh:path sis:hasRealInList ;
+       sh:class sis:RealInList ;
+       sh:minCount 1;
+    ] ;
+    sh:property [
+        sh:path sis:hasSignificantDigit ;
+        sh:datatype xsd:integer ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sis:hasDateTime ;
+        sh:datatype xsd:dateTime ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+    ] ;
+    # Declare the path sis:hasListMeasurementUncertaintyUnivariate as optional
+    sh:property [
+        sh:path sis:hasListMeasurementUncertaintyUnivariate ;
+        sh:class sis:ListMeasurementUncertaintyUnivariate ;
+        sh:maxCount 1 ; # It can appear at most once
+        sh:minCount 0 ; # But it's optional
+    ] ;
+
+    # If sis:hasListMeasurementUncertaintyUnivariate is present, it must be either StandardMU or ExpandedMU
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "If sis:hasListMeasurementUncertaintyUnivariate is present, it must be either StandardMU or ExpandedMU." ;
+        sh:select """
+            PREFIX sis: <https://ptb.de/sis/>
+            SELECT $this WHERE {
+                $this sis:hasListMeasurementUncertaintyUnivariate ?mu .
+                FILTER NOT EXISTS { ?mu a sis:StandardMU } .
+                FILTER NOT EXISTS { ?mu a sis:ExpandedMU } .
+            }
+        """ ;
+    ] .
+
+sis:RealInListShape
+    a sh:NodeShape ;
+    sh:targetClass sis:RealInList ;
+    sh:property [
+        sh:path sis:hasLabel ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sis:hasQuantityType ;
+        sh:class sis:QuantityType ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sis:hasValue ;
+        sh:datatype xsd:double ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sis:hasUnitIdentifier ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+    ] ;
+    #sh:property [
+#       sh:path sis:hasSIMeasurementUnit ;
+#        sh:class sirp:MeasurementUnit ;
+#        sh:minCount 0 ;
+#        sh:maxCount 1 ;
+#    ] ;
+    sh:property [
+        sh:path sis:hasSignificantDigit ;
+        sh:datatype xsd:integer ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path sis:hasDateTime ;
+        sh:datatype xsd:dateTime ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+    ] ;
+    # Declare the path sis:hasMeasurementUncertaintyUnivariate as optional
+    sh:property [
+        sh:path sis:hasMeasurementUncertaintyUnivariate ;
+        sh:class sis:MeasurementUncertaintyUnivariate ;
+        sh:maxCount 1 ; # It can appear at most once
+        sh:minCount 0 ; # But it's optional
+    ] ;
+
+    # If sis:hasMeasurementUncertaintyUnivariate is present, it must be either StandardMU, ExpandedMU or CoverageIntervalMU
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "If sis:hasMeasurementUncertaintyUnivariate is present, it must be either StandardMU, ExpandedMU or CoverageIntervalMU." ;
+        sh:select """
+            PREFIX sis: <https://ptb.de/sis/>
+            SELECT $this WHERE {
+                $this sis:hasMeasurementUncertaintyUnivariate ?mu .
+                FILTER NOT EXISTS { ?mu a sis:StandardMU } .
+                FILTER NOT EXISTS { ?mu a sis:ExpandedMU } .
+                FILTER NOT EXISTS { ?mu a sis:CoverageIntervalMU } .
+            }
+        """ ;
+    ] .

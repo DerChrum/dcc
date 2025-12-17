@@ -1,0 +1,97 @@
+
+cff-version: 1.2.0
+message: If you use this software, please cite it using the metadata from this file.
+title:           
+type:            software
+version:         1.3.1
+doi:             ...
+date-released:   ...
+repository-code: https://gitlab1.ptb.de/d-ptb/d-si/ontology-d-si
+license:         CC-BY 4.0 international
+abstract:        ...
+keywords:
+  - ...
+  - ...
+  - ...
+  - ...
+  - ...
+  - ...
+  - ...
+  - ...
+  - ...
+  - ...
+  - ...
+authors:
+  - family-names: Seeger
+    given-names:  Benedikt
+    orcid:        https://orcid.org/0000-0002-2190-693
+  - family-names: Hutzschenreuter
+    given-names:  Daniel
+    orcid:        https://orcid.org/0000-0002-9095-0063
+  - family-names: Stehr
+    given-names:  Eva Vanessa
+    orcid:        https://orcid.org/0000-0002-6461-2554
+  - family-names: Lanza
+    given-names:  Giacomo
+    orcid:        https://orcid.org/0000-0002-2239-3955
+  - family-names: Jordan
+    given-names:  Moritz
+    orcid:        https://orcid.org/0000-0003-0941-5950
+
+references:
+
+  - title:         SmartCom Digital System of Units (D-SI) Guide for the use of the metadata-format used in metrology for the easy-to-use, safe, harmonised and unambiguous digital transfer of metrological data - Second Edition
+    type:          article
+    doi:           https://doi.org/10.5281/zenodo.3816686
+    date-released: 2020-07-01
+    publisher:     Zenodo
+    authors:
+      - family-names: Hutzschenreuter
+        given-names:  Daniel
+        orcid:        https://orcid.org/0000-0002-9095-0063
+      - family-names: Härtig
+        given-names:  Frank
+      - family-names: Heeren
+        given-names:  Wiebke
+      - family-names: Wiedenhöfer
+        given-names:  Thomas
+      - family-names: Forbes
+        given-names:  Alistair
+      - family-names: Brown
+        given-names:  Clifford
+        orcid:        https://orcid.org/0000-0002-5389-6037
+      - family-names: Smith
+        given-names:  Ian
+        orcid:        https://orcid.org/0000-0002-3974-183X
+      - family-names: Rhodes
+        given-names:  Susan
+      - family-names: Linkeová
+        given-names:  Ivana
+      - family-names: Sýkora
+        given-names:  Jakub
+      - family-names: Zelený
+        given-names:  Vit
+      - family-names: Ačko
+        given-names:  Bojan
+      - family-names: Klobučar
+        given-names:  Rok
+      - family-names: Nikander
+        given-names:  Pekka
+      - family-names: Elo
+        given-names:  Tommi
+      - family-names: Mustapää
+        given-names:  Tuukka
+      - family-names: Kuosmanen
+        given-names:  Petri
+      - family-names: Maennel
+        given-names:  Olaf
+      - family-names: Hovhannisyan
+        given-names:  Kristine
+      - family-names: Müller
+        given-names:  Bernd
+      - family-names: Heindorf
+        given-names:  Lukas
+      - family-names: Paciello
+        given-names:  Vincenzo
+
+

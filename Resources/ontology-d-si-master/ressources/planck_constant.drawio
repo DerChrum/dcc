@@ -1,0 +1,174 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.0.16 Chrome/132.0.6834.196 Electron/34.2.0 Safari/537.36" version="26.0.16">
+  <diagram name="Page-1" id="X5dJeyZzTGoNxj6EdiUQ">
+    <mxGraphModel dx="1266" dy="743" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3300" pageHeight="4681" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <UserObject label="planck constant [Constant]" link="https://ptb.de/sis/Real" id="GVYWpLKgeoXwv8TENmaj-8">
+          <mxCell style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;verticalAlign=middle;direction=east;" parent="1" vertex="1">
+            <mxGeometry x="270" y="390" width="240" height="106" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasDateTime = &#39;2018-05-20T00:00:00Z&#39;" link="https://ptb.de/sis/hasDateTime" id="GVYWpLKgeoXwv8TENmaj-9">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="GVYWpLKgeoXwv8TENmaj-8" vertex="1">
+            <mxGeometry y="26" width="240" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasLabel = &#39;planckConstant&#39;" link="https://ptb.de/sis/hasLabel" id="GVYWpLKgeoXwv8TENmaj-10">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="GVYWpLKgeoXwv8TENmaj-8" vertex="1">
+            <mxGeometry y="46" width="240" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasValue = &#39;6.62607015E-34&#39;" link="https://ptb.de/sis/hasValue" id="GVYWpLKgeoXwv8TENmaj-11">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="GVYWpLKgeoXwv8TENmaj-8" vertex="1">
+            <mxGeometry y="66" width="240" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasUnitIdentifier = &#39;\joule\hertz\tothe{-1}&#39;" link="https://ptb.de/sis/hasUnitIdentifier" id="GVYWpLKgeoXwv8TENmaj-12">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="GVYWpLKgeoXwv8TENmaj-8" vertex="1">
+            <mxGeometry y="86" width="240" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="measurement uncertainty [StandardMU]" link="https://ptb.de/sis/StandardMU" id="GVYWpLKgeoXwv8TENmaj-13">
+          <mxCell style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#b0e3e6;strokeColor=#0e8088;verticalAlign=middle;" parent="1" vertex="1">
+            <mxGeometry x="560" y="390" width="230" height="66" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasValueStandardMU = &#39;0.0&#39;" link="https://ptb.de/sis/hasValueStandardMU" id="GVYWpLKgeoXwv8TENmaj-14">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="GVYWpLKgeoXwv8TENmaj-13" vertex="1">
+            <mxGeometry y="26" width="230" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasDistribution = &#39;normal&#39;" link="https://ptb.de/sis/hasDistribution" id="GVYWpLKgeoXwv8TENmaj-18">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="GVYWpLKgeoXwv8TENmaj-13" vertex="1">
+            <mxGeometry y="46" width="230" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasMeasurementUncertaintyUnivariate" link="https://ptb.de/sis/hasMeasurementUncertaintyUnivariate" id="GVYWpLKgeoXwv8TENmaj-19">
+          <mxCell style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;horizontal=1;fontSize=11;verticalAlign=middle;fontStyle=4;" parent="1" source="GVYWpLKgeoXwv8TENmaj-8" target="GVYWpLKgeoXwv8TENmaj-13" edge="1">
+            <mxGeometry x="-0.0396" width="50" height="50" relative="1" as="geometry">
+              <mxPoint x="580" y="640" as="sourcePoint" />
+              <mxPoint x="890" y="640" as="targetPoint" />
+              <mxPoint as="offset" />
+              <Array as="points">
+                <mxPoint x="390" y="530" />
+                <mxPoint x="675" y="530" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="joule.hertz-1 [sirp:UnitProduct]" id="GVYWpLKgeoXwv8TENmaj-20">
+          <mxCell style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#ddcc99;strokeColor=#6c8ebf;fontSize=12;verticalAlign=middle;" parent="1" vertex="1">
+            <mxGeometry x="280" y="210" width="180" height="40" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasSIMeasurementUnit" link="https://ptb.de/sis/hasSIMeasurementUnit" id="GVYWpLKgeoXwv8TENmaj-23">
+          <mxCell style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;horizontal=1;fontSize=11;verticalAlign=middle;fontStyle=4;" parent="1" target="GVYWpLKgeoXwv8TENmaj-20" edge="1">
+            <mxGeometry x="-0.5522" width="50" height="50" relative="1" as="geometry">
+              <mxPoint x="340" y="390" as="sourcePoint" />
+              <mxPoint x="300" y="350" as="targetPoint" />
+              <mxPoint as="offset" />
+              <Array as="points">
+                <mxPoint x="340" y="390" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="quantitykind:Action" link="https://si-digital-framework.org/SI#MeasurementUnit" id="GVYWpLKgeoXwv8TENmaj-24">
+          <mxCell style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#ff99ee;strokeColor=#6c8ebf;fontSize=12;verticalAlign=middle;" parent="1" vertex="1">
+            <mxGeometry x="90" y="200" width="140" height="50" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="" link="https://ptb.de/sis/hasQuantityType" id="GVYWpLKgeoXwv8TENmaj-25">
+          <mxCell style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;horizontal=1;fontSize=11;verticalAlign=middle;fontStyle=4;" parent="1" source="GVYWpLKgeoXwv8TENmaj-8" target="GVYWpLKgeoXwv8TENmaj-24" edge="1">
+            <mxGeometry x="-0.151" width="50" height="50" relative="1" as="geometry">
+              <mxPoint x="490" y="420" as="sourcePoint" />
+              <mxPoint x="410" y="160" as="targetPoint" />
+              <mxPoint as="offset" />
+              <Array as="points" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <mxCell id="GVYWpLKgeoXwv8TENmaj-26" value="&lt;span style=&quot;text-decoration-line: underline;&quot;&gt;:hasQuantityType&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="GVYWpLKgeoXwv8TENmaj-25" vertex="1" connectable="0">
+          <mxGeometry x="0.3531" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <UserObject label=":hasRightUnitTerm" link="https://ptb.de/sis/hasSIMeasurementUnit" id="GVYWpLKgeoXwv8TENmaj-30">
+          <mxCell style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;horizontal=1;fontSize=11;verticalAlign=middle;fontStyle=4;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="GVYWpLKgeoXwv8TENmaj-20" target="GVYWpLKgeoXwv8TENmaj-27" edge="1">
+            <mxGeometry x="0.0526" width="50" height="50" relative="1" as="geometry">
+              <mxPoint x="584.5" y="174" as="sourcePoint" />
+              <mxPoint x="584.5" y="40" as="targetPoint" />
+              <mxPoint as="offset" />
+              <Array as="points">
+                <mxPoint x="390" y="190" />
+                <mxPoint x="560" y="190" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <mxCell id="GVYWpLKgeoXwv8TENmaj-32" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#776633;dashed=1;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="270" y="180" width="600" height="160" as="geometry" />
+        </mxCell>
+        <UserObject label="[sirp:UnitPower]" link="https://si-digital-framework.org/SI#MeasurementUnit" id="GVYWpLKgeoXwv8TENmaj-27">
+          <mxCell style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#ddcc99;strokeColor=#6c8ebf;fontSize=12;verticalAlign=middle;" parent="1" vertex="1">
+            <mxGeometry x="480" y="210" width="160" height="46" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasNumericExponent = &#39;-1&#39;" link="https://ptb.de/sis/hasLabel" id="GVYWpLKgeoXwv8TENmaj-29">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="GVYWpLKgeoXwv8TENmaj-27" vertex="1">
+            <mxGeometry y="26" width="160" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="GVYWpLKgeoXwv8TENmaj-34" value="" style="group" parent="1" vertex="1" connectable="0">
+          <mxGeometry x="70" y="180" width="180" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="GVYWpLKgeoXwv8TENmaj-35" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#aa4499;dashed=1;verticalAlign=middle;" parent="GVYWpLKgeoXwv8TENmaj-34" vertex="1">
+          <mxGeometry x="10" width="163.08" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="GVYWpLKgeoXwv8TENmaj-36" value="&lt;b&gt;&lt;font&gt;QUDT&lt;/font&gt;&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#aa4499;" parent="GVYWpLKgeoXwv8TENmaj-34" vertex="1">
+          <mxGeometry x="20" width="41" height="13.85" as="geometry" />
+        </mxCell>
+        <mxCell id="GVYWpLKgeoXwv8TENmaj-33" value="&lt;b&gt;&lt;font&gt;SI&lt;/font&gt;&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#776633;" parent="1" vertex="1">
+          <mxGeometry x="240" y="180" width="95.99999999999999" height="16.923076923076923" as="geometry" />
+        </mxCell>
+        <UserObject label=":hasLeftUnitTerm" link="https://ptb.de/sis/hasSIMeasurementUnit" id="ma6RR8SsMilZBzknVTUd-1">
+          <mxCell style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;horizontal=1;fontSize=11;verticalAlign=middle;fontStyle=4;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="GVYWpLKgeoXwv8TENmaj-20" target="ma6RR8SsMilZBzknVTUd-5" edge="1">
+            <mxGeometry x="0.0526" width="50" height="50" relative="1" as="geometry">
+              <mxPoint x="380" y="310" as="sourcePoint" />
+              <mxPoint x="1010" y="350" as="targetPoint" />
+              <mxPoint as="offset" />
+              <Array as="points">
+                <mxPoint x="370" y="330" />
+                <mxPoint x="760" y="330" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="units:hertz [sirp:SISpecialNamedUnit]" link="https://si-digital-framework.org/SI#MeasurementUnit" id="ma6RR8SsMilZBzknVTUd-2">
+          <mxCell style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#ddcc99;strokeColor=#6c8ebf;fontSize=12;verticalAlign=middle;" parent="1" vertex="1">
+            <mxGeometry x="660" y="210" width="200" height="40" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="units:joule [sirp:SISpecialNamedUnit]" link="https://si-digital-framework.org/SI#MeasurementUnit" id="ma6RR8SsMilZBzknVTUd-5">
+          <mxCell style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#ddcc99;strokeColor=#6c8ebf;fontSize=12;verticalAlign=middle;" parent="1" vertex="1">
+            <mxGeometry x="660" y="270" width="200" height="40" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasUnitBase" link="https://ptb.de/sis/hasSIMeasurementUnit" id="ma6RR8SsMilZBzknVTUd-6">
+          <mxCell style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;horizontal=1;fontSize=11;verticalAlign=middle;fontStyle=4;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.713;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="GVYWpLKgeoXwv8TENmaj-27" target="ma6RR8SsMilZBzknVTUd-2" edge="1">
+            <mxGeometry x="0.0526" width="50" height="50" relative="1" as="geometry">
+              <mxPoint x="610" y="210" as="sourcePoint" />
+              <mxPoint x="805" y="210" as="targetPoint" />
+              <mxPoint as="offset" />
+              <Array as="points">
+                <mxPoint x="594" y="190" />
+                <mxPoint x="760" y="190" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

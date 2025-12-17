@@ -1,0 +1,1085 @@
+@prefix : <https://ptb.de/sis/> .
+@prefix sis:        <https://ptb.de/sis/> .
+@prefix six:        <https://ptb.de/si/> .
+@prefix owl:        <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:        <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:       <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:       <http://www.w3.org/2004/02/skos/core#> .
+@prefix xml:        <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd:        <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcat:       <http://www.w3.org/ns/dcat#> .
+@prefix foaf:       <http://xmlns.com/foaf/0.1/> .
+@prefix mod:        <https://w3id.org/mod#> .
+@prefix schema:     <https://schema.org/> .
+@prefix orcid:      <https://orcid.org/> .
+@prefix ror:        <https://ror.org/> .
+@prefix vann:       <http://purl.org/vocab/vann/> .
+@prefix dcterms:    <http://purl.org/dc/terms/> .
+@prefix doap:       <http://usefulinc.com/ns/doap#> .
+@prefix premis:     <http://www.loc.gov/premis/rdf/v3/> .
+@prefix qudt:       <https://qudt.org/schema/qudt/> .
+@prefix sirp:       <https://si-digital-framework.org/SI#> .
+@prefix units:      <http://si-digital-framework.org/SI/units/> .
+@prefix prefixes:   <http://si-digital-framework.org/SI/prefixes/> .
+@prefix constants:  <http://si-digital-framework.org/constants/> .
+@prefix quantities: <http://si-digital-framework.org/quantities/> .
+@base <https://ptb.de/sis/> .
+
+<https://ptb.de/sis/> rdf:type owl:Ontology ;
+                     vann:preferredNamespaceUri    "https://ptb.de/sis/" ;
+    vann:preferredNamespacePrefix "sis" ;
+    rdfs:label                    "SIS Ontology"@en , "SIS-Ontologie"@de ;
+    dcterms:title                 "SIS Ontology"@en , "SIS-Ontologie"@de ;
+    dcterms:abstract              "Ontology presenting the schema for metrologically correct representation of quantity values including numerical value, kind of quantity, measurement unit and uncertainty declaration." ;
+    # bibo:status
+    owl:versionInfo               "v0.2.1" ;
+    owl:versionIRI                <https://ptb.de/sis/v0.2.1/> ;
+    # dcterms:replaces
+    # dcterms:created
+    # dcterms:modified
+    # dcterms:issued
+    # dcterms:creator
+    dcterms:contributor           orcid:0000-0002-2190-6931 ,
+                                  orcid:0000-0002-9095-0063 ,
+                                  orcid:0000-0002-6461-2554 ,
+                                  orcid:0000-0002-2239-3955 ,
+                                  orcid:0000-0003-0941-5950 ;
+    dcterms:publisher             ror:05r3f7h03 ;
+    # schema:funder
+    # schema:funding
+    # bibo:doi
+    # dcterms:bibliographicCitation
+    dcterms:license               <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:rights                <https://creativecommons.org/licenses/by/4.0/> ;
+    # schema:logo
+    # vann:example
+    premis:documentation          <https://ptb.gitlab.io/dcc/ontology-d-si> ;
+    doap:repository               <https://gitlab1.ptb.de/d-ptb/d-si/ontology-d-si> ;
+    doap:bug-database             <https://gitlab1.ptb.de/d-ptb/d-si/ontology-d-si/-/issues> ;
+    # doap:audience
+    dcterms:language              <http://id.loc.gov/vocabulary/iso639-2/eng> , <http://id.loc.gov/vocabulary/iso639-2/deu> ;
+    dcat:distribution             <https://ptb.de/sis/v0.2.1/> ;
+    # dcterms:subject
+    # dcterms:source
+    # voaf:extends
+    # dcterms:references
+    rdfs:comment """"""@en .
+
+orcid:0000-0002-2190-6931 a foaf:Person ; foaf:name "Benedikt Seeger       " ; schema:affiliation ror:05r3f7h03 .
+orcid:0000-0002-9095-0063 a foaf:Person ; foaf:name "Daniel Hutzschenreuter" ; schema:affiliation ror:05r3f7h03 .
+orcid:0000-0002-6461-2554 a foaf:Person ; foaf:name "Eva Vanessa Stehr     " ; schema:affiliation ror:05r3f7h03 .
+orcid:0000-0002-2239-3955 a foaf:Person ; foaf:name "Giacomo Lanza         " ; schema:affiliation ror:05r3f7h03 .
+orcid:0000-0003-0941-5950 a foaf:Person ; foaf:name "Moritz Jordan         " ; schema:affiliation ror:05r3f7h03 .
+ror:05r3f7h03       a foaf:Organization ; foaf:name "Physikalisch-Technische Bundesanstalt (PTB)" .
+<https://ptb.de/sis/v0.2.1/> a dcat:Distribution; mod:hasSyntax <https://www.w3.org/ns/formats/Turtle> .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://ptb.de/sis/hasComplexInList
+sis:hasComplexInList rdf:type owl:ObjectProperty ;
+                     rdfs:domain sis:ComplexList ;
+                     rdfs:range sis:ComplexInList ;
+                     skos:prefLabel "contains the complex element"@en ,
+                                    "enthält das komplexe Element"@de .
+
+
+###  https://ptb.de/sis/hasCovariance
+sis:hasCovariance rdf:type owl:ObjectProperty ;
+                  rdfs:domain sis:CovarianceMatrix ;
+                  rdfs:range sis:Covariance ;
+                  skos:prefLabel "has covariance element"@en ,
+                                 "hat Kovarianzelement"@de .
+
+
+###  https://ptb.de/sis/hasCovarianceMatrix
+sis:hasCovarianceMatrix rdf:type owl:ObjectProperty ;
+                        rdfs:domain sis:MeasurementUncertaintyMultivariate ;
+                        rdfs:range sis:CovarianceMatrix ;
+                        skos:prefLabel "has covariance matrix"@en ,
+                                       "hat Kovarianzmatrix"@de .
+
+
+###  https://ptb.de/sis/hasCoverageIntervalMU
+sis:hasCoverageIntervalMU rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf sis:hasMeasurementUncertaintyUnivariate ;
+                          rdfs:domain sis:QuantityValue ;
+                          rdfs:range sis:CoverageIntervalMU ;
+                          skos:prefLabel "has coverage interval"@en ,
+                                         "hat Überdeckungsintervall"@de .
+
+
+###  https://ptb.de/sis/hasExpandedMU
+sis:hasExpandedMU rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf sis:hasMeasurementUncertaintyUnivariate ;
+                  rdfs:domain sis:QuantityValue ;
+                  rdfs:range sis:ExpandedMU ;
+                  skos:prefLabel "has expanded uncertainty"@en ,
+                                 "hat erweiterte Messunsicherheit"@de .
+
+
+###  https://ptb.de/sis/hasListInList
+sis:hasListInList rdf:type owl:ObjectProperty ;
+                  rdfs:domain sis:ListList ;
+                  rdfs:range [ rdf:type owl:Class ;
+                               owl:unionOf ( sis:ComplexList
+                                             sis:ListList
+                                             sis:RealList
+                                            ) 
+                              ] ;
+                   skos:prefLabel "contains the list-like element"@en ,
+                                  "enthält das listenartige Element"@de .
+
+
+###  https://ptb.de/sis/hasMeasurementUncertainty
+sis:hasMeasurementUncertainty rdf:type owl:ObjectProperty ;
+                              rdfs:domain sis:QuantityValue ;
+                              rdfs:range sis:MeasurementUncertainty ;
+                              skos:prefLabel "has uncertainty declaration"@en ,
+                                             "hat Unsicherheitsdeklaration"@de .
+
+
+###  https://ptb.de/sis/hasListMeasurementUncertaintyUnivariate
+sis:hasListMeasurementUncertaintyUnivariate rdf:type owl:ObjectProperty ;
+                                            rdfs:subPropertyOf sis:hasMeasurementUncertainty ;
+                                            rdfs:domain sis:RealList ;
+                                            rdfs:range sis:ListMeasurementUncertaintyUnivariate .
+
+
+###  https://ptb.de/sis/hasMeasurementUncertaintyMultivariate
+sis:hasMeasurementUncertaintyMultivariate rdf:type owl:ObjectProperty ;
+                                          rdfs:subPropertyOf sis:hasMeasurementUncertainty ;
+                                          rdfs:domain [ rdf:type owl:Class ;
+                                                        owl:unionOf ( sis:Complex
+                                                                      sis:RealList
+                                                                    )
+                                                      ] ;
+                                          rdfs:range sis:MeasurementUncertaintyMultivariate ;
+                                          skos:prefLabel "has multivariate measurement uncertainty"@en ,
+                                                         "hat multivariate Messunsicherheit"@de .
+
+
+###  https://ptb.de/sis/hasMeasurementUncertaintyUnivariate
+sis:hasMeasurementUncertaintyUnivariate rdf:type owl:ObjectProperty ;
+                                        rdfs:subPropertyOf sis:hasMeasurementUncertainty ;
+                                        rdfs:domain [ rdf:type owl:Class ;
+                                                      owl:unionOf ( sis:Real
+                                                                    sis:RealInList
+                                                                  )
+                                                    ] ;
+                                        rdfs:range sis:MeasurementUncertaintyUnivariate ;
+                                        skos:prefLabel "has univariate measurement uncertainty"@en ,
+                                                       "hat univariate Messunsicherheit"@de .
+
+
+###  https://ptb.de/sis/hasQuantityType
+sis:hasQuantityType rdf:type owl:ObjectProperty ;
+                    rdfs:comment """Standardized kind of quantity associated to a quantity value,
+                                    expressed as the identifier of a term from a controlled terminology.
+                                    We recommend choosing high-level terms (energy, length) from the SI reference point
+                                    and more specific terms (electric energy, enthalpy, diameter, depth) from QUDT."""@en ;
+                    rdfs:domain sis:QuantityValue ;
+                    rdfs:range sis:QuantityType ;
+                    skos:prefLabel "has kind of quantity"@en , "hat Größenart"@de .
+
+
+###  https://ptb.de/sis/hasRealInList
+sis:hasRealInList rdf:type owl:ObjectProperty ;
+                  rdfs:domain sis:RealList ;
+                  rdfs:range sis:RealInList ;
+                  skos:prefLabel "contains the real element"@en ,
+                                 "enthält das reelle Element"@de .
+
+
+###  https://ptb.de/sis/hasSIMeasurementUnit
+sis:hasSIMeasurementUnit rdf:type owl:ObjectProperty ;
+                         rdfs:comment """SI compatible measurement unit associated to a quantity,
+                                         expressed as the identifier of a term from a controlled terminology.
+                                         We recommend choosing terms from the SI reference point."""@en ;
+                         rdfs:domain [ rdf:type owl:Class ;
+                                       owl:unionOf ( sis:Complex
+                                                     sis:Constant
+                                                     sis:Covariance
+                                                     sis:Real
+                                                     sis:RealInList
+                                                     sis:RealList
+                                                   )
+                                     ] ;
+                         rdfs:range sirp:MeasurementUnit ;
+                         skos:prefLabel "has SI measurement unit"@en , "hat SI Messeinheit"@de .
+
+
+###  https://ptb.de/sis/hasStandardMU
+sis:hasStandardMU rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf sis:hasMeasurementUncertaintyUnivariate ;
+                  rdfs:domain sis:Constant ;
+                  rdfs:range sis:StandardMU ;
+                  skos:prefLabel "has standard measurement uncertainty"@en ,
+                                 "hat standard Messunsicherheit"@de .
+
+
+###  https://ptb.de/sis/isInComplexList
+sis:isInComplexList rdf:type owl:ObjectProperty ;
+                    rdfs:domain sis:ComplexInList ;
+                    rdfs:range sis:ComplexList ;
+                    skos:prefLabel "is element of a list of complex values"@en ,
+                                   "ist Element in einer Liste komplexer Werte"@de .
+
+
+###  https://ptb.de/sis/isInListList
+sis:isInListList rdf:type owl:ObjectProperty ;
+                 rdfs:domain [ rdf:type owl:Class ;
+                                        owl:unionOf ( sis:ComplexList
+                                                      sis:ListList
+                                                      sis:RealList 
+                                                     )
+                             ] ;
+                 rdfs:range sis:ListList ;
+                 skos:prefLabel "is element of a list of lists"@en ,
+                                "ist Element in einer Liste von Listen"@de .
+
+
+###  https://ptb.de/sis/isInRealList
+sis:isInRealList rdf:type owl:ObjectProperty ;
+                 rdfs:domain sis:RealInList ;
+                 rdfs:range sis:RealList ;
+                 skos:prefLabel "is element of a list of real values"@en ,
+                                "ist Element in einer Liste reeller Werte"@de .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://ptb.de/sis/hasColumnIndex
+sis:hasColumnIndex rdf:type owl:DatatypeProperty ;
+                   rdfs:domain sis:Covariance ;
+                   rdfs:range xsd:positiveInteger ;
+                   skos:prefLabel "has column index"@en , "hat Spaltenindex"@de .
+
+
+###  https://ptb.de/sis/hasCoverageFactor
+sis:hasCoverageFactor rdf:type owl:DatatypeProperty ;
+                      rdfs:domain [ rdf:type owl:Class ;
+                                    owl:unionOf ( sis:ExpandedMU
+                                                  sis:MeasurementUncertaintyMultivariate
+                                                )
+                                  ] ;
+                      rdfs:range xsd:double ;
+                      rdfs:comment """Scientific decimal format for coverage factor values for uncertainties that must be greater than one or equal to one. Based on type xs:double."""@en ,
+                                   """The related type in the XML serialization is a xsd:double restricted by the following regular expression:
+                                   \"\\+?(([1-9]\\d*\\.\\d*)|([1-9]\\d*))|NaN\"
+                                   """@en ;
+                      skos:closeMatch six:kValueType ;
+                      skos:definition """points to the coverage factor, i.e., to a factor (greater than or equal to unity)
+                                         by which the expanded uncertainty relates to the standard uncertainty"""@en ;
+                      skos:prefLabel "has coverage factor"@en ,
+                                     "hat Überdeckungsfaktor"@de .
+
+
+###  https://ptb.de/sis/hasCoverageProbability
+sis:hasCoverageProbability rdf:type owl:DatatypeProperty ;
+                           rdfs:domain [ rdf:type owl:Class ;
+                                         owl:unionOf ( sis:CoverageIntervalMU
+                                                       sis:ExpandedMU
+                                                       sis:MeasurementUncertaintyMultivariate
+                                                     )
+                                       ] ;
+                           rdfs:range xsd:double ;
+                           rdfs:comment """Decimal format for coverage probability values for uncertainties. The value must be within the interval [0,1].
+                                           The scientific exponent \"e\" (or \"E\") is not allowed. Based on type xs:double."""@en ,
+                                        """The related type in the XML serialization is a xsd:double restricted by the following regular expression:
+                                        \"\\+?((0(\\.\\d*)?)|(1(\\.0*)?))|NaN\"
+                                        """@en ;
+                           skos:closeMatch six:probabilityValueType ;
+                           skos:definition """points to the probability (between 0 and 1) ascribed to the event of the actual value
+                                              falling within the range asserted by the given uncertainty declaration"""@en ;
+                           skos:prefLabel "has coverage probability"@en ,
+                                          "hat Deckungswahrscheinlichkeit"@de .
+
+
+###  https://ptb.de/sis/hasDateTime
+sis:hasDateTime rdf:type owl:DatatypeProperty ;
+                rdfs:domain sis:QuantityValue ;
+                rdfs:range xsd:dateTime ;
+                skos:prefLabel "has time stamp"@en ,
+                               "hat Zeitstempel"@de .
+
+
+###  https://ptb.de/sis/hasDistribution
+sis:hasDistribution rdf:type owl:DatatypeProperty ;
+                    rdfs:domain sis:MeasurementUncertainty ;
+                    rdfs:range xsd:string ;
+                    skos:definition "points to a descriptor/label of the assumed underlying distribution"@en ;
+                    skos:prefLabel "has statistical distribution"@en ,
+                                   "hat statistische Verteilung"@de .
+
+
+###  https://ptb.de/sis/hasIntervalMax
+sis:hasIntervalMax rdf:type owl:DatatypeProperty ;
+                    rdfs:domain sis:CoverageIntervalMU ;
+                    rdfs:range xsd:double ;
+                    rdfs:comment """Scientific decimal format for numerical values. Based on type xs:double."""@en ,
+                                 """The related type in the XML serialization is a xsd:double restricted by the following regular expression:
+                                 \"[-+]?((\\d*\\.\\d+)|(\\d+\\.\\d*)|(\\d+\\.?))([Ee][-+]?\\d+)?|NaN\"
+                                 """@en ;
+                    skos:closeMatch six:intervalMaxType ;
+                    skos:definition "upper boundary of the coverage interval"@en ;
+                    skos:prefLabel "has interval maximum"@en ,
+                                   "hat Intervallmaximum"@de .
+
+
+###  https://ptb.de/sis/hasIntervalMin
+sis:hasIntervalMin rdf:type owl:DatatypeProperty ;
+                    rdfs:domain sis:CoverageIntervalMU ;
+                    rdfs:range xsd:double ;
+                    rdfs:comment """Scientific decimal format for numerical values. Based on type xs:double."""@en ,
+                                 """The related type in the XML serialization is a xsd:double restricted by the following regular expression:
+                                 \"[-+]?((\\d*\\.\\d+)|(\\d+\\.\\d*)|(\\d+\\.?))([Ee][-+]?\\d+)?|NaN\"
+                                 """@en ;
+                    skos:closeMatch six:intervalMin ;
+                    skos:definition "lower boundary of the coverage interval"@en ;
+                    skos:prefLabel "has interval minimum"@en ,
+                                   "hat Intervallminimum"@de .
+
+
+###  https://ptb.de/sis/hasLabel
+sis:hasLabel rdf:type owl:DatatypeProperty ;
+             rdfs:domain sis:QuantityValue ;
+             rdfs:range xsd:string ;
+             skos:prefLabel "has verbose name"@en , "hat ausführlichen Namen"@de .
+
+
+sis:hasListIndex rdf:type owl:DatatypeProperty ;
+                   rdfs:domain sis:RealInList ;
+                   rdfs:range xsd:positiveInteger ;
+                   skos:prefLabel "has list index"@en , "hat Listenindex"@de .
+
+
+###  https://ptb.de/sis/hasRowIndex
+sis:hasRowIndex rdf:type owl:DatatypeProperty ;
+                rdfs:domain sis:Covariance ;
+                rdfs:range xsd:positiveInteger ;
+                skos:prefLabel "has row index"@en , "hat Zeilenindex"@de .
+
+
+###  https://ptb.de/sis/hasSignificantDigit
+sis:hasSignificantDigit rdf:type owl:DatatypeProperty ;
+                        rdfs:domain sis:QuantityValue ;
+                        rdfs:range xsd:integer ;
+                        rdfs:comment """Property providing information about the rounding range according to the ISO 80000 norm series.
+                                     Its value, an integer, reports the position after the decimal separator of the least significant digit of a numerical value."""@en ;
+                        skos:closeMatch six:significantDigit ;
+                        skos:prefLabel "has number of significant decimal digits"@en ,
+                                       "hat Anzahl an signifikante Nachkommastellen"@de .
+
+
+###  https://ptb.de/sis/hasUnitIdentifier
+sis:hasUnitIdentifier rdf:type owl:DatatypeProperty ;
+                      rdfs:domain [ rdf:type owl:Class ;
+                                    owl:unionOf ( sis:QuantityValue
+                                                  sis:Covariance
+                                                )
+                                  ] ;
+                      rdfs:range xsd:string ;
+                      rdfs:comment """Unit associated to a quantity, expressed as a xs:string.
+                                      Allowed values are chosen from the BIPM SI brochure (9th edition).
+                                      The recommended syntax is defined in the SmartCom-D-SI brochure
+                                      and is based on the siunitx LaTeX package."""@en ,
+                                   """Type described by the following regular expression:
+                                   \"((((\\\\kilogram)|(\\\\decibel)|(\\\\degreecelsius)|(\\\\mmhg)|(\\\\minute)|(\\\\hour)|(\\\\day))(\\\\tothe\\{-?\\d+(\\.\\d+)?\\})?)|(((\\\\deca)|(\\\\hecto)|(\\\\mega)|(\\\\giga)|(\\\\tera)|(\\\\peta)|(\\\\exa)|(\\\\zetta)|(\\\\yotta)|(\\\\deci)|(\\\\centi)|(\\\\milli)|(\\\\micro)|(\\\\nano)|(\\\\pico)|(\\\\femto)|(\\\\atto)|(\\\\zepto)|(\\\\yocto)|(\\\\kibi)|(\\\\mebi)|(\\\\gibi)|(\\\\tebi)|(\\\\pebi)|(\\\\exbi)|(\\\\zebi)|(\\\\yobi))?((\\\\gram))(\\\\tothe\\{-?\\d+(\\.\\d+)?\\})?)|(((\\\\deca)|(\\\\hecto)|(\\\\kilo)|(\\\\mega)|(\\\\giga)|(\\\\tera)|(\\\\peta)|(\\\\exa)|(\\\\zetta)|(\\\\yotta)|(\\\\centi)|(\\\\milli)|(\\\\micro)|(\\\\nano)|(\\\\pico)|(\\\\femto)|(\\\\atto)|(\\\\zepto)|(\\\\yocto)|(\\\\kibi)|(\\\\mebi)|(\\\\gibi)|(\\\\tebi)|(\\\\pebi)|(\\\\exbi)|(\\\\zebi)|(\\\\yobi))?((\\\\bel))(\\\\tothe\\{-?\\d+(\\.\\d+)?\\})?)|((\\\\one))|(((\\\\deca)|(\\\\hecto)|(\\\\kilo)|(\\\\mega)|(\\\\giga)|(\\\\tera)|(\\\\peta)|(\\\\exa)|(\\\\zetta)|(\\\\yotta)|(\\\\deci)|(\\\\centi)|(\\\\milli)|(\\\\micro)|(\\\\nano)|(\\\\pico)|(\\\\femto)|(\\\\atto)|(\\\\zepto)|(\\\\yocto)|(\\\\kibi)|(\\\\mebi)|(\\\\gibi)|(\\\\tebi)|(\\\\pebi)|(\\\\exbi)|(\\\\zebi)|(\\\\yobi))?((\\\\metre)|(\\\\second)|(\\\\ampere)|(\\\\kelvin)|(\\\\mole)|(\\\\candela)|(\\\\degree)|(\\\\arcminute)|(\\\\arcsecond)|(\\\\radian)|(\\\\steradian)|(\\\\hertz)|(\\\\newton)|(\\\\pascal)|(\\\\joule)|(\\\\watt)|(\\\\coulomb)|(\\\\volt)|(\\\\farad)|(\\\\ohm)|(\\\\siemens)|(\\\\weber)|(\\\\tesla)|(\\\\henry)|(\\\\lumen)|(\\\\lux)|(\\\\becquerel)|(\\\\sievert)|(\\\\gray)|(\\\\katal)|(\\\\hectare)|(\\\\litre)|(\\\\tonne)|(\\\\electronvolt)|(\\\\dalton)|(\\\\astronomicalunit)|(\\\\neper)|(\\\\percent)|(\\\\ppm)|(\\\\byte)|(\\\\bit)|(\\\\angstrom)|(\\\\bar)|(\\\\atomicunittime)|(\\\\atomicmassunit)|(\\\\barn)|(\\\\clight)|(\\\\electronmass)|(\\\\elementarycharge)|(\\\\naturalunittime)|(\\\\hartree)|(\\\\bohr)|(\\\\nauticalmile)|(\\\\knot)|(\\\\planckbar))(\\\\tothe\\{-?\\d+(\\.\\d+)?\\})?))+(\\\\per((((\\\\kilogram)|(\\\\decibel)|(\\\\degreecelsius)|(\\\\mmhg)|(\\\\minute)|(\\\\hour)|(\\\\day))(\\\\tothe\\{-?\\d+(\\.\\d+)?\\})?)|(((\\\\deca)|(\\\\hecto)|(\\\\mega)|(\\\\giga)|(\\\\tera)|(\\\\peta)|(\\\\exa)|(\\\\zetta)|(\\\\yotta)|(\\\\deci)|(\\\\centi)|(\\\\milli)|(\\\\micro)|(\\\\nano)|(\\\\pico)|(\\\\femto)|(\\\\atto)|(\\\\zepto)|(\\\\yocto)|(\\\\kibi)|(\\\\mebi)|(\\\\gibi)|(\\\\tebi)|(\\\\pebi)|(\\\\exbi)|(\\\\zebi)|(\\\\yobi))?((\\\\gram))(\\\\tothe\\{-?\\d+(\\.\\d+)?\\})?)|(((\\\\deca)|(\\\\hecto)|(\\\\kilo)|(\\\\mega)|(\\\\giga)|(\\\\tera)|(\\\\peta)|(\\\\exa)|(\\\\zetta)|(\\\\yotta)|(\\\\centi)|(\\\\milli)|(\\\\micro)|(\\\\nano)|(\\\\pico)|(\\\\femto)|(\\\\atto)|(\\\\zepto)|(\\\\yocto)|(\\\\kibi)|(\\\\mebi)|(\\\\gibi)|(\\\\tebi)|(\\\\pebi)|(\\\\exbi)|(\\\\zebi)|(\\\\yobi))?((\\\\bel))(\\\\tothe\\{-?\\d+(\\.\\d+)?\\})?)|((\\\\one))|(((\\\\deca)|(\\\\hecto)|(\\\\kilo)|(\\\\mega)|(\\\\giga)|(\\\\tera)|(\\\\peta)|(\\\\exa)|(\\\\zetta)|(\\\\yotta)|(\\\\deci)|(\\\\centi)|(\\\\milli)|(\\\\micro)|(\\\\nano)|(\\\\pico)|(\\\\femto)|(\\\\atto)|(\\\\zepto)|(\\\\yocto)|(\\\\kibi)|(\\\\mebi)|(\\\\gibi)|(\\\\tebi)|(\\\\pebi)|(\\\\exbi)|(\\\\zebi)|(\\\\yobi))?((\\\\metre)|(\\\\second)|(\\\\ampere)|(\\\\kelvin)|(\\\\mole)|(\\\\candela)|(\\\\degree)|(\\\\arcminute)|(\\\\arcsecond)|(\\\\radian)|(\\\\steradian)|(\\\\hertz)|(\\\\newton)|(\\\\pascal)|(\\\\joule)|(\\\\watt)|(\\\\coulomb)|(\\\\volt)|(\\\\farad)|(\\\\ohm)|(\\\\siemens)|(\\\\weber)|(\\\\tesla)|(\\\\henry)|(\\\\lumen)|(\\\\lux)|(\\\\becquerel)|(\\\\sievert)|(\\\\gray)|(\\\\katal)|(\\\\hectare)|(\\\\litre)|(\\\\tonne)|(\\\\electronvolt)|(\\\\dalton)|(\\\\astronomicalunit)|(\\\\neper)|(\\\\percent)|(\\\\ppm)|(\\\\byte)|(\\\\bit)|(\\\\angstrom)|(\\\\bar)|(\\\\atomicunittime)|(\\\\atomicmassunit)|(\\\\barn)|(\\\\clight)|(\\\\electronmass)|(\\\\elementarycharge)|(\\\\naturalunittime)|(\\\\hartree)|(\\\\bohr)|(\\\\nauticalmile)|(\\\\knot)|(\\\\planckbar))(\\\\tothe\\{-?\\d+(\\.\\d+)?\\})?))+)?$|(^\\|.*$)\"
+                                   """@en ;
+                      skos:closeMatch six:unit ;
+                      skos:prefLabel "has unit identifier"@en , "hat Einheitsidentifikator"@de .
+
+
+###  https://ptb.de/sis/hasUnitPhaseIdentifier
+sis:hasUnitPhaseIdentifier rdf:type owl:DatatypeProperty ;
+                           rdfs:domain sis:ComplexPolar ;
+                           rdfs:range xsd:string ;
+                           rdfs:comment """Type described by the following regular expression:
+                                        \"(((\\\\\\\\deca)|(\\\\\\\\hecto)|(\\\\\\\\mega)|(\\\\\\\\giga)|(\\\\\\\\tera)|(\\\\\\\\peta)|(\\\\\\\\exa)|(\\\\\\\\zetta)|(\\\\\\\\yotta)|(\\\\\\\\deci)|(\\\\\\\\centi)|(\\\\\\\\milli)|(\\\\\\\\micro)|(\\\\\\\\nano)|(\\\\\\\\pico)|(\\\\\\\\femto)|(\\\\\\\\atto)|(\\\\\\\\zepto)|(\\\\\\\\yocto)|(\\\\\\\\kibi)|(\\\\\\\\mebi)|(\\\\\\\\gibi)|(\\\\\\\\tebi)|(\\\\\\\\pebi)|(\\\\\\\\exbi)|(\\\\\\\\zebi)|(\\\\\\\\yobi))*\\\\\\\\radian)|(\\\\\\\\metre\\\\\\\\tothe\\\\{0\\\\})|(\\\\\\\\metre\\\\\\\\tothe\\\\{-1\\\\})|(\\\\\\\\degree)|(\\\\\\\\arcminute)|(\\\\\\\\arcsecond)\"
+                                        """@en ,
+                                        """Unit associated to an angular quantity, associated to a phase angle, expressed as a xs:string.
+                                           Allowed values are chosen from the BIPM SI brochure (9th edition).
+                                           The recommended syntax is defined in the SmartCom-D-SI brochure
+                                           and is based on the siunitx LaTeX package."""@en ;
+                           skos:closeMatch six:unitPhase ;
+                           skos:prefLabel "has phase unit identifier"@en , "hat Phaseneinheitsidentifikator"@de .
+
+
+###  https://ptb.de/sis/hasValue
+sis:hasValue rdf:type owl:DatatypeProperty ;
+             rdfs:domain [ rdf:type owl:Class ;
+                           owl:unionOf ( sis:Constant
+                                         sis:Covariance
+                                         sis:Real
+                                         sis:RealInList
+                                       )
+                         ] ;
+             rdfs:range xsd:double ;
+             rdfs:comment """Scientific decimal format for numerical values."""@en ,
+                          """The related type in the XML serialization for this datatype property is an xs:double restricted by the following regular expression:
+                          \"[-+]?((\\d*\\.\\d+)|(\\d+\\.\\d*)|(\\d+\\.?))([Ee][-+]?\\d+)?|NaN\"
+                          """@en ;
+             skos:closeMatch six:decimalType ;
+             skos:prefLabel "has numerical value"@en , "hat numerischen Wert"@de .
+
+
+###  https://ptb.de/sis/hasValueExpandedMU
+sis:hasValueExpandedMU rdf:type owl:DatatypeProperty ;
+                       rdfs:domain sis:ExpandedMU ;
+                       rdfs:range xsd:double ;
+                       rdfs:comment """Scientific decimal format for numerical values of expanded measurement uncertainty
+                                    that must be positive (greater than zero or equal to zero). Based on type xs:double."""@en ,
+                                    """The related type in the XML serialization is a xs:double restricted by the following regular expression:
+                                    \"\\+?((\\d*\\.\\d+)|(\\d+\\.\\d*)|(\\d+\\.?))([Ee][-+]?\\d+)?|NaN\"
+                                    """@en ;
+                       skos:closeMatch six:valueExpandedMU ;
+                       skos:prefLabel "has expanded measurement uncertainty value"@en ,
+                                      "hat erweiterten Messunsicherheitswert"@de .
+
+
+###  https://ptb.de/sis/hasValueImag
+sis:hasValueImag rdf:type owl:DatatypeProperty ;
+                 rdfs:domain sis:ComplexCartesian ;
+                 rdfs:range xsd:double ;
+                 rdfs:comment """Scientific decimal format for numerical values."""@en ,
+                              """The related type in the XML serialization for this datatype property is an xs:double restricted by the following regular expression:
+                              \"[-+]?((\\d*\\.\\d+)|(\\d+\\.\\d*)|(\\d+\\.?))([Ee][-+]?\\d+)?|NaN\"
+                              """@en ;
+                 skos:closeMatch six:decimal ;
+                 skos:prefLabel "has imaginary part"@en , "hat imaginären Teil"@de .
+
+
+###  https://ptb.de/sis/hasValueMagnitude
+sis:hasValueMagnitude rdf:type owl:DatatypeProperty ;
+                      rdfs:domain sis:ComplexPolar ;
+                      rdfs:range xsd:double ;
+                      rdfs:comment """Scientific decimal format for numerical values."""@en ,
+                                   """The related type in the XML serialization for this datatype property is an xs:double restricted by the following regular expression:
+                                   \"[-+]?((\\d*\\.\\d+)|(\\d+\\.\\d*)|(\\d+\\.?))([Ee][-+]?\\d+)?|NaN\"
+                                   """@en ;
+                      skos:closeMatch six:decimal ;
+                      skos:prefLabel "has amplitude"@en , "hat Amplitude"@de .
+
+
+###  https://ptb.de/sis/hasValuePhase
+sis:hasValuePhase rdf:type owl:DatatypeProperty ;
+                  rdfs:domain sis:ComplexPolar ;
+                  rdfs:range xsd:double ;
+                  rdfs:comment """Scientific decimal format for numerical values."""@en ,
+                               """The related type in the XML serialization for this datatype property is an xs:double restricted by the following regular expression:
+                               \"[-+]?((\\d*\\.\\d+)|(\\d+\\.\\d*)|(\\d+\\.?))([Ee][-+]?\\d+)?|NaN\"
+                               """@en ;
+                  skos:closeMatch six:decimal ;
+                  skos:prefLabel "has phase"@en , "hat Phase"@de .
+
+
+###  https://ptb.de/sis/hasValueReal
+sis:hasValueReal rdf:type owl:DatatypeProperty ;
+                 rdfs:domain sis:ComplexCartesian ;
+                 rdfs:range xsd:double ;
+                 rdfs:comment """Scientific decimal format for numerical values."""@en ,
+                              """The related type in the XML serialization for this datatype property is an xs:double restricted by the following regular expression:
+                              \"[-+]?((\\d*\\.\\d+)|(\\d+\\.\\d*)|(\\d+\\.?))([Ee][-+]?\\d+)?|NaN\"
+                              """@en ;
+                 skos:closeMatch six:decimal ;
+                 skos:prefLabel "has real part"@en , "hat reellen Teil"@de .
+
+
+###  https://ptb.de/sis/hasValueStandardMU
+sis:hasValueStandardMU rdf:type owl:DatatypeProperty ;
+                       rdfs:domain [ rdf:type owl:Class ;
+                                     owl:unionOf ( sis:CoverageIntervalMU
+                                                   sis:StandardMU
+                                                 )
+                                   ] ;
+                       rdfs:range xsd:double ;
+                       rdfs:comment """Scientific decimal format for numerical values of standard measurement uncertainty
+                                    that must be positive (greater than zero or equal to zero). Based on type xs:double."""@en ,
+                                    """The related type in the XML serialization is a xs:double restricted by the following regular expression:
+                                    \"\\+?((\\d*\\.\\d+)|(\\d+\\.\\d*)|(\\d+\\.?))([Ee][-+]?\\d+)?|NaN\"
+                                    """@en ;
+                       skos:closeMatch six:valueStandardMU ;
+                       skos:definition """The standard measurement uncertainty is the measurement uncertainty expressed
+                                          as a standard deviation"""@en ;
+                       skos:prefLabel "has standard uncertainty"@en ,
+                                      "hat Standardunsicherheit"@de .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://qudt.org/schema/qudt/QuantityKind
+qudt:QuantityKind rdf:type owl:Class ;
+                  rdfs:subClassOf sis:QuantityType ;
+                  skos:prefLabel "Kind of quantity according to QUDT"@en , "Größenart nach QUDT"@de .
+
+
+###  http://si-digital-framework.org/SI#MeasurementUnit
+sirp:MeasurementUnit rdf:type owl:Class ;
+                     skos:prefLabel "Measurement unit"@en , "Messeinheit"@de .
+
+
+###  http://si-digital-framework.org/SI#QuantityKind
+sirp:QuantityKind rdf:type owl:Class ;
+                  rdfs:subClassOf sis:QuantityType ;
+                  skos:prefLabel "Kind of quantity according to the SI reference Point"@en , "Größenart nach dem SI Referenzpunkt"@de .
+
+
+###  http://www.w3.org/ns/dcat#Distribution
+dcat:Distribution rdf:type owl:Class .
+
+
+###  http://xmlns.com/foaf/0.1/Organization
+foaf:Organization rdf:type owl:Class .
+
+
+###  http://xmlns.com/foaf/0.1/Person
+foaf:Person rdf:type owl:Class .
+
+
+###  https://ptb.de/sis/Complex
+sis:Complex rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Class ;
+                                  owl:unionOf ( sis:ComplexCartesian
+                                                sis:ComplexPolar
+                                              )
+                                ] ;
+            rdfs:subClassOf sis:QuantityValue ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty sis:hasMeasurementUncertaintyMultivariate ;
+                              owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onClass sis:MeasurementUncertaintyMultivariate
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty sis:hasQuantityType ;
+                              owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onClass sis:QuantityType
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty sis:hasSIMeasurementUnit ;
+                              owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onClass sirp:MeasurementUnit
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty sis:hasUnitIdentifier ;
+                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onDataRange xsd:string
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty sis:hasDateTime ;
+                              owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onDataRange xsd:dateTime
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty sis:hasLabel ;
+                              owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onDataRange xsd:string
+                            ] ;
+            skos:exactMatch six:complexQuantityType ;
+            skos:prefLabel "complex value"@en , "komplexer Wert"@de .
+
+
+###  https://ptb.de/sis/ComplexCartesian
+sis:ComplexCartesian rdf:type owl:Class ;
+                     rdfs:subClassOf sis:Complex ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty sis:hasValueImag ;
+                                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                       owl:onDataRange xsd:double
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty sis:hasValueReal ;
+                                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                       owl:onDataRange xsd:double
+                                     ] ;
+                     owl:disjointWith sis:ComplexPolar ;
+                     skos:prefLabel "complex value in Cartesian form"@en , "komplexer Wert in cartesischer Form"@de .
+
+
+###  https://ptb.de/sis/ComplexInList
+sis:ComplexInList rdf:type owl:Class ;
+                  rdfs:subClassOf sis:QuantityValue ;
+                  skos:exactMatch six:complexInListType ;
+                  skos:prefLabel "complex value in a list"@en ,
+                                 "komplexer Wert in einer Liste"@de .
+
+
+###  https://ptb.de/sis/ComplexList
+sis:ComplexList rdf:type owl:Class ;
+                rdfs:subClassOf sis:QuantityValue ;
+                skos:exactMatch six:complexListType ;
+                skos:prefLabel "list of complex values"@en ,
+                               "Liste komplexer Werte"@de .
+
+
+###  https://ptb.de/sis/ComplexPolar
+sis:ComplexPolar rdf:type owl:Class ;
+                 rdfs:subClassOf sis:Complex ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty sis:hasUnitPhaseIdentifier ;
+                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onDataRange xsd:string
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty sis:hasValueMagnitude ;
+                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onDataRange xsd:double
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty sis:hasValuePhase ;
+                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onDataRange xsd:double
+                                 ] ;
+                 skos:prefLabel "complex value in polar form"@en , "komplexer Wert in polarer Form"@de .
+
+
+###  https://ptb.de/sis/Constant
+sis:Constant rdf:type owl:Class ;
+             rdfs:subClassOf sis:QuantityValue ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty sis:hasQuantityType ;
+                               owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass sis:QuantityType
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty sis:hasSIMeasurementUnit ;
+                               owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass sirp:MeasurementUnit
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty sis:hasStandardMU ;
+                               owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass sis:StandardMU
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty sis:hasUnitIdentifier ;
+                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onDataRange xsd:string
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty sis:hasValue ;
+                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onDataRange xsd:double
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty sis:hasDateTime ;
+                               owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onDataRange xsd:dateTime
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty sis:hasLabel ;
+                               owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onDataRange xsd:string
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty sis:hasSignificantDigit ;
+                               owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onDataRange xsd:integer
+                             ] ;
+             skos:exactMatch six:constantQuantityType ;
+             skos:prefLabel "constant"@en , "Konstante"@de .
+
+
+###  https://ptb.de/sis/Covariance
+sis:Covariance rdf:type owl:Class ;
+               rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                 owl:onProperty sis:hasSIMeasurementUnit ;
+                                 owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass sirp:MeasurementUnit
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty sis:hasColumnIndex ;
+                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onDataRange xsd:positiveInteger
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty sis:hasRowIndex ;
+                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onDataRange xsd:positiveInteger
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty sis:hasUnitIdentifier ;
+                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onDataRange xsd:string
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty sis:hasValue ;
+                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onDataRange xsd:double
+                               ] ;
+               rdfs:comment """
+               Each covariance component is defined by
+               - element value     (decimal value type)
+               - element unit      (string - SI format)
+               """@en ;
+               skos:prefLabel "covariance element"@en , "Kovarianzelement"@de .
+
+
+###  https://ptb.de/sis/CovarianceMatrix
+sis:CovarianceMatrix rdf:type owl:Class ;
+                     rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                       owl:onProperty sis:hasCovariance ;
+                                       owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                       owl:onClass sis:Covariance
+                                     ] ;
+                     skos:exactMatch six:covarianceMatrixType ;
+                     skos:prefLabel "covariance matrix"@en , "Kovarianzmatrix"@de .
+
+
+###  https://ptb.de/sis/CoverageIntervalMU
+sis:CoverageIntervalMU rdf:type owl:Class ;
+                       rdfs:subClassOf sis:MeasurementUncertaintyUnivariate ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty sis:hasCoverageProbability ;
+                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                         owl:onDataRange xsd:double
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty sis:hasIntervalMax ;
+                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                         owl:onDataRange xsd:double
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty sis:hasIntervalMin ;
+                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                         owl:onDataRange xsd:double
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty sis:hasValueStandardMU ;
+                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                         owl:onDataRange xsd:double
+                                       ] ;
+                       owl:disjointWith sis:ExpandedMU ,
+                                        sis:StandardMU ;
+                       rdfs:comment "Definition of coverage interval measurement uncertainty data."@en ;
+                       skos:definition """Structure for stating a probabilistic-symmetric coverage interval
+                                          for a real uncertainty, to be applied to a sis:Real quantity value"""@en ;
+                       skos:exactMatch six:coverageIntervalMUType ;
+                       skos:prefLabel "coverage interval"@en ,
+                                      "Überdeckungsintervall"@de .
+
+
+###  https://ptb.de/sis/EllipsoidalRegion
+sis:EllipsoidalRegion rdf:type owl:Class ;
+                      rdfs:subClassOf sis:MeasurementUncertaintyMultivariate ;
+                      skos:exactMatch six:ellipsoidalRegionType ;
+                      skos:prefLabel "ellipsoidal uncertainty region"@en ,
+                                     "ellypsoidaler Unsicherheitsbereich"@de .
+
+
+###  https://ptb.de/sis/ExpandedMU
+sis:ExpandedMU rdf:type owl:Class ;
+               rdfs:subClassOf sis:ListMeasurementUncertaintyUnivariate ,
+                               sis:MeasurementUncertaintyUnivariate ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty sis:hasCoverageFactor ;
+                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onDataRange xsd:double ;
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty sis:hasCoverageProbability ;
+                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onDataRange xsd:double
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty sis:hasValueExpandedMU ;
+                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onDataRange xsd:double
+                               ] ;
+               owl:disjointWith sis:StandardMU ;
+               rdfs:comment "Definition of expanded measurement uncertainty data."@en ;
+               skos:definition """Structure for stating an expanded measurement, model, or simulation uncertainty,
+                                  e.g., to be applied to a sis:Real quantity value"""@en ;
+               skos:exactMatch six:expandedMUType ;
+               skos:prefLabel "expanded uncertainty"@en ,
+                              "erweiterte Unsicherheit"@de .
+
+
+###  https://ptb.de/sis/ListList
+sis:ListList rdf:type owl:Class ;
+             rdfs:subClassOf sis:QuantityValue ;
+             # skos:exactMatch ...... ;
+             skos:prefLabel "list of lists"@en ,
+                            "Liste von Listen"@de .
+
+
+###  https://ptb.de/sis/ListMeasurementUncertaintyUnivariate
+sis:ListMeasurementUncertaintyUnivariate rdf:type owl:Class ;
+                                         owl:equivalentClass [ rdf:type owl:Class ;
+                                                               owl:unionOf ( sis:ExpandedMU
+                                                                             sis:StandardMU
+                                                                           )
+                                                             ] ;
+                                         rdfs:subClassOf sis:MeasurementUncertainty ;
+                                         skos:exactMatch six:listMeasurementUncertaintyUnivariateType ;
+                                         skos:prefLabel "list of univariate measurement uncertainties"@en ,
+                                                        "list univariater Messunsicherheiten"@de .
+
+
+###  https://ptb.de/sis/MeasurementUncertainty
+sis:MeasurementUncertainty rdf:type owl:Class ;
+                           rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                             owl:onProperty sis:hasDistribution ;
+                                             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                             owl:onDataRange xsd:string
+                                           ] ;
+                           rdfs:comment "Superclass of all measurement uncertainty constructs in the D-SI"@en ;
+                           skos:prefLabel "measurement uncertainty"@en , "Messunsicherheit"@de .
+
+
+###  https://ptb.de/sis/MeasurementUncertaintyMultivariate
+sis:MeasurementUncertaintyMultivariate rdf:type owl:Class ;
+                                       owl:equivalentClass [ rdf:type owl:Class ;
+                                                             owl:unionOf ( sis:EllipsoidalRegion
+                                                                           sis:RectangularRegion
+                                                                         )
+                                                           ] ;
+                                       rdfs:subClassOf sis:MeasurementUncertainty ,
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty sis:hasCovarianceMatrix ;
+                                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                         owl:onClass sis:CovarianceMatrix
+                                                       ] ,
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty sis:hasCoverageFactor ;
+                                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                         owl:onDataRange xsd:double
+                                                       ] ,
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty sis:hasCoverageProbability ;
+                                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                         owl:onDataRange xsd:double
+                                                       ] ;
+                                       skos:prefLabel "multivariate measurement uncertainty"@en , "multivariate Messunsicherheit"@de .
+
+
+###  https://ptb.de/sis/MeasurementUncertaintyUnivariate
+sis:MeasurementUncertaintyUnivariate rdf:type owl:Class ;
+                                     owl:equivalentClass [ rdf:type owl:Class ;
+                                                           owl:unionOf ( sis:CoverageIntervalMU
+                                                                         sis:ExpandedMU
+                                                                         sis:StandardMU
+                                                                       )
+                                                         ] ;
+                                     rdfs:subClassOf sis:MeasurementUncertainty ;
+                                     skos:prefLabel "univariate measurement uncertainty"@en , "univariate Messunsicherheit"@de .
+
+
+###  https://ptb.de/sis/QuantityType
+sis:QuantityType rdf:type owl:Class ;
+                 skos:closeMatch "https://jcgm.bipm.org/vim/en/1.2.html" ;
+                 skos:prefLabel "Kind of quantity"@en , "Größenart"@de .
+
+
+###  https://ptb.de/sis/QuantityValue
+sis:QuantityValue rdf:type owl:Class ;
+                  rdfs:comment """Superclass of Real, Constant, Complex, List, RealList, RealInList, ComplexList, ComplexInList, and Hybrid."""@en ;
+                  skos:closeMatch "https://jcgm.bipm.org/vim/en/1.19.html" ;
+                  skos:prefLabel "Quantity numerical value"@en , "numerischen Größenwert"@de .
+
+
+###  https://ptb.de/sis/Real
+sis:Real rdf:type owl:Class ;
+         rdfs:subClassOf sis:QuantityValue ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty sis:hasMeasurementUncertaintyUnivariate ;
+                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onClass sis:MeasurementUncertaintyUnivariate
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty sis:hasQuantityType ;
+                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onClass sis:QuantityType
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty sis:hasSIMeasurementUnit ;
+                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onClass sirp:MeasurementUnit
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty sis:hasUnitIdentifier ;
+                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onDataRange xsd:string
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty sis:hasValue ;
+                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onDataRange xsd:double
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty sis:hasDateTime ;
+                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onDataRange xsd:dateTime
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty sis:hasLabel ;
+                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onDataRange xsd:string
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty sis:hasSignificantDigit ;
+                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onDataRange xsd:integer
+                         ] ;
+         skos:definition """(Real value +- uncertainty) x measurement unit,
+                            i.e., a scalar value with a measurement unit and an uncertainty indication"""@en ;
+         skos:exactMatch six:realQuantityType ;
+         skos:prefLabel "real value"@en ,
+                        "reeller Wert"@de .
+
+
+###  https://ptb.de/sis/RealInList
+sis:RealInList rdf:type owl:Class ;
+               rdfs:subClassOf sis:QuantityValue ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty sis:isInRealList ;
+                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass sis:RealList
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty sis:hasMeasurementUncertaintyUnivariate ;
+                                 owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass sis:MeasurementUncertaintyUnivariate
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty sis:hasQuantityType ;
+                                 owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass sis:QuantityType
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty sis:hasSIMeasurementUnit ;
+                                 owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass sirp:MeasurementUnit
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty sis:hasValue ;
+                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onDataRange xsd:double
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty sis:hasListIndex ;
+                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onDataRange xsd:integer
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty sis:hasDateTime ;
+                                 owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onDataRange xsd:dateTime
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty sis:hasLabel ;
+                                 owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onDataRange xsd:string
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty sis:hasSignificantDigit ;
+                                 owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onDataRange xsd:integer
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty sis:hasUnitIdentifier ;
+                                 owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onDataRange xsd:string
+                               ] ;
+               skos:exactMatch six:realInListType ;
+               skos:prefLabel "real value in a list"@en ,
+                              "reeller Wert in einer Liste"@de .
+
+
+###  https://ptb.de/sis/RealList
+sis:RealList rdf:type owl:Class ;
+             rdfs:subClassOf sis:QuantityValue ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty sis:hasRealInList ;
+                               owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass sis:RealInList
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty sis:hasListMeasurementUncertaintyUnivariate ;
+                               owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass sis:ListMeasurementUncertaintyUnivariate
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty sis:hasMeasurementUncertaintyMultivariate ;
+                               owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass sis:MeasurementUncertaintyMultivariate
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty sis:hasQuantityType ;
+                               owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass sis:QuantityType
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty sis:hasSIMeasurementUnit ;
+                               owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass sirp:MeasurementUnit
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty sis:hasUnitIdentifier ;
+                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onDataRange xsd:string
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty sis:hasDateTime ;
+                               owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onDataRange xsd:dateTime
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty sis:hasLabel ;
+                               owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onDataRange xsd:string
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty sis:hasSignificantDigit ;
+                               owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onDataRange xsd:integer
+                             ] ;
+             skos:exactMatch six:realListType ;
+             skos:prefLabel "list of real values"@en ,
+                            "Liste reeller Werte"@de .
+
+
+###  https://ptb.de/sis/RectangularRegion
+sis:RectangularRegion rdf:type owl:Class ;
+                      rdfs:subClassOf sis:MeasurementUncertaintyMultivariate ;
+                      skos:exactMatch six:rectangularRegionType ;
+                      skos:prefLabel "rectangular uncertainty region"@en ,
+                                     "rechteckiger Unsicherheitsbereich"@de .
+
+
+###  https://ptb.de/sis/StandardMU
+sis:StandardMU rdf:type owl:Class ;
+               rdfs:subClassOf sis:ListMeasurementUncertaintyUnivariate ,
+                               sis:MeasurementUncertaintyUnivariate ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty sis:hasValueStandardMU ;
+                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onDataRange xsd:double
+                               ] ;
+               rdfs:comment "Definition of standard measurement uncertainty data."@en ;
+               skos:exactMatch six:standardMUType ;
+               skos:prefLabel "standard uncertainty"@en ,
+                              "standard Unsicherheit"@de .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( sis:Complex
+                sis:Constant
+                sis:Real
+                sis:RealInList
+                sis:RealList
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

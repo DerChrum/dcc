@@ -1,0 +1,15 @@
+@prefix sis: <https://ptb.de/sis/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix sirp: <https://si-digital-framework.org/SI#> .
+@prefix units: <https://si-digital-framework.org/SI/units/> .
+@prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
+@prefix ex: <http://example.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:43ff48b9-e3d5-4c36-bce4-bd0f327e41ea a sis:ComplexPolar ;
+    sis:hasValueMagnitude "0.0"^^xsd:double ;
+    sis:hasValuePhase "0.0"^^xsd:double ;
+    sis:hasUnitPhaseIdentifier "\\metre\\metre\\tothe{-1}"^^xsd:string ;
+    sis:hasUnitIdentifier "\\metre"^^xsd:string ;
+    sis:hasSIMeasurementUnit units:metre ;
+    sis:hasDateTime "2016-09-01T02:30:01.20+01:00"^^xsd:dateTime .

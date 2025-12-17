@@ -1,0 +1,144 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.0.9 Chrome/128.0.6613.186 Electron/32.2.5 Safari/537.36" version="26.0.9">
+  <diagram name="Page-1" id="M2i0joHpzsGJoD3JUBg-">
+    <mxGraphModel dx="1266" dy="743" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3300" pageHeight="4681" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="4FCYHwHcmp_Ud5PpZ2zT-21" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="60" y="190" width="190" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="4FCYHwHcmp_Ud5PpZ2zT-22" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#aa4499;dashed=1;verticalAlign=middle;" vertex="1" parent="4FCYHwHcmp_Ud5PpZ2zT-21">
+          <mxGeometry width="182.6923076923077" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="4FCYHwHcmp_Ud5PpZ2zT-23" value="&lt;b&gt;&lt;font&gt;QUDT&lt;/font&gt;&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#aa4499;" vertex="1" parent="4FCYHwHcmp_Ud5PpZ2zT-21">
+          <mxGeometry x="9.5" width="30.39999999999999" height="13.846153846153848" as="geometry" />
+        </mxCell>
+        <UserObject label="temperature measurement [Real]" link="https://ptb.de/sis/Real" id="zqG4DGKh7sWb4R3o4dBS-1">
+          <mxCell style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;verticalAlign=middle;direction=east;" parent="1" vertex="1">
+            <mxGeometry x="270" y="390" width="240" height="106" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasDateTime = &#39;2025-02-14T09:05:31&#39;" link="https://ptb.de/sis/hasDateTime" id="zqG4DGKh7sWb4R3o4dBS-2">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="zqG4DGKh7sWb4R3o4dBS-1" vertex="1">
+            <mxGeometry y="26" width="240" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasLabel = &#39;temperature&#39;" link="https://ptb.de/sis/hasLabel" id="zqG4DGKh7sWb4R3o4dBS-3">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="zqG4DGKh7sWb4R3o4dBS-1" vertex="1">
+            <mxGeometry y="46" width="240" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasValue = &#39;100.32&#39;" link="https://ptb.de/sis/hasValue" id="zqG4DGKh7sWb4R3o4dBS-5">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="zqG4DGKh7sWb4R3o4dBS-1" vertex="1">
+            <mxGeometry y="66" width="240" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasUnitIdentifier = &#39;\milli\kelvin&#39;" link="https://ptb.de/sis/hasUnitIdentifier" id="zqG4DGKh7sWb4R3o4dBS-6">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="zqG4DGKh7sWb4R3o4dBS-1" vertex="1">
+            <mxGeometry y="86" width="240" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="measurement uncertainty [CoverageIntervalMU]" link="https://ptb.de/sis/CoverageIntervalMU" id="zqG4DGKh7sWb4R3o4dBS-7">
+          <mxCell style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#b0e3e6;strokeColor=#0e8088;verticalAlign=middle;" parent="1" vertex="1">
+            <mxGeometry x="620" y="390" width="310" height="126" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasValueStandardMU = &#39;0.15&#39;" link="https://ptb.de/sis/hasStandardUnc" id="zqG4DGKh7sWb4R3o4dBS-8">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="zqG4DGKh7sWb4R3o4dBS-7" vertex="1">
+            <mxGeometry y="26" width="310" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasCoverageProbability = &#39;0.95&#39;" link="https://ptb.de/sis/hasCoverageProbability" id="zqG4DGKh7sWb4R3o4dBS-9">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="zqG4DGKh7sWb4R3o4dBS-7" vertex="1">
+            <mxGeometry y="46" width="310" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasIntervalMax = &#39;100.47&#39;" link="https://ptb.de/sis/hasIntervalMax" id="zqG4DGKh7sWb4R3o4dBS-10">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="zqG4DGKh7sWb4R3o4dBS-7" vertex="1">
+            <mxGeometry y="66" width="310" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasIntervalMin = &#39;100.17&#39;" link="https://ptb.de/sis/hasIntervalMin" id="zqG4DGKh7sWb4R3o4dBS-11">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="zqG4DGKh7sWb4R3o4dBS-7" vertex="1">
+            <mxGeometry y="86" width="310" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasDistribution = &#39;normal&#39;" link="https://ptb.de/sis/hasIntervalMin" id="zqG4DGKh7sWb4R3o4dBS-12">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="zqG4DGKh7sWb4R3o4dBS-7" vertex="1">
+            <mxGeometry y="106" width="310" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasMeasurementUncertaintyUnivariate" link="https://ptb.de/sis/hasMeasurementUncertaintyUnivariate" id="zqG4DGKh7sWb4R3o4dBS-13">
+          <mxCell style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;horizontal=1;fontSize=11;verticalAlign=middle;fontStyle=4;" parent="1" source="zqG4DGKh7sWb4R3o4dBS-1" target="zqG4DGKh7sWb4R3o4dBS-7" edge="1">
+            <mxGeometry x="-0.0396" width="50" height="50" relative="1" as="geometry">
+              <mxPoint x="580" y="640" as="sourcePoint" />
+              <mxPoint x="890" y="640" as="targetPoint" />
+              <mxPoint as="offset" />
+              <Array as="points">
+                <mxPoint x="390" y="550" />
+                <mxPoint x="780" y="550" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="millikelvin [sirp:PrefixedUnit]" link="https://si-digital-framework.org/SI#MeasurementUnit" id="4FCYHwHcmp_Ud5PpZ2zT-2">
+          <mxCell style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#ddcc99;strokeColor=#6c8ebf;fontSize=12;verticalAlign=middle;" vertex="1" parent="1">
+            <mxGeometry x="280" y="210" width="210" height="66" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasNonPrefixedUnit = &#39;units:kelvin&#39;" link="https://ptb.de/sis/hasLabel" id="4FCYHwHcmp_Ud5PpZ2zT-3">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="4FCYHwHcmp_Ud5PpZ2zT-2">
+            <mxGeometry y="26" width="210" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasPrefix = &#39;prefixes:milli&#39;" link="https://ptb.de/sis/hasLabel" id="4FCYHwHcmp_Ud5PpZ2zT-4">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="4FCYHwHcmp_Ud5PpZ2zT-2">
+            <mxGeometry y="46" width="210" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasSIMeasurementUnit" link="https://ptb.de/sis/hasSIMeasurementUnit" id="4FCYHwHcmp_Ud5PpZ2zT-5">
+          <mxCell style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;horizontal=1;fontSize=11;verticalAlign=middle;fontStyle=4;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="zqG4DGKh7sWb4R3o4dBS-1" target="4FCYHwHcmp_Ud5PpZ2zT-2">
+            <mxGeometry x="0.0526" width="50" height="50" relative="1" as="geometry">
+              <mxPoint x="455" y="600" as="sourcePoint" />
+              <mxPoint x="300" y="350" as="targetPoint" />
+              <mxPoint as="offset" />
+              <Array as="points">
+                <mxPoint x="390" y="310" />
+                <mxPoint x="390" y="310" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="quantitykind:Temperature" link="https://si-digital-framework.org/SI#MeasurementUnit" id="4FCYHwHcmp_Ud5PpZ2zT-8">
+          <mxCell style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#ff99ee;strokeColor=#6c8ebf;fontSize=12;verticalAlign=middle;" vertex="1" parent="1">
+            <mxGeometry x="80" y="210" width="140" height="50" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="" link="https://ptb.de/sis/hasQuantityType" id="4FCYHwHcmp_Ud5PpZ2zT-9">
+          <mxCell style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;horizontal=1;fontSize=11;verticalAlign=middle;fontStyle=4;" edge="1" parent="1" source="zqG4DGKh7sWb4R3o4dBS-1" target="4FCYHwHcmp_Ud5PpZ2zT-8">
+            <mxGeometry x="-0.151" width="50" height="50" relative="1" as="geometry">
+              <mxPoint x="490" y="420" as="sourcePoint" />
+              <mxPoint x="410" y="160" as="targetPoint" />
+              <mxPoint as="offset" />
+              <Array as="points" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <mxCell id="4FCYHwHcmp_Ud5PpZ2zT-10" value="&lt;span style=&quot;text-decoration-line: underline;&quot;&gt;:hasQuantityType&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="4FCYHwHcmp_Ud5PpZ2zT-9">
+          <mxGeometry x="0.3531" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4FCYHwHcmp_Ud5PpZ2zT-24" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="260" y="190" width="250" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="4FCYHwHcmp_Ud5PpZ2zT-25" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#776633;dashed=1;verticalAlign=middle;" vertex="1" parent="4FCYHwHcmp_Ud5PpZ2zT-24">
+          <mxGeometry width="250" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="4FCYHwHcmp_Ud5PpZ2zT-26" value="&lt;b&gt;&lt;font&gt;SI&lt;/font&gt;&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#776633;" vertex="1" parent="4FCYHwHcmp_Ud5PpZ2zT-24">
+          <mxGeometry width="39.99999999999999" height="15.384615384615387" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

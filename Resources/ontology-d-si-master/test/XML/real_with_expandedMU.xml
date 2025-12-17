@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<siTest:testDSIXML 
+	xmlns:siTest="https://ptb.de/si/examples"
+	xmlns:si="https://ptb.de/si"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="https://ptb.de/si/examples https://www.ptb.de/si/v2.2.1/examples/SI_Format_TestData.xsd">
+
+	<siTest:testData id="real_with_expandedMU">
+		<si:real>
+			<si:label>temperature</si:label>
+			<si:value>100.32</si:value>
+			<si:unit>\milli\kelvin</si:unit>
+			<si:significantDigit>2</si:significantDigit>
+			<si:dateTime>2020-01-01T00:00:00</si:dateTime>
+			<si:measurementUncertaintyUnivariate>
+				<si:expandedMU>
+					<si:valueExpandedMU>0.15</si:valueExpandedMU>
+					<si:coverageFactor>2</si:coverageFactor>
+					<si:coverageProbability>0.95</si:coverageProbability>
+					<si:distribution>normal</si:distribution>
+				</si:expandedMU>
+			</si:measurementUncertaintyUnivariate>
+		</si:real>
+	</siTest:testData>
+	
+</siTest:testDSIXML>						

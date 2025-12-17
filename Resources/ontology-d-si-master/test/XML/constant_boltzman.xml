@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<siTest:testDSIXML 
+	xmlns:siTest="https://ptb.de/si/examples"
+	xmlns:si="https://ptb.de/si"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="https://ptb.de/si/examples https://www.ptb.de/si/v2.2.1/examples/SI_Format_TestData.xsd">
+
+	<siTest:testData id="boltzman">
+		<si:constant>
+			<si:label>Boltzman constant</si:label>
+			<si:value>1.380649e-23</si:value>
+			<si:unit>\joule\kelvin\tothe{-1}</si:unit>
+			<si:dateTime>2016-09-01T02:30:01.20+01:00</si:dateTime>
+			<si:valueStandardMU>5.7e-30</si:valueStandardMU>
+			<si:distribution>normal</si:distribution>
+		</si:constant>
+	</siTest:testData>
+
+</siTest:testDSIXML>						

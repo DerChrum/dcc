@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<siTest:testDSIXML 
+	xmlns:siTest="https://ptb.de/si/examples"
+	xmlns:si="https://ptb.de/si"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="https://ptb.de/si/examples https://www.ptb.de/si/v2.2.1/examples/SI_Format_TestData.xsd">
+
+	<siTest:testData id="elementaryCharge">
+		<si:constant>
+			<si:label>Elementary charge</si:label>
+			<si:value>1.602176634e-19</si:value>
+			<si:unit>\coulomb</si:unit>
+			<si:dateTime>2020-01-05T12:00:00.10-01:00</si:dateTime>
+		</si:constant>
+	</siTest:testData>
+
+</siTest:testDSIXML>						

@@ -1,0 +1,2621 @@
+@prefix : <https://ptb.de/dcc/ont/> .
+@prefix dcc: <https://ptb.de/dcc/ont/> .
+@prefix dccx: <https://ptb.de/dcc/> .
+@prefix sis: <https://ptb.de/sis/> .
+@prefix six: <https://ptb.de/si/> .
+@prefix omt: <http://www.nmdc.com/ontology/OMT#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix provone: <http://purl.dataone.org/provone/2015/01/15/ontology#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix schema: <https://schema.org/> .
+@prefix orcid: <https://orcid.org/> .
+@prefix ror: <https://ror.org/> .
+@prefix mod: <https://w3id.org/mod#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix sirp: <https://si-digital-framework.org/SI#> .
+@prefix units: <http://si-digital-framework.org/SI/units/> .
+@prefix vim: <http://www.nmdc.ac.cn/ontology/vim#> .
+@base <https://ptb.de/dcc/ont/> .
+
+
+#################################################################
+#    ONTOLOGY METADATA
+#################################################################
+
+<https://ptb.de/dcc/ont/> rdf:type owl:Ontology ;
+    vann:preferredNamespaceUri "https://ptb.de/dcc/ont/" ;
+    vann:preferredNamespacePrefix "dcc" ;
+    rdfs:label "DCC Ontology"@en ,
+               "DCC-Ontologie"@de ;
+    dcterms:title "Digital Calibration Certificate Ontology"@en ,
+                  "Ontologie für Digitale Kalibrierscheine"@de ;
+    dcterms:abstract """Comprehensive ontology for semantic representation of Digital Calibration Certificates (DCC).
+This ontology provides a version-agnostic abstraction layer over the PTB DCC XML schema,
+enabling machine-interpretable calibration data exchange aligned with VIM/GUM standards.
+
+Key design principles:
+1. Complete schema coverage: All DCC XML types are represented
+2. Rigorous cardinality restrictions: Mirrors SIS ontology patterns
+3. SIS integration: Numeric payloads delegate to sis: classes for GUM compliance
+4. OMT alignment: Links to VIM-compliant measurement terminology
+5. PROV hooks: Provenance-related classes extend prov: terms
+6. Qualification pattern: refType/refId system follows PROV qualification pattern
+7. Language handling: Uses RDF language tags (@en, @de) per SIS pattern"""@en ;
+    owl:versionInfo "v0.2.0-expanded" ;
+    owl:versionIRI <https://ptb.de/dcc/ont/v0.2.0/> ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:rights <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:conformsTo <https://ptb.de/dcc/v3.3.0-rc.1/dcc.xsd> ;
+    dcterms:source <https://ptb.de/dcc/v3.3.0-rc.1/dcc.xsd> ;
+    owl:imports <https://ptb.de/sis/> ;
+    rdfs:seeAlso <http://www.nmdc.com/ontology/OMT> ;
+    rdfs:comment """This ontology is designed to be used in conjunction with:
+- SIS Ontology (https://ptb.de/sis/) for numeric quantity values
+- OMT Ontology (http://www.nmdc.com/ontology/OMT) for VIM-compliant terminology
+- W3C PROV-O for provenance tracking
+- ProvONE for workflow provenance (optional)
+- SI Digital Framework for unit references
+
+OMT Integration Rationale:
+The OMT (Ontology for Measurement Terminology) provides VIM-compliant semantics
+that complement the DCC structural model. While DCC focuses on certificate structure,
+OMT provides richer semantics for measurement concepts. Key alignment points:
+- dcc:MeasurementResult ↔ omt:MeasurementResult (VIM 2.9)
+- dcc:UsedMethod ↔ omt:MeasurementMethod (VIM 2.5) / omt:MeasurementProcedure (VIM 2.6)
+- dcc:InfluenceCondition ↔ omt:OperatingCondition
+- dcc:MeasuringEquipment ↔ omt:MeasuringInstrument
+- dcc:CalibrationItem ↔ omt:MeasuredObject
+- SIS uncertainty classes ↔ omt:MeasurementUncertainty hierarchy"""@en .
+
+
+#################################################################
+#    ANNOTATION PROPERTIES
+#################################################################
+
+skos:prefLabel rdf:type owl:AnnotationProperty .
+skos:definition rdf:type owl:AnnotationProperty .
+skos:exactMatch rdf:type owl:AnnotationProperty .
+skos:closeMatch rdf:type owl:AnnotationProperty .
+skos:relatedMatch rdf:type owl:AnnotationProperty .
+skos:note rdf:type owl:AnnotationProperty .
+skos:example rdf:type owl:AnnotationProperty .
+
+###  http://www.nmdc.com/ontology/OMT#vimID
+omt:vimID rdf:type owl:AnnotationProperty ;
+    rdfs:comment "Reference to VIM (International Vocabulary of Metrology) section number"@en .
+
+
+#################################################################
+#    OBJECT PROPERTIES - Certificate Structure
+#################################################################
+
+###  https://ptb.de/dcc/ont/hasAdministrativeData
+dcc:hasAdministrativeData rdf:type owl:ObjectProperty, owl:FunctionalProperty ;
+    rdfs:domain dcc:DigitalCalibrationCertificate ;
+    rdfs:range dcc:AdministrativeData ;
+    skos:prefLabel "has administrative data"@en ,
+                   "hat Verwaltungsdaten"@de ;
+    skos:definition "Links a DCC to its administrative metadata container."@en ;
+    skos:exactMatch dccx:administrativeData .
+
+
+###  https://ptb.de/dcc/ont/hasMeasurementResults
+dcc:hasMeasurementResults rdf:type owl:ObjectProperty, owl:FunctionalProperty ;
+    rdfs:domain dcc:DigitalCalibrationCertificate ;
+    rdfs:range dcc:MeasurementResults ;
+    skos:prefLabel "has measurement results"@en ,
+                   "hat Messergebnisse"@de ;
+    skos:definition "Links a DCC to its measurement results container."@en ;
+    skos:exactMatch dccx:measurementResults .
+
+
+###  https://ptb.de/dcc/ont/hasDocument
+dcc:hasDocument rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:DigitalCalibrationCertificate ;
+    rdfs:range dcc:HumanReadableDocument ;
+    skos:prefLabel "has document"@en ,
+                   "hat Dokument"@de ;
+    skos:definition "Links to human-readable representation (e.g., embedded PDF)."@en ;
+    skos:exactMatch dccx:document .
+
+
+###  https://ptb.de/dcc/ont/hasComment
+dcc:hasComment rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:DigitalCalibrationCertificate ;
+    rdfs:range dcc:Comment ;
+    skos:prefLabel "has comment"@en ,
+                   "hat Kommentar"@de ;
+    skos:exactMatch dccx:comment .
+
+
+#################################################################
+#    OBJECT PROPERTIES - Administrative Data Structure
+#################################################################
+
+###  https://ptb.de/dcc/ont/hasDccSoftware
+dcc:hasDccSoftware rdf:type owl:ObjectProperty, owl:FunctionalProperty ;
+    rdfs:domain dcc:AdministrativeData ;
+    rdfs:range dcc:SoftwareList ;
+    skos:prefLabel "has DCC software"@en ,
+                   "hat DCC-Software"@de ;
+    skos:exactMatch dccx:dccSoftware .
+
+
+###  https://ptb.de/dcc/ont/hasRefTypeDefinitions
+dcc:hasRefTypeDefinitions rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:AdministrativeData ;
+    rdfs:range dcc:RefTypeDefinitions ;
+    skos:prefLabel "has refType definitions"@en ;
+    skos:exactMatch dccx:refTypeDefinitions .
+
+
+###  https://ptb.de/dcc/ont/hasCoreData
+dcc:hasCoreData rdf:type owl:ObjectProperty, owl:FunctionalProperty ;
+    rdfs:domain dcc:AdministrativeData ;
+    rdfs:range dcc:CoreData ;
+    skos:prefLabel "has core data"@en ,
+                   "hat Kerndaten"@de ;
+    skos:exactMatch dccx:coreData .
+
+
+###  https://ptb.de/dcc/ont/hasItems
+dcc:hasItems rdf:type owl:ObjectProperty, owl:FunctionalProperty ;
+    rdfs:domain dcc:AdministrativeData ;
+    rdfs:range dcc:Items ;
+    skos:prefLabel "has items"@en ,
+                   "hat Gegenstände"@de ;
+    skos:exactMatch dccx:items .
+
+
+###  https://ptb.de/dcc/ont/hasCalibrationLaboratory
+dcc:hasCalibrationLaboratory rdf:type owl:ObjectProperty, owl:FunctionalProperty ;
+    rdfs:domain dcc:AdministrativeData ;
+    rdfs:range dcc:CalibrationLaboratory ;
+    skos:prefLabel "has calibration laboratory"@en ,
+                   "hat Kalibrierlaboratorium"@de ;
+    skos:exactMatch dccx:calibrationLaboratory .
+
+
+###  https://ptb.de/dcc/ont/hasResponsiblePersons
+dcc:hasResponsiblePersons rdf:type owl:ObjectProperty, owl:FunctionalProperty ;
+    rdfs:domain dcc:AdministrativeData ;
+    rdfs:range dcc:ResponsiblePersons ;
+    skos:prefLabel "has responsible persons"@en ,
+                   "hat verantwortliche Personen"@de ;
+    skos:exactMatch dccx:respPersons .
+
+
+###  https://ptb.de/dcc/ont/hasCustomer
+dcc:hasCustomer rdf:type owl:ObjectProperty, owl:FunctionalProperty ;
+    rdfs:domain dcc:AdministrativeData ;
+    rdfs:range dcc:Customer ;
+    skos:prefLabel "has customer"@en ,
+                   "hat Auftraggeber"@de ;
+    skos:exactMatch dccx:customer .
+
+
+###  https://ptb.de/dcc/ont/hasStatements
+dcc:hasStatements rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:AdministrativeData ;
+    rdfs:range dcc:Statements ;
+    skos:prefLabel "has statements"@en ,
+                   "hat Aussagen"@de ;
+    skos:exactMatch dccx:statements .
+
+
+#################################################################
+#    OBJECT PROPERTIES - Core Data
+#################################################################
+
+###  https://ptb.de/dcc/ont/hasPerformanceLocation
+dcc:hasPerformanceLocation rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:CoreData ;
+    rdfs:range dcc:PerformanceLocation ;
+    skos:prefLabel "has performance location"@en ,
+                   "hat Durchführungsort"@de ;
+    skos:exactMatch dccx:performanceLocation .
+
+
+###  https://ptb.de/dcc/ont/hasPreviousReport
+dcc:hasPreviousReport rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:CoreData ;
+    rdfs:range dcc:PreviousReport ;
+    skos:prefLabel "has previous report"@en ,
+                   "hat vorherigen Bericht"@de ;
+    skos:definition "Links to a previous calibration certificate (version chain)."@en ;
+    skos:exactMatch dccx:previousReport .
+
+
+#################################################################
+#    OBJECT PROPERTIES - Items and Equipment
+#################################################################
+
+###  https://ptb.de/dcc/ont/hasCalibrationItem
+dcc:hasCalibrationItem rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:Items ;
+    rdfs:range dcc:CalibrationItem ;
+    skos:prefLabel "has calibration item"@en ,
+                   "hat Kalibriergegenstand"@de ;
+    skos:definition "Links to an individual calibration item (device under test)."@en ;
+    skos:exactMatch dccx:item .
+
+
+###  https://ptb.de/dcc/ont/hasSubItems
+dcc:hasSubItems rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:CalibrationItem ;
+    rdfs:range dcc:Items ;
+    skos:prefLabel "has sub-items"@en ,
+                   "hat Unterelemente"@de ;
+    skos:definition "Links to nested sub-items (e.g., components of modular devices)."@en ;
+    skos:exactMatch dccx:subItems .
+
+
+###  https://ptb.de/dcc/ont/hasEquipmentClass
+dcc:hasEquipmentClass rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:CalibrationItem ;
+    rdfs:range dcc:EquipmentClass ;
+    skos:prefLabel "has equipment class"@en ,
+                   "hat Geräteklasse"@de ;
+    skos:exactMatch dccx:equipmentClass .
+
+
+###  https://ptb.de/dcc/ont/hasOwner
+dcc:hasOwner rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:CalibrationItem ;
+    rdfs:range dcc:Contact ;
+    skos:prefLabel "has owner"@en ,
+                   "hat Eigentümer"@de ;
+    skos:exactMatch dccx:owner .
+
+
+###  https://ptb.de/dcc/ont/hasManufacturer
+dcc:hasManufacturer rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:CalibrationItem ;
+    rdfs:range dcc:ContactNotStrict ;
+    skos:prefLabel "has manufacturer"@en ,
+                   "hat Hersteller"@de ;
+    skos:exactMatch dccx:manufacturer .
+
+
+###  https://ptb.de/dcc/ont/hasIdentifications
+dcc:hasIdentifications rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:CalibrationItem ;
+    rdfs:range dcc:IdentificationList ;
+    skos:prefLabel "has identifications"@en ,
+                   "hat Identifikationen"@de ;
+    skos:exactMatch dccx:identifications .
+
+
+###  https://ptb.de/dcc/ont/hasIdentification
+dcc:hasIdentification rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:IdentificationList ;
+    rdfs:range dcc:Identification ;
+    skos:prefLabel "has identification"@en ,
+                   "hat Identifikation"@de ;
+    skos:exactMatch dccx:identification .
+
+
+###  https://ptb.de/dcc/ont/hasItemQuantities
+dcc:hasItemQuantities rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:CalibrationItem ;
+    rdfs:range dcc:ItemQuantityList ;
+    skos:prefLabel "has item quantities"@en ,
+                   "hat Gegenstandsgrößen"@de ;
+    skos:exactMatch dccx:itemQuantities .
+
+
+###  https://ptb.de/dcc/ont/hasInstalledSoftware
+dcc:hasInstalledSoftware rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:CalibrationItem ;
+    rdfs:range dcc:SoftwareList ;
+    skos:prefLabel "has installed software"@en ,
+                   "hat installierte Software"@de ;
+    skos:exactMatch dccx:installedSoftwares .
+
+
+#################################################################
+#    OBJECT PROPERTIES - Contact and Location
+#################################################################
+
+###  https://ptb.de/dcc/ont/hasContact
+dcc:hasContact rdf:type owl:ObjectProperty ;
+    rdfs:domain [ rdf:type owl:Class ;
+                  owl:unionOf ( dcc:CalibrationLaboratory
+                                dcc:ResponsiblePerson )
+                ] ;
+    rdfs:range dcc:Contact ;
+    skos:prefLabel "has contact"@en ,
+                   "hat Kontakt"@de ;
+    skos:exactMatch dccx:contact .
+
+
+###  https://ptb.de/dcc/ont/hasLocation
+dcc:hasLocation rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:Contact ;
+    rdfs:range dcc:Location ;
+    skos:prefLabel "has location"@en ,
+                   "hat Ort"@de ;
+    skos:exactMatch dccx:location .
+
+
+###  https://ptb.de/dcc/ont/hasPositionCoordinates
+dcc:hasPositionCoordinates rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:Location ;
+    rdfs:range dcc:PositionCoordinates ;
+    skos:prefLabel "has position coordinates"@en ,
+                   "hat Positionskoordinaten"@de ;
+    skos:exactMatch dccx:positionCoordinates .
+
+
+###  https://ptb.de/dcc/ont/hasDescriptionData
+dcc:hasDescriptionData rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:Contact ;
+    rdfs:range dcc:ByteData ;
+    skos:prefLabel "has description data"@en ,
+                   "hat Beschreibungsdaten"@de ;
+    skos:exactMatch dccx:descriptionData .
+
+
+#################################################################
+#    OBJECT PROPERTIES - Responsible Persons
+#################################################################
+
+###  https://ptb.de/dcc/ont/hasResponsiblePerson
+dcc:hasResponsiblePerson rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:ResponsiblePersons ;
+    rdfs:range dcc:ResponsiblePerson ;
+    skos:prefLabel "has responsible person"@en ,
+                   "hat verantwortliche Person"@de ;
+    skos:exactMatch dccx:respPerson .
+
+
+#################################################################
+#    OBJECT PROPERTIES - Measurement Results Structure
+#################################################################
+
+###  https://ptb.de/dcc/ont/hasMeasurementResult
+dcc:hasMeasurementResult rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:MeasurementResults ;
+    rdfs:range dcc:MeasurementResult ;
+    skos:prefLabel "has measurement result"@en ,
+                   "hat Messergebnis"@de ;
+    skos:exactMatch dccx:measurementResult .
+
+
+###  https://ptb.de/dcc/ont/hasResults
+dcc:hasResults rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:MeasurementResult ;
+    rdfs:range dcc:Results ;
+    skos:prefLabel "has results"@en ,
+                   "hat Ergebnisse"@de ;
+    skos:exactMatch dccx:results .
+
+
+###  https://ptb.de/dcc/ont/hasResult
+dcc:hasResult rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:Results ;
+    rdfs:range dcc:Result ;
+    skos:prefLabel "has result"@en ,
+                   "hat Ergebnis"@de ;
+    skos:exactMatch dccx:result .
+
+
+###  https://ptb.de/dcc/ont/hasData
+dcc:hasData rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:Result ;
+    rdfs:range dcc:Data ;
+    skos:prefLabel "has data"@en ,
+                   "hat Daten"@de ;
+    skos:exactMatch dccx:data .
+
+
+###  https://ptb.de/dcc/ont/hasQuantity
+dcc:hasQuantity rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:Data ;
+    rdfs:range dcc:Quantity ;
+    skos:prefLabel "has quantity"@en ,
+                   "hat Größe"@de ;
+    skos:exactMatch dccx:quantity .
+
+
+###  https://ptb.de/dcc/ont/hasList
+dcc:hasList rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:Data ;
+    rdfs:range dcc:List ;
+    skos:prefLabel "has list"@en ,
+                   "hat Liste"@de ;
+    skos:exactMatch dccx:list .
+
+
+###  https://ptb.de/dcc/ont/hasNestedList
+dcc:hasNestedList rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:List ;
+    rdfs:range dcc:List ;
+    skos:prefLabel "has nested list"@en ,
+                   "hat verschachtelte Liste"@de ;
+    skos:definition "Recursive list nesting for matrix/tensor structures."@en ;
+    skos:exactMatch dccx:list .
+
+
+###  https://ptb.de/dcc/ont/hasNestedQuantity
+dcc:hasNestedQuantity rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:List ;
+    rdfs:range dcc:Quantity ;
+    skos:prefLabel "has nested quantity"@en ,
+                   "hat verschachtelte Größe"@de ;
+    skos:exactMatch dccx:quantity .
+
+
+#################################################################
+#    OBJECT PROPERTIES - SIS Integration (Numeric Payloads)
+#################################################################
+
+###  https://ptb.de/dcc/ont/hasQuantityValue
+dcc:hasQuantityValue rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:Quantity ;
+    rdfs:range sis:QuantityValue ;
+    skos:prefLabel "has quantity value"@en ,
+                   "hat Größenwert"@de ;
+    skos:definition """Links a DCC Quantity to its SIS numeric payload.
+This is the primary bridge between DCC structure and SIS math layer.
+The range includes sis:Real, sis:Complex, sis:Constant, sis:RealList, etc."""@en ;
+    rdfs:comment "Delegates numeric representation to SIS ontology for GUM compliance."@en .
+
+
+###  https://ptb.de/dcc/ont/hasSIReal
+dcc:hasSIReal rdf:type owl:ObjectProperty ;
+    rdfs:subPropertyOf dcc:hasQuantityValue ;
+    rdfs:domain dcc:Quantity ;
+    rdfs:range sis:Real ;
+    skos:prefLabel "has SI real value"@en ,
+                   "hat SI-Realwert"@de ;
+    skos:exactMatch six:real .
+
+
+###  https://ptb.de/dcc/ont/hasSIComplex
+dcc:hasSIComplex rdf:type owl:ObjectProperty ;
+    rdfs:subPropertyOf dcc:hasQuantityValue ;
+    rdfs:domain dcc:Quantity ;
+    rdfs:range sis:Complex ;
+    skos:prefLabel "has SI complex value"@en ,
+                   "hat SI-Komplexwert"@de ;
+    skos:exactMatch six:complex .
+
+
+###  https://ptb.de/dcc/ont/hasSIConstant
+dcc:hasSIConstant rdf:type owl:ObjectProperty ;
+    rdfs:subPropertyOf dcc:hasQuantityValue ;
+    rdfs:domain dcc:Quantity ;
+    rdfs:range sis:Constant ;
+    skos:prefLabel "has SI constant"@en ,
+                   "hat SI-Konstante"@de ;
+    skos:exactMatch six:constant .
+
+
+###  https://ptb.de/dcc/ont/hasSIList
+dcc:hasSIList rdf:type owl:ObjectProperty ;
+    rdfs:subPropertyOf dcc:hasQuantityValue ;
+    rdfs:domain dcc:Quantity ;
+    rdfs:range sis:RealList ;
+    skos:prefLabel "has SI list"@en ,
+                   "hat SI-Liste"@de ;
+    skos:exactMatch six:list .
+
+
+###  https://ptb.de/dcc/ont/hasSIHybrid
+dcc:hasSIHybrid rdf:type owl:ObjectProperty ;
+    rdfs:subPropertyOf dcc:hasQuantityValue ;
+    rdfs:domain dcc:Quantity ;
+    rdfs:range sis:QuantityValue ;
+    rdfs:comment "Hybrid not yet defined as separate class in SIS; uses parent QuantityValue."@en ;
+    skos:prefLabel "has SI hybrid"@en ,
+                   "hat SI-Hybrid"@de ;
+    skos:exactMatch six:hybrid .
+
+
+###  https://ptb.de/dcc/ont/hasRelativeUncertainty
+dcc:hasRelativeUncertainty rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:Quantity ;
+    rdfs:range dcc:RelativeUncertainty ;
+    skos:prefLabel "has relative uncertainty"@en ,
+                   "hat relative Unsicherheit"@de ;
+    skos:definition "Relative uncertainty as workaround when not expressible in D-SI."@en ;
+    skos:exactMatch dccx:relativeUncertainty .
+
+
+#################################################################
+#    OBJECT PROPERTIES - Methods, Software, Equipment, Conditions
+#################################################################
+
+###  https://ptb.de/dcc/ont/hasUsedMethods
+dcc:hasUsedMethods rdf:type owl:ObjectProperty ;
+    rdfs:domain [ rdf:type owl:Class ;
+                  owl:unionOf ( dcc:MeasurementResults
+                                dcc:MeasurementResult
+                                dcc:Data
+                                dcc:Quantity
+                                dcc:List )
+                ] ;
+    rdfs:range dcc:UsedMethodList ;
+    rdfs:comment "Can appear at multiple levels per DCC inheritance pattern."@en ;
+    skos:prefLabel "has used methods"@en ,
+                   "hat angewandte Methoden"@de ;
+    skos:exactMatch dccx:usedMethods .
+
+
+###  https://ptb.de/dcc/ont/hasUsedMethod
+dcc:hasUsedMethod rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:UsedMethodList ;
+    rdfs:range dcc:UsedMethod ;
+    skos:prefLabel "has used method"@en ,
+                   "hat angewandte Methode"@de ;
+    skos:relatedMatch omt:MeasurementMethod ;
+    skos:exactMatch dccx:usedMethod .
+
+
+###  https://ptb.de/dcc/ont/hasUsedSoftware
+dcc:hasUsedSoftware rdf:type owl:ObjectProperty ;
+    rdfs:domain [ rdf:type owl:Class ;
+                  owl:unionOf ( dcc:MeasurementResults
+                                dcc:MeasurementResult
+                                dcc:Data
+                                dcc:Quantity
+                                dcc:List )
+                ] ;
+    rdfs:range dcc:SoftwareList ;
+    rdfs:comment "Can appear at multiple levels per DCC inheritance pattern."@en ;
+    skos:prefLabel "has used software"@en ,
+                   "hat verwendete Software"@de ;
+    skos:exactMatch dccx:usedSoftware .
+
+
+###  https://ptb.de/dcc/ont/hasSoftware
+dcc:hasSoftware rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:SoftwareList ;
+    rdfs:range dcc:Software ;
+    skos:prefLabel "has software"@en ,
+                   "hat Software"@de ;
+    skos:exactMatch dccx:software .
+
+
+###  https://ptb.de/dcc/ont/hasMeasuringEquipments
+dcc:hasMeasuringEquipments rdf:type owl:ObjectProperty ;
+    rdfs:domain [ rdf:type owl:Class ;
+                  owl:unionOf ( dcc:MeasurementResults
+                                dcc:MeasurementResult
+                                dcc:Data
+                                dcc:Quantity
+                                dcc:List )
+                ] ;
+    rdfs:range dcc:MeasuringEquipmentList ;
+    rdfs:comment "Can appear at multiple levels per DCC inheritance pattern."@en ;
+    skos:prefLabel "has measuring equipments"@en ,
+                   "hat Messmittel"@de ;
+    skos:exactMatch dccx:measuringEquipments .
+
+
+###  https://ptb.de/dcc/ont/hasMeasuringEquipment
+dcc:hasMeasuringEquipment rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:MeasuringEquipmentList ;
+    rdfs:range dcc:MeasuringEquipment ;
+    skos:prefLabel "has measuring equipment"@en ,
+                   "hat Messmittel"@de ;
+    skos:relatedMatch omt:MeasuringInstrument ;
+    skos:exactMatch dccx:measuringEquipment .
+
+
+###  https://ptb.de/dcc/ont/hasInfluenceConditions
+dcc:hasInfluenceConditions rdf:type owl:ObjectProperty ;
+    rdfs:domain [ rdf:type owl:Class ;
+                  owl:unionOf ( dcc:MeasurementResults
+                                dcc:MeasurementResult
+                                dcc:Data
+                                dcc:Quantity
+                                dcc:List )
+                ] ;
+    rdfs:range dcc:InfluenceConditionList ;
+    rdfs:comment "Can appear at multiple levels per DCC inheritance pattern."@en ;
+    skos:prefLabel "has influence conditions"@en ,
+                   "hat Einflussbedingungen"@de ;
+    skos:exactMatch dccx:influenceConditions .
+
+
+###  https://ptb.de/dcc/ont/hasInfluenceCondition
+dcc:hasInfluenceCondition rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:InfluenceConditionList ;
+    rdfs:range dcc:InfluenceCondition ;
+    skos:prefLabel "has influence condition"@en ,
+                   "hat Einflussbedingung"@de ;
+    skos:relatedMatch omt:OperatingCondition ;
+    skos:exactMatch dccx:influenceCondition .
+
+
+###  https://ptb.de/dcc/ont/hasMeasurementMetaData
+dcc:hasMeasurementMetaData rdf:type owl:ObjectProperty ;
+    rdfs:domain [ rdf:type owl:Class ;
+                  owl:unionOf ( dcc:MeasurementResult
+                                dcc:Quantity
+                                dcc:List )
+                ] ;
+    rdfs:range dcc:MeasurementMetaDataList ;
+    rdfs:comment "Can appear at multiple levels per DCC inheritance pattern."@en ;
+    skos:prefLabel "has measurement meta data"@en ,
+                   "hat Messmetadaten"@de ;
+    skos:exactMatch dccx:measurementMetaData .
+
+
+###  https://ptb.de/dcc/ont/hasMetaDataEntry
+dcc:hasMetaDataEntry rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:MeasurementMetaDataList ;
+    rdfs:range dcc:MeasurementMetaData ;
+    skos:prefLabel "has meta data entry"@en ,
+                   "hat Metadateneintrag"@de ;
+    skos:exactMatch dccx:metaData .
+
+
+###  https://ptb.de/dcc/ont/hasInfluenceQuantity
+dcc:hasInfluenceQuantity rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:InfluenceCondition ;
+    rdfs:range dcc:Quantity ;
+    skos:prefLabel "has influence quantity"@en ,
+                   "hat Einflussgröße"@de ;
+    skos:definition "Links an influence condition to its measured quantity (e.g., temperature value)."@en .
+
+
+###  https://ptb.de/dcc/ont/hasCertificate
+dcc:hasCertificate rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:MeasuringEquipment ;
+    rdfs:range dcc:CertificateHash ;
+    skos:prefLabel "has certificate"@en ,
+                   "hat Zertifikat"@de ;
+    skos:definition "Links measuring equipment to its calibration certificate hash (traceability chain)."@en ;
+    skos:exactMatch dccx:certificate .
+
+
+###  https://ptb.de/dcc/ont/hasEquipmentQuantities
+dcc:hasEquipmentQuantities rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:MeasuringEquipment ;
+    rdfs:range dcc:EquipmentQuantityList ;
+    skos:prefLabel "has equipment quantities"@en ,
+                   "hat Messgeräte-Größen"@de ;
+    skos:exactMatch dccx:measuringEquipmentQuantities .
+
+
+#################################################################
+#    OBJECT PROPERTIES - Statements
+#################################################################
+
+###  https://ptb.de/dcc/ont/hasStatement
+dcc:hasStatement rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:Statements ;
+    rdfs:range dcc:Statement ;
+    skos:prefLabel "has statement"@en ,
+                   "hat Aussage"@de ;
+    skos:exactMatch dccx:statement .
+
+
+###  https://ptb.de/dcc/ont/hasConformity
+dcc:hasConformity rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:Statement ;
+    rdfs:range dcc:Conformity ;
+    skos:prefLabel "has conformity"@en ,
+                   "hat Konformität"@de ;
+    skos:exactMatch dccx:conformity .
+
+
+###  https://ptb.de/dcc/ont/hasDeclaration
+dcc:hasDeclaration rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:Statement ;
+    rdfs:range dcc:Declaration ;
+    skos:prefLabel "has declaration"@en ,
+                   "hat Erklärung"@de ;
+    skos:exactMatch dccx:declaration .
+
+
+#################################################################
+#    OBJECT PROPERTIES - Reference Pattern (PROV-style Qualification)
+#################################################################
+
+###  https://ptb.de/dcc/ont/refersToItem
+dcc:refersToItem rdf:type owl:ObjectProperty ;
+    rdfs:range dcc:CalibrationItem ;
+    rdfs:comment "Generic reference property - can be used from any element needing item reference."@en ;
+    skos:prefLabel "refers to item"@en ,
+                   "bezieht sich auf Gegenstand"@de ;
+    skos:definition "Direct (unqualified) reference to a calibration item."@en .
+
+
+###  https://ptb.de/dcc/ont/refersToMethod
+dcc:refersToMethod rdf:type owl:ObjectProperty ;
+    rdfs:range dcc:UsedMethod ;
+    rdfs:comment "Generic reference property - can be used from any element needing method reference."@en ;
+    skos:prefLabel "refers to method"@en ,
+                   "bezieht sich auf Methode"@de .
+
+
+###  https://ptb.de/dcc/ont/refersToEquipment
+dcc:refersToEquipment rdf:type owl:ObjectProperty ;
+    rdfs:range dcc:MeasuringEquipment ;
+    rdfs:comment "Generic reference property - can be used from any element needing equipment reference."@en ;
+    skos:prefLabel "refers to equipment"@en ,
+                   "bezieht sich auf Messmittel"@de .
+
+
+###  https://ptb.de/dcc/ont/qualifiedReference
+dcc:qualifiedReference rdf:type owl:ObjectProperty ;
+    rdfs:range dcc:Reference ;
+    rdfs:comment "Generic qualified reference - can be used from any element needing typed reference."@en ;
+    skos:prefLabel "qualified reference"@en ,
+                   "qualifizierte Referenz"@de ;
+    skos:definition """Links to a Reference instance that qualifies a relationship with 
+additional metadata (refType). Follows PROV qualification pattern."""@en .
+
+
+###  https://ptb.de/dcc/ont/referenceTarget
+dcc:referenceTarget rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:Reference ;
+    rdfs:range rdfs:Resource ;
+    rdfs:comment "Generic target - can reference items, methods, equipment, or external resources."@en ;
+    skos:prefLabel "reference target"@en ,
+                   "Referenzziel"@de .
+
+
+###  https://ptb.de/dcc/ont/hasRefType
+dcc:hasRefType rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:Reference ;
+    rdfs:range dcc:RefTypeDefinition ;
+    skos:prefLabel "has reference type"@en ,
+                   "hat Referenztyp"@de ;
+    rdfs:seeAlso <https://digilab.ptb.de/dkd/refType/vocab/> .
+
+
+###  https://ptb.de/dcc/ont/hasRefTypeDefinition
+dcc:hasRefTypeDefinition rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:RefTypeDefinitions ;
+    rdfs:range dcc:RefTypeDefinition ;
+    skos:prefLabel "has refType definition"@en ;
+    skos:exactMatch dccx:refTypeDefinition .
+
+
+#################################################################
+#    OBJECT PROPERTIES - Rich Content
+#################################################################
+
+###  https://ptb.de/dcc/ont/hasName
+dcc:hasName rdf:type owl:ObjectProperty ;
+    rdfs:range dcc:TextContent ;
+    rdfs:comment "Generic property - intentionally no domain restriction as used by many classes."@en ;
+    skos:prefLabel "has name"@en ,
+                   "hat Name"@de ;
+    skos:exactMatch dccx:name .
+
+
+###  https://ptb.de/dcc/ont/hasDescription
+dcc:hasDescription rdf:type owl:ObjectProperty ;
+    rdfs:range dcc:RichContent ;
+    rdfs:comment "Generic property - intentionally no domain restriction as used by many classes."@en ;
+    skos:prefLabel "has description"@en ,
+                   "hat Beschreibung"@de ;
+    skos:exactMatch dccx:description .
+
+
+###  https://ptb.de/dcc/ont/hasFormula
+dcc:hasFormula rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:RichContent ;
+    rdfs:range dcc:Formula ;
+    skos:prefLabel "has formula"@en ,
+                   "hat Formel"@de ;
+    skos:exactMatch dccx:formula .
+
+
+###  https://ptb.de/dcc/ont/hasFile
+dcc:hasFile rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:RichContent ;
+    rdfs:range dcc:ByteData ;
+    skos:prefLabel "has file"@en ,
+                   "hat Datei"@de ;
+    skos:exactMatch dccx:file .
+
+
+#################################################################
+#    OBJECT PROPERTIES - PROV Hook Points
+#################################################################
+
+###  https://ptb.de/dcc/ont/wasGeneratedByActivity
+dcc:wasGeneratedByActivity rdf:type owl:ObjectProperty ;
+    rdfs:subPropertyOf prov:wasGeneratedBy ;
+    rdfs:domain dcc:DigitalCalibrationCertificate ;
+    rdfs:range dcc:CalibrationActivity ;
+    skos:prefLabel "was generated by activity"@en ;
+    skos:definition "Hook to link DCC to the calibration activity that produced it."@en .
+
+
+###  https://ptb.de/dcc/ont/hadCalibrationPlan
+dcc:hadCalibrationPlan rdf:type owl:ObjectProperty ;
+    rdfs:subPropertyOf prov:hadPlan ;
+    rdfs:domain dcc:CalibrationActivity ;
+    rdfs:range dcc:CalibrationPlan ;
+    skos:prefLabel "had calibration plan"@en ;
+    skos:definition "Hook to link execution to the calibration method/SOP (prospective provenance)."@en .
+
+
+#################################################################
+#    OBJECT PROPERTIES - OMT Integration Points
+#################################################################
+
+###  https://ptb.de/dcc/ont/correspondsToOMTResult
+dcc:correspondsToOMTResult rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:MeasurementResult ;
+    rdfs:range omt:MeasurementResult ;
+    skos:prefLabel "corresponds to OMT result"@en ;
+    skos:definition """Links DCC MeasurementResult to OMT MeasurementResult for VIM-compliant semantics.
+OMT MeasurementResult has mandatory links to Error, Model, Uncertainty, Precision (VIM 2.9)."""@en ;
+    omt:vimID "2.9" .
+
+
+###  https://ptb.de/dcc/ont/correspondsToOMTMethod
+dcc:correspondsToOMTMethod rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:UsedMethod ;
+    rdfs:range omt:MeasurementMethod ;
+    skos:prefLabel "corresponds to OMT method"@en ;
+    skos:definition "Links DCC UsedMethod to OMT MeasurementMethod (VIM 2.5)."@en ;
+    omt:vimID "2.5" .
+
+
+###  https://ptb.de/dcc/ont/correspondsToOMTProcedure
+dcc:correspondsToOMTProcedure rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:UsedMethod ;
+    rdfs:range omt:MeasurementProcedure ;
+    skos:prefLabel "corresponds to OMT procedure"@en ;
+    skos:definition "Links DCC UsedMethod to OMT MeasurementProcedure (VIM 2.6, SOPs)."@en ;
+    omt:vimID "2.6" .
+
+
+###  https://ptb.de/dcc/ont/correspondsToOMTInstrument
+dcc:correspondsToOMTInstrument rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:MeasuringEquipment ;
+    rdfs:range omt:MeasuringInstrument ;
+    skos:prefLabel "corresponds to OMT instrument"@en ;
+    skos:definition "Links DCC MeasuringEquipment to OMT MeasuringInstrument hierarchy."@en .
+
+
+###  https://ptb.de/dcc/ont/correspondsToOMTCondition
+dcc:correspondsToOMTCondition rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:InfluenceCondition ;
+    rdfs:range omt:OperatingCondition ;
+    skos:prefLabel "corresponds to OMT condition"@en ;
+    skos:definition "Links DCC InfluenceCondition to OMT OperatingCondition (and subclasses like TemperatureCondition, HumidityCondition)."@en .
+
+
+###  https://ptb.de/dcc/ont/correspondsToOMTMeasuredObject
+dcc:correspondsToOMTMeasuredObject rdf:type owl:ObjectProperty ;
+    rdfs:domain dcc:CalibrationItem ;
+    rdfs:range omt:MeasuredObject ;
+    skos:prefLabel "corresponds to OMT measured object"@en ;
+    skos:definition "Links DCC CalibrationItem (device under test) to OMT MeasuredObject."@en .
+
+
+#################################################################
+#    DATATYPE PROPERTIES
+#################################################################
+
+###  https://ptb.de/dcc/ont/schemaVersion
+dcc:schemaVersion rdf:type owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:domain dcc:DigitalCalibrationCertificate ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "schema version"@en ,
+                   "Schemaversion"@de ;
+    skos:exactMatch dccx:schemaVersion .
+
+
+###  https://ptb.de/dcc/ont/uniqueIdentifier
+dcc:uniqueIdentifier rdf:type owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:domain dcc:CoreData ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "unique identifier"@en ,
+                   "eindeutige Kennung"@de ;
+    skos:definition "The unique certificate number (calibration certificate number)."@en ;
+    skos:exactMatch dccx:uniqueIdentifier .
+
+
+###  https://ptb.de/dcc/ont/countryCode
+dcc:countryCode rdf:type owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:domain dcc:CoreData ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "country code"@en ,
+                   "Ländercode"@de ;
+    skos:definition "ISO 3166-1 alpha-2 country code."@en ;
+    skos:exactMatch dccx:countryCodeISO3166_1 .
+
+
+###  https://ptb.de/dcc/ont/usedLanguageCode
+dcc:usedLanguageCode rdf:type owl:DatatypeProperty ;
+    rdfs:domain dcc:CoreData ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "used language code"@en ,
+                   "verwendeter Sprachcode"@de ;
+    skos:definition "ISO 639-1 language code for languages used in this DCC."@en ;
+    skos:exactMatch dccx:usedLangCodeISO639_1 .
+
+
+###  https://ptb.de/dcc/ont/mandatoryLanguageCode
+dcc:mandatoryLanguageCode rdf:type owl:DatatypeProperty ;
+    rdfs:domain dcc:CoreData ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "mandatory language code"@en ,
+                   "verbindlicher Sprachcode"@de ;
+    skos:definition "ISO 639-1 language code for legally binding languages."@en ;
+    skos:exactMatch dccx:mandatoryLangCodeISO639_1 .
+
+
+###  https://ptb.de/dcc/ont/beginPerformanceDate
+dcc:beginPerformanceDate rdf:type owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:domain dcc:CoreData ;
+    rdfs:range xsd:date ;
+    skos:prefLabel "begin performance date"@en ,
+                   "Beginn der Durchführung"@de ;
+    skos:exactMatch dccx:beginPerformanceDate .
+
+
+###  https://ptb.de/dcc/ont/endPerformanceDate
+dcc:endPerformanceDate rdf:type owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:domain dcc:CoreData ;
+    rdfs:range xsd:date ;
+    skos:prefLabel "end performance date"@en ,
+                   "Ende der Durchführung"@de ;
+    skos:exactMatch dccx:endPerformanceDate .
+
+
+###  https://ptb.de/dcc/ont/receiptDate
+dcc:receiptDate rdf:type owl:DatatypeProperty ;
+    rdfs:domain dcc:CoreData ;
+    rdfs:range xsd:date ;
+    skos:prefLabel "receipt date"@en ,
+                   "Eingangsdatum"@de ;
+    skos:exactMatch dccx:receiptDate .
+
+
+###  https://ptb.de/dcc/ont/identificationValue
+dcc:identificationValue rdf:type owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:domain dcc:Identification ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "identification value"@en ,
+                   "Identifikationswert"@de ;
+    skos:exactMatch dccx:value .
+
+
+###  https://ptb.de/dcc/ont/identificationIssuer
+dcc:identificationIssuer rdf:type owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:domain dcc:Identification ;
+    rdfs:range [ rdf:type rdfs:Datatype ;
+                 owl:oneOf ( "manufacturer" "calibrationLaboratory" "customer" "owner" "other" )
+               ] ;
+    skos:prefLabel "issuer"@en ,
+                   "Aussteller"@de ;
+    skos:exactMatch dccx:issuer .
+
+
+###  https://ptb.de/dcc/ont/softwareRelease
+dcc:softwareRelease rdf:type owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:domain dcc:Software ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "software release"@en ,
+                   "Softwareversion"@de ;
+    skos:exactMatch dccx:release .
+
+
+###  https://ptb.de/dcc/ont/softwareType
+dcc:softwareType rdf:type owl:DatatypeProperty ;
+    rdfs:domain dcc:Software ;
+    rdfs:range [ rdf:type rdfs:Datatype ;
+                 owl:oneOf ( "application" "bios" "driver" "editor" "firmware" "library" "os" "other" )
+               ] ;
+    skos:prefLabel "software type"@en ,
+                   "Softwaretyp"@de ;
+    skos:exactMatch dccx:type .
+
+
+###  https://ptb.de/dcc/ont/hashValue
+dcc:hashValue rdf:type owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:domain dcc:CertificateHash ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "hash value"@en ,
+                   "Hashwert"@de ;
+    skos:exactMatch dccx:value .
+
+
+###  https://ptb.de/dcc/ont/hashProcedure
+dcc:hashProcedure rdf:type owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:domain dcc:CertificateHash ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "hash procedure"@en ,
+                   "Hash-Verfahren"@de ;
+    rdfs:comment "E.g., SHA256, SHA512"@en ;
+    skos:exactMatch dccx:procedure .
+
+
+###  https://ptb.de/dcc/ont/referralID
+dcc:referralID rdf:type owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:domain dcc:CertificateHash ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "referral ID"@en ,
+                   "Verweis-ID"@de ;
+    skos:exactMatch dccx:referralID .
+
+
+###  https://ptb.de/dcc/ont/inValidityRange
+dcc:inValidityRange rdf:type owl:DatatypeProperty ;
+    rdfs:domain dcc:CertificateHash ;
+    rdfs:range xsd:boolean ;
+    skos:prefLabel "in validity range"@en ,
+                   "im Gültigkeitsbereich"@de ;
+    skos:exactMatch dccx:inValidityRange .
+
+
+###  https://ptb.de/dcc/ont/traceable
+dcc:traceable rdf:type owl:DatatypeProperty ;
+    rdfs:domain dcc:CertificateHash ;
+    rdfs:range xsd:boolean ;
+    skos:prefLabel "traceable"@en ,
+                   "rückführbar"@de ;
+    skos:exactMatch dccx:traceable .
+
+
+###  https://ptb.de/dcc/ont/refTypeNamespace
+dcc:refTypeNamespace rdf:type owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:domain dcc:RefTypeDefinition ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "refType namespace"@en ;
+    skos:definition "The namespace prefix for the refType vocabulary (e.g., 'basic')."@en ;
+    skos:exactMatch dccx:namespace .
+
+
+###  https://ptb.de/dcc/ont/refTypeLink
+dcc:refTypeLink rdf:type owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:domain dcc:RefTypeDefinition ;
+    rdfs:range xsd:anyURI ;
+    skos:prefLabel "refType link"@en ;
+    skos:exactMatch dccx:link .
+
+
+###  https://ptb.de/dcc/ont/refTypeRelease
+dcc:refTypeRelease rdf:type owl:DatatypeProperty ;
+    rdfs:domain dcc:RefTypeDefinition ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "refType release"@en ;
+    skos:exactMatch dccx:release .
+
+
+###  https://ptb.de/dcc/ont/refTypeValue
+dcc:refTypeValue rdf:type owl:DatatypeProperty ;
+    rdfs:domain dcc:RefTypeDefinition ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "refType value"@en ;
+    skos:exactMatch dccx:value .
+
+
+###  https://ptb.de/dcc/ont/refTypeProcedure
+dcc:refTypeProcedure rdf:type owl:DatatypeProperty ;
+    rdfs:domain dcc:RefTypeDefinition ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "refType procedure"@en ;
+    skos:exactMatch dccx:procedure .
+
+
+###  https://ptb.de/dcc/ont/conformityStatus
+dcc:conformityStatus rdf:type owl:DatatypeProperty ;
+    rdfs:domain dcc:Statement ;
+    rdfs:range [ rdf:type rdfs:Datatype ;
+                 owl:oneOf ( "pass" "fail" "notEvaluated" )
+               ] ;
+    skos:prefLabel "conformity status"@en ,
+                   "Konformitätsstatus"@de ;
+    skos:exactMatch dccx:conformityStatus .
+
+
+###  https://ptb.de/dcc/ont/mainSigner
+dcc:mainSigner rdf:type owl:DatatypeProperty ;
+    rdfs:domain dcc:ResponsiblePerson ;
+    rdfs:range xsd:boolean ;
+    skos:prefLabel "main signer"@en ,
+                   "Hauptunterzeichner"@de ;
+    skos:definition "Indicates if this person takes overall responsibility for the DCC."@en ;
+    skos:exactMatch dccx:mainSigner .
+
+
+###  https://ptb.de/dcc/ont/cryptElectronicSeal
+dcc:cryptElectronicSeal rdf:type owl:DatatypeProperty ;
+    rdfs:domain dcc:ResponsiblePerson ;
+    rdfs:range xsd:boolean ;
+    skos:prefLabel "cryptographic electronic seal"@en ,
+                   "kryptographisches elektronisches Siegel"@de ;
+    skos:exactMatch dccx:cryptElectronicSeal .
+
+
+###  https://ptb.de/dcc/ont/conditionStatus
+dcc:conditionStatus rdf:type owl:DatatypeProperty ;
+    rdfs:domain dcc:InfluenceCondition ;
+    rdfs:range [ rdf:type rdfs:Datatype ;
+                 owl:oneOf ( "beforeAdjustment" "afterAdjustment" "beforeRepair" "afterRepair" )
+               ] ;
+    skos:prefLabel "condition status"@en ,
+                   "Zustandsstatus"@de ;
+    skos:definition "Status indicating measurement context relative to adjustment/repair."@en ;
+    skos:exactMatch dccx:status .
+
+
+###  https://ptb.de/dcc/ont/eMail
+dcc:eMail rdf:type owl:DatatypeProperty ;
+    rdfs:domain dcc:Contact ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "email"@en ,
+                   "E-Mail"@de ;
+    skos:exactMatch dccx:eMail .
+
+
+###  https://ptb.de/dcc/ont/phone
+dcc:phone rdf:type owl:DatatypeProperty ;
+    rdfs:domain dcc:Contact ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "phone"@en ,
+                   "Telefon"@de ;
+    skos:exactMatch dccx:phone .
+
+
+###  https://ptb.de/dcc/ont/fax
+dcc:fax rdf:type owl:DatatypeProperty ;
+    rdfs:domain dcc:Contact ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "fax"@en ,
+                   "Fax"@de ;
+    skos:exactMatch dccx:fax .
+
+
+###  https://ptb.de/dcc/ont/webLink
+dcc:webLink rdf:type owl:DatatypeProperty ;
+    rdfs:domain dcc:Contact ;
+    rdfs:range xsd:anyURI ;
+    skos:prefLabel "web link"@en ,
+                   "Weblink"@de ;
+    skos:exactMatch dccx:link .
+
+
+###  https://ptb.de/dcc/ont/city
+dcc:city rdf:type owl:DatatypeProperty ;
+    rdfs:domain dcc:Location ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "city"@en ,
+                   "Stadt"@de ;
+    skos:exactMatch dccx:city .
+
+
+###  https://ptb.de/dcc/ont/street
+dcc:street rdf:type owl:DatatypeProperty ;
+    rdfs:domain dcc:Location ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "street"@en ,
+                   "Straße"@de ;
+    skos:exactMatch dccx:street .
+
+
+###  https://ptb.de/dcc/ont/streetNo
+dcc:streetNo rdf:type owl:DatatypeProperty ;
+    rdfs:domain dcc:Location ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "street number"@en ,
+                   "Hausnummer"@de ;
+    skos:exactMatch dccx:streetNo .
+
+
+###  https://ptb.de/dcc/ont/postCode
+dcc:postCode rdf:type owl:DatatypeProperty ;
+    rdfs:domain dcc:Location ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "post code"@en ,
+                   "Postleitzahl"@de ;
+    skos:exactMatch dccx:postCode .
+
+
+###  https://ptb.de/dcc/ont/postOfficeBox
+dcc:postOfficeBox rdf:type owl:DatatypeProperty ;
+    rdfs:domain dcc:Location ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "post office box"@en ,
+                   "Postfach"@de ;
+    skos:exactMatch dccx:postOfficeBox .
+
+
+###  https://ptb.de/dcc/ont/state
+dcc:state rdf:type owl:DatatypeProperty ;
+    rdfs:domain dcc:Location ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "state"@en ,
+                   "Bundesland"@de ;
+    skos:exactMatch dccx:state .
+
+
+###  https://ptb.de/dcc/ont/locationCountryCode
+dcc:locationCountryCode rdf:type owl:DatatypeProperty ;
+    rdfs:domain dcc:Location ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "country code"@en ,
+                   "Ländercode"@de ;
+    skos:exactMatch dccx:countryCode .
+
+
+###  https://ptb.de/dcc/ont/building
+dcc:building rdf:type owl:DatatypeProperty ;
+    rdfs:domain dcc:Location ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "building"@en ,
+                   "Gebäude"@de ;
+    skos:exactMatch dccx:building .
+
+
+###  https://ptb.de/dcc/ont/floor
+dcc:floor rdf:type owl:DatatypeProperty ;
+    rdfs:domain dcc:Location ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "floor"@en ,
+                   "Etage"@de ;
+    skos:exactMatch dccx:floor .
+
+
+###  https://ptb.de/dcc/ont/room
+dcc:room rdf:type owl:DatatypeProperty ;
+    rdfs:domain dcc:Location ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "room"@en ,
+                   "Raum"@de ;
+    skos:exactMatch dccx:room .
+
+
+###  https://ptb.de/dcc/ont/further
+dcc:further rdf:type owl:DatatypeProperty ;
+    rdfs:domain dcc:Location ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "further"@en ,
+                   "Weiteres"@de ;
+    skos:exactMatch dccx:further .
+
+
+###  https://ptb.de/dcc/ont/positionCoordinateSystem
+dcc:positionCoordinateSystem rdf:type owl:DatatypeProperty ;
+    rdfs:domain dcc:PositionCoordinates ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "position coordinate system"@en ,
+                   "Koordinatensystem"@de ;
+    skos:exactMatch dccx:positionCoordinateSystem .
+
+
+###  https://ptb.de/dcc/ont/positionCoordinate1
+dcc:positionCoordinate1 rdf:type owl:DatatypeProperty ;
+    rdfs:domain dcc:PositionCoordinates ;
+    rdfs:range xsd:double ;
+    skos:prefLabel "position coordinate 1"@en ,
+                   "Positionskoordinate 1"@de ;
+    skos:exactMatch dccx:positionCoordinate1 .
+
+
+###  https://ptb.de/dcc/ont/positionCoordinate2
+dcc:positionCoordinate2 rdf:type owl:DatatypeProperty ;
+    rdfs:domain dcc:PositionCoordinates ;
+    rdfs:range xsd:double ;
+    skos:prefLabel "position coordinate 2"@en ,
+                   "Positionskoordinate 2"@de ;
+    skos:exactMatch dccx:positionCoordinate2 .
+
+
+###  https://ptb.de/dcc/ont/positionCoordinate3
+dcc:positionCoordinate3 rdf:type owl:DatatypeProperty ;
+    rdfs:domain dcc:PositionCoordinates ;
+    rdfs:range xsd:double ;
+    skos:prefLabel "position coordinate 3"@en ,
+                   "Positionskoordinate 3"@de ;
+    skos:exactMatch dccx:positionCoordinate3 .
+
+
+###  https://ptb.de/dcc/ont/model
+dcc:model rdf:type owl:DatatypeProperty ;
+    rdfs:domain dcc:CalibrationItem ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "model"@en ,
+                   "Modell"@de ;
+    skos:exactMatch dccx:model .
+
+
+###  https://ptb.de/dcc/ont/fileName
+dcc:fileName rdf:type owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:domain dcc:ByteData ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "file name"@en ,
+                   "Dateiname"@de ;
+    skos:exactMatch dccx:fileName .
+
+
+###  https://ptb.de/dcc/ont/mimeType
+dcc:mimeType rdf:type owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:domain dcc:ByteData ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "MIME type"@en ,
+                   "MIME-Typ"@de ;
+    skos:exactMatch dccx:mimeType .
+
+
+###  https://ptb.de/dcc/ont/dataBase64
+dcc:dataBase64 rdf:type owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:domain dcc:ByteData ;
+    rdfs:range xsd:base64Binary ;
+    skos:prefLabel "data (base64)"@en ,
+                   "Daten (Base64)"@de ;
+    skos:exactMatch dccx:dataBase64 .
+
+
+###  https://ptb.de/dcc/ont/latex
+dcc:latex rdf:type owl:DatatypeProperty ;
+    rdfs:domain dcc:Formula ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "LaTeX"@en ;
+    skos:exactMatch dccx:latex .
+
+
+###  https://ptb.de/dcc/ont/listDateTime
+dcc:listDateTime rdf:type owl:DatatypeProperty ;
+    rdfs:domain dcc:List ;
+    rdfs:range xsd:dateTime ;
+    skos:prefLabel "list date time"@en ,
+                   "Listen-Zeitstempel"@de ;
+    skos:exactMatch dccx:dateTime .
+
+
+###  https://ptb.de/dcc/ont/listDimension
+dcc:listDimension rdf:type owl:DatatypeProperty ;
+    rdfs:domain dcc:List ;
+    rdfs:range xsd:positiveInteger ;
+    skos:prefLabel "dimension"@en ,
+                   "Dimension"@de ;
+    skos:definition "Number of independent quantities in a table/matrix structure."@en ;
+    skos:note "New in v3.4.0-rc.1"@en .
+
+
+###  https://ptb.de/dcc/ont/quantityIndex
+dcc:quantityIndex rdf:type owl:DatatypeProperty ;
+    rdfs:domain dcc:Quantity ;
+    rdfs:range xsd:positiveInteger ;
+    skos:prefLabel "index"@en ,
+                   "Index"@de ;
+    skos:definition "Index of quantity within a table/matrix structure."@en ;
+    skos:note "New in v3.4.0-rc.1"@en .
+
+
+#################################################################
+#    CLASSES - Certificate Root Structure
+#################################################################
+
+###  https://ptb.de/dcc/ont/DigitalCalibrationCertificate
+dcc:DigitalCalibrationCertificate rdf:type owl:Class ;
+    rdfs:subClassOf prov:Entity ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasAdministrativeData ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:AdministrativeData
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasMeasurementResults ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:MeasurementResults
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:schemaVersion ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:string
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasDocument ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:HumanReadableDocument
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasComment ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:Comment
+        ] ;
+    skos:prefLabel "Digital Calibration Certificate"@en ,
+                   "Digitaler Kalibrierschein"@de ;
+    skos:definition """Root entity representing a complete Digital Calibration Certificate.
+Conforms to ISO/IEC 17025 requirements for calibration documentation.
+As a prov:Entity, it can participate in PROV provenance chains."""@en ;
+    skos:exactMatch dccx:digitalCalibrationCertificate ;
+    rdfs:seeAlso <https://www.ptb.de/cms/en/metrological-services/dkd/dkd-dcc.html> .
+
+
+#################################################################
+#    CLASSES - Administrative Data Structure (with restrictions)
+#################################################################
+
+###  https://ptb.de/dcc/ont/AdministrativeData
+dcc:AdministrativeData rdf:type owl:Class ;
+    rdfs:subClassOf 
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasDccSoftware ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:SoftwareList
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasCoreData ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:CoreData
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasItems ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:Items
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasCalibrationLaboratory ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:CalibrationLaboratory
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasResponsiblePersons ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:ResponsiblePersons
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasCustomer ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:Customer
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasStatements ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:Statements
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasRefTypeDefinitions ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:RefTypeDefinitions
+        ] ;
+    skos:prefLabel "Administrative Data"@en ,
+                   "Verwaltungsdaten"@de ;
+    skos:definition "Container for all administrative metadata of a DCC."@en ;
+    skos:exactMatch dccx:administrativeDataType .
+
+
+###  https://ptb.de/dcc/ont/CoreData
+dcc:CoreData rdf:type owl:Class ;
+    rdfs:subClassOf 
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:uniqueIdentifier ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:string
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:countryCode ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:string
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:beginPerformanceDate ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:date
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:endPerformanceDate ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:date
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:usedLanguageCode ;
+          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:string
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:mandatoryLanguageCode ;
+          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:string
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasPerformanceLocation ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:PerformanceLocation
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasPreviousReport ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:PreviousReport
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:receiptDate ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:date
+        ] ;
+    skos:prefLabel "Core Data"@en ,
+                   "Kerndaten"@de ;
+    skos:definition "Essential identifying information for a DCC."@en ;
+    skos:exactMatch dccx:coreDataType .
+
+
+#################################################################
+#    CLASSES - Items and Equipment (with restrictions)
+#################################################################
+
+###  https://ptb.de/dcc/ont/Items
+dcc:Items rdf:type owl:Class ;
+    rdfs:subClassOf 
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasCalibrationItem ;
+          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:CalibrationItem
+        ] ;
+    skos:prefLabel "Items"@en ,
+                   "Gegenstände"@de ;
+    skos:exactMatch dccx:itemListType .
+
+
+###  https://ptb.de/dcc/ont/CalibrationItem
+dcc:CalibrationItem rdf:type owl:Class ;
+    rdfs:subClassOf prov:Entity ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasName ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:TextContent
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasIdentifications ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:IdentificationList
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasDescription ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:RichContent
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasOwner ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:Contact
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasManufacturer ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:ContactNotStrict
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:model ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:string
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasEquipmentClass ;
+          owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:EquipmentClass
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasItemQuantities ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:ItemQuantityList
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasSubItems ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:Items
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasInstalledSoftware ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:SoftwareList
+        ] ;
+    skos:prefLabel "Calibration Item"@en ,
+                   "Kalibriergegenstand"@de ;
+    skos:definition """The device under test (DUT) being calibrated. 
+As prov:Entity, can be 'used' by calibration activities."""@en ;
+    skos:relatedMatch omt:MeasuredObject ;
+    skos:exactMatch dccx:itemType .
+
+
+###  https://ptb.de/dcc/ont/IdentificationList
+dcc:IdentificationList rdf:type owl:Class ;
+    rdfs:subClassOf 
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasIdentification ;
+          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:Identification
+        ] ;
+    skos:prefLabel "Identification List"@en ,
+                   "Identifikationsliste"@de ;
+    skos:exactMatch dccx:identificationListType .
+
+
+###  https://ptb.de/dcc/ont/Identification
+dcc:Identification rdf:type owl:Class ;
+    rdfs:subClassOf 
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:identificationIssuer ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:string
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:identificationValue ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:string
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasName ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:TextContent
+        ] ;
+    skos:prefLabel "Identification"@en ,
+                   "Identifikation"@de ;
+    skos:exactMatch dccx:identificationType .
+
+
+###  https://ptb.de/dcc/ont/EquipmentClass
+dcc:EquipmentClass rdf:type owl:Class ;
+    skos:prefLabel "Equipment Class"@en ,
+                   "Geräteklasse"@de ;
+    skos:exactMatch dccx:equipmentClassType .
+
+
+###  https://ptb.de/dcc/ont/ItemQuantityList
+dcc:ItemQuantityList rdf:type owl:Class ;
+    skos:prefLabel "Item Quantity List"@en ,
+                   "Gegenstandsgrößen-Liste"@de ;
+    skos:exactMatch dccx:itemQuantityListType .
+
+
+###  https://ptb.de/dcc/ont/MeasuringEquipment
+dcc:MeasuringEquipment rdf:type owl:Class ;
+    rdfs:subClassOf prov:Entity ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasName ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:TextContent
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasCertificate ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:CertificateHash
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasEquipmentQuantities ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:EquipmentQuantityList
+        ] ;
+    skos:prefLabel "Measuring Equipment"@en ,
+                   "Messmittel"@de ;
+    skos:definition """Equipment used during calibration (reference standards, instruments).
+Links to traceability via hasCertificate."""@en ;
+    skos:relatedMatch omt:MeasuringInstrument ;
+    skos:exactMatch dccx:measuringEquipmentType .
+
+
+###  https://ptb.de/dcc/ont/MeasuringEquipmentList
+dcc:MeasuringEquipmentList rdf:type owl:Class ;
+    rdfs:subClassOf 
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasMeasuringEquipment ;
+          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:MeasuringEquipment
+        ] ;
+    skos:prefLabel "Measuring Equipment List"@en ,
+                   "Messmittel-Liste"@de ;
+    skos:exactMatch dccx:measuringEquipmentListType .
+
+
+###  https://ptb.de/dcc/ont/EquipmentQuantityList
+dcc:EquipmentQuantityList rdf:type owl:Class ;
+    skos:prefLabel "Equipment Quantity List"@en ,
+                   "Messgerätegrößen-Liste"@de ;
+    skos:exactMatch dccx:measuringEquipmentQuantitiesType .
+
+
+#################################################################
+#    CLASSES - Actors and Organizations (with restrictions)
+#################################################################
+
+###  https://ptb.de/dcc/ont/CalibrationLaboratory
+dcc:CalibrationLaboratory rdf:type owl:Class ;
+    rdfs:subClassOf prov:Agent, foaf:Organization ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasContact ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:Contact
+        ] ;
+    skos:prefLabel "Calibration Laboratory"@en ,
+                   "Kalibrierlaboratorium"@de ;
+    skos:definition "The laboratory performing the calibration. As prov:Agent, can participate in provenance."@en ;
+    skos:exactMatch dccx:calibrationLaboratoryType .
+
+
+###  https://ptb.de/dcc/ont/Customer
+dcc:Customer rdf:type owl:Class ;
+    rdfs:subClassOf prov:Agent, dcc:Contact ;
+    skos:prefLabel "Customer"@en ,
+                   "Auftraggeber"@de ;
+    skos:definition "The customer who commissioned the calibration."@en ;
+    skos:exactMatch dccx:contactType .
+
+
+###  https://ptb.de/dcc/ont/ResponsiblePersons
+dcc:ResponsiblePersons rdf:type owl:Class ;
+    rdfs:subClassOf 
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasResponsiblePerson ;
+          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:ResponsiblePerson
+        ] ;
+    skos:prefLabel "Responsible Persons"@en ,
+                   "Verantwortliche Personen"@de ;
+    skos:exactMatch dccx:respPersonListType .
+
+
+###  https://ptb.de/dcc/ont/ResponsiblePerson
+dcc:ResponsiblePerson rdf:type owl:Class ;
+    rdfs:subClassOf prov:Agent, foaf:Person ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasName ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:TextContent
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:mainSigner ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:boolean
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:cryptElectronicSeal ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:boolean
+        ] ;
+    skos:prefLabel "Responsible Person"@en ,
+                   "Verantwortliche Person"@de ;
+    skos:definition """Person responsible for the DCC. At least one must have mainSigner=true.
+As prov:Agent, can be associated with calibration activities."""@en ;
+    skos:exactMatch dccx:respPersonType .
+
+
+###  https://ptb.de/dcc/ont/Contact
+dcc:Contact rdf:type owl:Class ;
+    rdfs:subClassOf 
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasName ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:TextContent
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasLocation ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:Location
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:eMail ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:string
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:phone ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:string
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:fax ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:string
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:webLink ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:anyURI
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasDescriptionData ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:ByteData
+        ] ;
+    skos:prefLabel "Contact"@en ,
+                   "Kontakt"@de ;
+    skos:exactMatch dccx:contactType .
+
+
+###  https://ptb.de/dcc/ont/ContactNotStrict
+dcc:ContactNotStrict rdf:type owl:Class ;
+    skos:prefLabel "Contact (Not Strict)"@en ,
+                   "Kontakt (nicht streng)"@de ;
+    skos:definition "Contact type with relaxed mandatory requirements."@en ;
+    skos:exactMatch dccx:contactNotStrictType .
+
+
+###  https://ptb.de/dcc/ont/Location
+dcc:Location rdf:type owl:Class ;
+    rdfs:subClassOf prov:Location ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:city ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:string
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:locationCountryCode ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:string
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:street ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:string
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:streetNo ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:string
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:postCode ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:string
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:postOfficeBox ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:string
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:state ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:string
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:building ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:string
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:floor ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:string
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:room ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:string
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:further ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:string
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasPositionCoordinates ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:PositionCoordinates
+        ] ;
+    skos:prefLabel "Location"@en ,
+                   "Ort"@de ;
+    skos:exactMatch dccx:locationType .
+
+
+###  https://ptb.de/dcc/ont/PerformanceLocation
+dcc:PerformanceLocation rdf:type owl:Class ;
+    rdfs:subClassOf dcc:Location ;
+    skos:prefLabel "Performance Location"@en ,
+                   "Durchführungsort"@de ;
+    skos:exactMatch dccx:performanceLocationType .
+
+
+###  https://ptb.de/dcc/ont/PositionCoordinates
+dcc:PositionCoordinates rdf:type owl:Class ;
+    rdfs:subClassOf 
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:positionCoordinateSystem ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:string
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:positionCoordinate1 ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:double
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:positionCoordinate2 ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:double
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:positionCoordinate3 ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:double
+        ] ;
+    skos:prefLabel "Position Coordinates"@en ,
+                   "Positionskoordinaten"@de ;
+    skos:exactMatch dccx:positionCoordinatesType .
+
+
+#################################################################
+#    CLASSES - Measurement Results Structure (with restrictions)
+#################################################################
+
+###  https://ptb.de/dcc/ont/MeasurementResults
+dcc:MeasurementResults rdf:type owl:Class ;
+    rdfs:subClassOf 
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasMeasurementResult ;
+          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:MeasurementResult
+        ] ;
+    skos:prefLabel "Measurement Results"@en ,
+                   "Messergebnisse"@de ;
+    skos:definition "Container for all measurement results in a DCC."@en ;
+    skos:exactMatch dccx:measurementResultListType .
+
+
+###  https://ptb.de/dcc/ont/MeasurementResult
+dcc:MeasurementResult rdf:type owl:Class ;
+    rdfs:subClassOf 
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasName ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:TextContent
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasResults ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:Results
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasDescription ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:RichContent
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasUsedMethods ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:UsedMethodList
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasUsedSoftware ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:SoftwareList
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasMeasuringEquipments ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:MeasuringEquipmentList
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasInfluenceConditions ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:InfluenceConditionList
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasMeasurementMetaData ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:MeasurementMetaDataList
+        ] ;
+    skos:prefLabel "Measurement Result"@en ,
+                   "Messergebnis"@de ;
+    skos:definition """Individual measurement result containing calibration data.
+Values are always linked to units, preferably SI units.
+Can contain nested results, lists, and quantities."""@en ;
+    skos:relatedMatch omt:MeasurementResult ;
+    omt:vimID "2.9" ;
+    skos:exactMatch dccx:measurementResultType .
+
+
+###  https://ptb.de/dcc/ont/Results
+dcc:Results rdf:type owl:Class ;
+    rdfs:subClassOf 
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasResult ;
+          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:Result
+        ] ;
+    skos:prefLabel "Results"@en ,
+                   "Ergebnisse"@de ;
+    skos:exactMatch dccx:resultListType .
+
+
+###  https://ptb.de/dcc/ont/Result
+dcc:Result rdf:type owl:Class ;
+    rdfs:subClassOf 
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasName ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:TextContent
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasData ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:Data
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasDescription ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:RichContent
+        ] ;
+    skos:prefLabel "Result"@en ,
+                   "Ergebnis"@de ;
+    skos:exactMatch dccx:resultType .
+
+
+###  https://ptb.de/dcc/ont/Data
+dcc:Data rdf:type owl:Class ;
+    skos:prefLabel "Data"@en ,
+                   "Daten"@de ;
+    skos:definition "Container for quantity values, lists, text, formulas, and binary data within a result."@en ;
+    skos:exactMatch dccx:dataType .
+
+
+###  https://ptb.de/dcc/ont/Quantity
+dcc:Quantity rdf:type owl:Class ;
+    rdfs:subClassOf 
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasQuantityValue ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass sis:QuantityValue
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasName ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:TextContent
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasDescription ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:RichContent
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasRelativeUncertainty ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:RelativeUncertainty
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasUsedMethods ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:UsedMethodList
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasUsedSoftware ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:SoftwareList
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasMeasuringEquipments ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:MeasuringEquipmentList
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasInfluenceConditions ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:InfluenceConditionList
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasMeasurementMetaData ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:MeasurementMetaDataList
+        ] ;
+    skos:prefLabel "Quantity"@en ,
+                   "Größe"@de ;
+    skos:definition """A measured quantity in a DCC. Links to SIS for numeric payload.
+The actual value representation uses one of: si:real, si:complex, 
+si:constant, si:list, si:hybrid, si:realListXMLList, si:complexListXMLList."""@en ;
+    skos:closeMatch omt:QuantityValue ;
+    skos:exactMatch dccx:quantityType .
+
+
+###  https://ptb.de/dcc/ont/List
+dcc:List rdf:type owl:Class ;
+    rdfs:subClassOf 
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasName ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:TextContent
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasDescription ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:RichContent
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:listDateTime ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:dateTime
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasUsedMethods ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:UsedMethodList
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasUsedSoftware ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:SoftwareList
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasMeasuringEquipments ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:MeasuringEquipmentList
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasInfluenceConditions ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:InfluenceConditionList
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasMeasurementMetaData ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:MeasurementMetaDataList
+        ] ;
+    skos:prefLabel "List"@en ,
+                   "Liste"@de ;
+    skos:definition """Structured list of quantities. Supports recursive nesting for 
+matrices, tensors, and higher-dimensional structures."""@en ;
+    skos:exactMatch dccx:listType .
+
+
+###  https://ptb.de/dcc/ont/RelativeUncertainty
+dcc:RelativeUncertainty rdf:type owl:Class ;
+    skos:prefLabel "Relative Uncertainty"@en ,
+                   "Relative Unsicherheit"@de ;
+    skos:definition "Relative uncertainty workaround when not directly expressible in D-SI."@en ;
+    skos:relatedMatch omt:RelativeStandardUncertainty ;
+    skos:exactMatch dccx:relativeUncertaintyType .
+
+
+#################################################################
+#    CLASSES - Methods, Software, Conditions (with restrictions)
+#################################################################
+
+###  https://ptb.de/dcc/ont/UsedMethodList
+dcc:UsedMethodList rdf:type owl:Class ;
+    rdfs:subClassOf 
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasUsedMethod ;
+          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:UsedMethod
+        ] ;
+    skos:prefLabel "Used Method List"@en ,
+                   "Liste angewandter Methoden"@de ;
+    skos:exactMatch dccx:usedMethodListType .
+
+
+###  https://ptb.de/dcc/ont/UsedMethod
+dcc:UsedMethod rdf:type owl:Class ;
+    rdfs:subClassOf 
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasName ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:TextContent
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasDescription ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:RichContent
+        ] ;
+    skos:prefLabel "Used Method"@en ,
+                   "Angewandte Methode"@de ;
+    skos:definition "Calibration method/procedure (e.g., ISO standard reference)."@en ;
+    skos:relatedMatch omt:MeasurementMethod ;
+    omt:vimID "2.5" ;
+    skos:exactMatch dccx:usedMethodType .
+
+
+###  https://ptb.de/dcc/ont/SoftwareList
+dcc:SoftwareList rdf:type owl:Class ;
+    rdfs:subClassOf 
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasSoftware ;
+          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:Software
+        ] ;
+    skos:prefLabel "Software List"@en ,
+                   "Software-Liste"@de ;
+    skos:exactMatch dccx:softwareListType .
+
+
+###  https://ptb.de/dcc/ont/Software
+dcc:Software rdf:type owl:Class ;
+    rdfs:subClassOf prov:Entity ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasName ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:TextContent
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:softwareRelease ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:string
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:softwareType ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:string
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasDescription ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:RichContent
+        ] ;
+    skos:prefLabel "Software"@en ,
+                   "Software"@de ;
+    skos:exactMatch dccx:softwareType .
+
+
+###  https://ptb.de/dcc/ont/InfluenceConditionList
+dcc:InfluenceConditionList rdf:type owl:Class ;
+    rdfs:subClassOf 
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasInfluenceCondition ;
+          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:InfluenceCondition
+        ] ;
+    skos:prefLabel "Influence Condition List"@en ,
+                   "Liste der Einflussbedingungen"@de ;
+    skos:exactMatch dccx:influenceConditionListType .
+
+
+###  https://ptb.de/dcc/ont/InfluenceCondition
+dcc:InfluenceCondition rdf:type owl:Class ;
+    rdfs:subClassOf 
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasName ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:TextContent
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasDescription ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:RichContent
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:conditionStatus ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:string
+        ] ;
+    skos:prefLabel "Influence Condition"@en ,
+                   "Einflussbedingung"@de ;
+    skos:definition "Environmental or other influence conditions during calibration (temperature, humidity, etc.)."@en ;
+    skos:relatedMatch omt:OperatingCondition ;
+    skos:exactMatch dccx:influenceConditionType .
+
+
+###  https://ptb.de/dcc/ont/MeasurementMetaDataList
+dcc:MeasurementMetaDataList rdf:type owl:Class ;
+    rdfs:subClassOf 
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasMetaDataEntry ;
+          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:MeasurementMetaData
+        ] ;
+    skos:prefLabel "Measurement Meta Data List"@en ,
+                   "Messmetadaten-Liste"@de ;
+    skos:exactMatch dccx:measurementMetaDataListType .
+
+
+###  https://ptb.de/dcc/ont/MeasurementMetaData
+dcc:MeasurementMetaData rdf:type owl:Class ;
+    skos:prefLabel "Measurement Meta Data"@en ,
+                   "Messmetadaten"@de ;
+    skos:exactMatch dccx:measurementMetaDataType .
+
+
+#################################################################
+#    CLASSES - Statements (with restrictions)
+#################################################################
+
+###  https://ptb.de/dcc/ont/Statements
+dcc:Statements rdf:type owl:Class ;
+    rdfs:subClassOf 
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasStatement ;
+          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:Statement
+        ] ;
+    skos:prefLabel "Statements"@en ,
+                   "Aussagen"@de ;
+    skos:exactMatch dccx:statementListType .
+
+
+###  https://ptb.de/dcc/ont/Statement
+dcc:Statement rdf:type owl:Class ;
+    rdfs:subClassOf 
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasName ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:TextContent
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasDescription ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:RichContent
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasConformity ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:Conformity
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasDeclaration ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:Declaration
+        ] ;
+    skos:prefLabel "Statement"@en ,
+                   "Aussage"@de ;
+    skos:definition "Statements about calibration (e.g., conformity declarations)."@en ;
+    skos:exactMatch dccx:statementMetaDataType .
+
+
+###  https://ptb.de/dcc/ont/Conformity
+dcc:Conformity rdf:type owl:Class ;
+    skos:prefLabel "Conformity"@en ,
+                   "Konformität"@de ;
+    skos:exactMatch dccx:conformityType .
+
+
+###  https://ptb.de/dcc/ont/Declaration
+dcc:Declaration rdf:type owl:Class ;
+    skos:prefLabel "Declaration"@en ,
+                   "Erklärung"@de ;
+    skos:exactMatch dccx:declarationType .
+
+
+#################################################################
+#    CLASSES - Reference Pattern and RefTypes (with restrictions)
+#################################################################
+
+###  https://ptb.de/dcc/ont/Reference
+dcc:Reference rdf:type owl:Class ;
+    rdfs:subClassOf 
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:referenceTarget ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass owl:Thing
+        ] ;
+    skos:prefLabel "Reference"@en ,
+                   "Referenz"@de ;
+    skos:definition """Qualified reference following PROV qualification pattern.
+Use when refType metadata is needed to describe the reference relationship."""@en ;
+    rdfs:comment "Ontology design pattern class - not directly from DCC schema but enables refType/refId qualification."@en .
+
+
+###  https://ptb.de/dcc/ont/RefTypeDefinitions
+dcc:RefTypeDefinitions rdf:type owl:Class ;
+    rdfs:subClassOf 
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasRefTypeDefinition ;
+          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:RefTypeDefinition
+        ] ;
+    skos:prefLabel "RefType Definitions"@en ;
+    skos:definition "Container for refType vocabulary declarations used in a DCC."@en ;
+    skos:exactMatch dccx:refTypeDefinitionListType .
+
+
+###  https://ptb.de/dcc/ont/RefTypeDefinition
+dcc:RefTypeDefinition rdf:type owl:Class ;
+    rdfs:subClassOf 
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasName ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:TextContent
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:refTypeNamespace ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:string
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:refTypeLink ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:anyURI
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hasDescription ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onClass dcc:RichContent
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:refTypeRelease ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:string
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:refTypeValue ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:string
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:refTypeProcedure ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:string
+        ] ;
+    skos:prefLabel "RefType Definition"@en ;
+    skos:definition "Definition of a refType vocabulary namespace (links to external thesaurus)."@en ;
+    skos:exactMatch dccx:refTypeDefinitionType ;
+    rdfs:seeAlso <https://digilab.ptb.de/dkd/refType/vocab/> .
+
+
+#################################################################
+#    CLASSES - Hash and Traceability (with restrictions)
+#################################################################
+
+###  https://ptb.de/dcc/ont/CertificateHash
+dcc:CertificateHash rdf:type owl:Class ;
+    rdfs:subClassOf 
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hashValue ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:string
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:hashProcedure ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:string
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:referralID ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:string
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:inValidityRange ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:boolean
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:traceable ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:boolean
+        ] ;
+    skos:prefLabel "Certificate Hash"@en ,
+                   "Zertifikat-Hash"@de ;
+    skos:definition "Hash reference to a calibration certificate (for traceability)."@en ;
+    skos:exactMatch dccx:hashType .
+
+
+###  https://ptb.de/dcc/ont/PreviousReport
+dcc:PreviousReport rdf:type owl:Class ;
+    rdfs:subClassOf dcc:CertificateHash ;
+    skos:prefLabel "Previous Report"@en ,
+                   "Vorheriger Bericht"@de ;
+    skos:definition "Reference to a previous calibration certificate (version chain)."@en ;
+    skos:exactMatch dccx:hashType .
+
+
+#################################################################
+#    CLASSES - Rich Content and Text (with restrictions)
+#################################################################
+
+###  https://ptb.de/dcc/ont/TextContent
+dcc:TextContent rdf:type owl:Class ;
+    skos:prefLabel "Text Content"@en ,
+                   "Textinhalt"@de ;
+    skos:definition "Multilingual text content container using RDF language tags."@en ;
+    skos:exactMatch dccx:textType .
+
+
+###  https://ptb.de/dcc/ont/RichContent
+dcc:RichContent rdf:type owl:Class ;
+    skos:prefLabel "Rich Content"@en ,
+                   "Reichhaltiger Inhalt"@de ;
+    skos:definition "Rich content container for text, formulas, and embedded files."@en ;
+    skos:exactMatch dccx:richContentType .
+
+
+###  https://ptb.de/dcc/ont/Formula
+dcc:Formula rdf:type owl:Class ;
+    skos:prefLabel "Formula"@en ,
+                   "Formel"@de ;
+    skos:definition "Mathematical formula in LaTeX or MathML."@en ;
+    skos:exactMatch dccx:formulaType .
+
+
+###  https://ptb.de/dcc/ont/ByteData
+dcc:ByteData rdf:type owl:Class ;
+    rdfs:subClassOf 
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:fileName ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:string
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:mimeType ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:string
+        ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty dcc:dataBase64 ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+          owl:onDataRange xsd:base64Binary
+        ] ;
+    skos:prefLabel "Byte Data"@en ,
+                   "Binärdaten"@de ;
+    skos:definition "Binary data container (e.g., images, embedded documents)."@en ;
+    skos:exactMatch dccx:byteDataType .
+
+
+###  https://ptb.de/dcc/ont/HumanReadableDocument
+dcc:HumanReadableDocument rdf:type owl:Class ;
+    rdfs:subClassOf dcc:ByteData ;
+    skos:prefLabel "Human Readable Document"@en ,
+                   "Menschenlesbares Dokument"@de ;
+    skos:definition "Human-readable representation of the DCC (e.g., PDF attachment)."@en ;
+    skos:exactMatch dccx:byteDataType .
+
+
+###  https://ptb.de/dcc/ont/Comment
+dcc:Comment rdf:type owl:Class ;
+    rdfs:subClassOf dcc:RichContent ;
+    skos:prefLabel "Comment"@en ,
+                   "Kommentar"@de ;
+    skos:exactMatch dccx:richContentType .
+
+
+#################################################################
+#    CLASSES - PROV Hook Points
+#################################################################
+
+###  https://ptb.de/dcc/ont/CalibrationActivity
+dcc:CalibrationActivity rdf:type owl:Class ;
+    rdfs:subClassOf prov:Activity ;
+    skos:prefLabel "Calibration Activity"@en ,
+                   "Kalibrieraktivität"@de ;
+    skos:definition """The activity of performing a calibration (retrospective provenance).
+Links to CalibrationPlan via hadCalibrationPlan."""@en ;
+    skos:relatedMatch omt:MeasurementProcedure ;
+    omt:vimID "2.6" .
+
+
+###  https://ptb.de/dcc/ont/CalibrationPlan
+dcc:CalibrationPlan rdf:type owl:Class ;
+    rdfs:subClassOf prov:Plan ;
+    skos:prefLabel "Calibration Plan"@en ,
+                   "Kalibrierplan"@de ;
+    skos:definition """The calibration method/SOP as a plan (prospective provenance).
+Can link to UsedMethod for method references."""@en ;
+    skos:relatedMatch omt:MeasurementProcedure ;
+    omt:vimID "2.6" .
+
+
+#################################################################
+#    GENERAL AXIOMS
+#################################################################
+
+# Disjoint classes for major entity types
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( dcc:DigitalCalibrationCertificate
+                dcc:AdministrativeData
+                dcc:MeasurementResults
+                dcc:MeasurementResult
+                dcc:CalibrationItem
+                dcc:MeasuringEquipment
+                dcc:CalibrationLaboratory
+                dcc:ResponsiblePerson
+                dcc:Customer
+              )
+] .
+
+# Disjoint list types
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( dcc:SoftwareList
+                dcc:UsedMethodList
+                dcc:MeasuringEquipmentList
+                dcc:InfluenceConditionList
+                dcc:MeasurementMetaDataList
+              )
+] .
+
+
+#################################################################
+#    END OF ONTOLOGY
+#################################################################
+
+###  Generated based on DCC XML Schema v3.3.0-rc.1
+###  Following design patterns from SIS Ontology (SI_Format.ttl)
+###  With OMT integration points for VIM-compliant semantics

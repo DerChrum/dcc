@@ -1,0 +1,919 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.2.2 Chrome/134.0.6998.178 Electron/35.1.2 Safari/537.36" version="26.2.2">
+  <diagram name="Page-1" id="ZwND56kIIuGl9iomsbOZ">
+    <mxGraphModel dx="1020" dy="782" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="pj-jqxRd7rDZBNCcCeJR-5" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;dashed=1;strokeColor=#990099;" parent="1" vertex="1">
+          <mxGeometry x="1220" y="740" width="180" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="pj-jqxRd7rDZBNCcCeJR-4" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;dashed=1;strokeColor=#0E8088;" parent="1" vertex="1">
+          <mxGeometry x="320" y="740" width="800" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="pj-jqxRd7rDZBNCcCeJR-1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;dashed=1;strokeColor=#6C8EBF;" parent="1" vertex="1">
+          <mxGeometry x="120" y="260" width="1360" height="400" as="geometry" />
+        </mxCell>
+        <mxCell id="26Co9q1GtFJa0rAW2P7n-49" value="" style="group" parent="1" vertex="1" connectable="0">
+          <mxGeometry x="160" y="120" width="170" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="26Co9q1GtFJa0rAW2P7n-50" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#aa4499;dashed=1;verticalAlign=middle;" parent="26Co9q1GtFJa0rAW2P7n-49" vertex="1">
+          <mxGeometry width="160" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="26Co9q1GtFJa0rAW2P7n-51" value="&lt;b&gt;&lt;font&gt;QUDT&lt;/font&gt;&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#aa4499;" parent="26Co9q1GtFJa0rAW2P7n-49" vertex="1">
+          <mxGeometry x="8.5" width="27.19999999999999" height="13.846153846153848" as="geometry" />
+        </mxCell>
+        <mxCell id="26Co9q1GtFJa0rAW2P7n-39" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#776633;dashed=1;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="520" y="120" width="527.01" height="100" as="geometry" />
+        </mxCell>
+        <UserObject label="sis:QuantityValue" link="https://ptb.de/sis/QuantityValue" id="26Co9q1GtFJa0rAW2P7n-1">
+          <mxCell style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;verticalAlign=middle;direction=east;" parent="1" vertex="1">
+            <mxGeometry x="660" y="270" width="200" height="70" as="geometry">
+              <mxRectangle x="20" y="470" width="110" height="50" as="alternateBounds" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <mxCell id="FQqts-xZekKTClPtidKJ-13" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;curved=0;endArrow=block;endFill=0;" parent="1" source="FQqts-xZekKTClPtidKJ-7" target="26Co9q1GtFJa0rAW2P7n-1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="520" y="380" />
+              <mxPoint x="730" y="380" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <UserObject label="sis:Real" link="https://ptb.de/sis/Real" id="26Co9q1GtFJa0rAW2P7n-2">
+          <mxCell style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;verticalAlign=middle;direction=east;" parent="1" vertex="1">
+            <mxGeometry x="290" y="410" width="140" height="126" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasDateTime" link="https://ptb.de/sis/hasDateTime" id="26Co9q1GtFJa0rAW2P7n-3">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="26Co9q1GtFJa0rAW2P7n-2" vertex="1">
+            <mxGeometry y="26" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasLabel" link="https://ptb.de/sis/hasLabel" id="26Co9q1GtFJa0rAW2P7n-4">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="26Co9q1GtFJa0rAW2P7n-2" vertex="1">
+            <mxGeometry y="46" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasSignificantDigit" link="https://ptb.de/sis/hasSignificantDigit" id="26Co9q1GtFJa0rAW2P7n-5">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="26Co9q1GtFJa0rAW2P7n-2" vertex="1">
+            <mxGeometry y="66" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasValue" link="https://ptb.de/sis/hasValue" id="26Co9q1GtFJa0rAW2P7n-6">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="26Co9q1GtFJa0rAW2P7n-2" vertex="1">
+            <mxGeometry y="86" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasUnitIdentifier" link="https://ptb.de/sis/hasUnitIdentifier" id="26Co9q1GtFJa0rAW2P7n-7">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="26Co9q1GtFJa0rAW2P7n-2" vertex="1">
+            <mxGeometry y="106" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="26Co9q1GtFJa0rAW2P7n-8" style="edgeStyle=orthogonalEdgeStyle;shape=connector;curved=0;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=block;endFill=0;" parent="1" source="26Co9q1GtFJa0rAW2P7n-2" target="26Co9q1GtFJa0rAW2P7n-1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="552.5" y="850" as="sourcePoint" />
+            <mxPoint x="427.5" y="680" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="360" y="370" />
+              <mxPoint x="710" y="370" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="26Co9q1GtFJa0rAW2P7n-9" value="is a" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" parent="26Co9q1GtFJa0rAW2P7n-8" vertex="1" connectable="0">
+          <mxGeometry x="0.037" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <UserObject label="sis:Constant" link="https://ptb.de/sis/Constant" id="26Co9q1GtFJa0rAW2P7n-10">
+          <mxCell style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;verticalAlign=middle;direction=east;" parent="1" vertex="1">
+            <mxGeometry x="130" y="410" width="140" height="126" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasDateTime" link="https://ptb.de/sis/hasDateTime" id="26Co9q1GtFJa0rAW2P7n-11">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="26Co9q1GtFJa0rAW2P7n-10" vertex="1">
+            <mxGeometry y="26" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasLabel" link="https://ptb.de/sis/hasLabel" id="26Co9q1GtFJa0rAW2P7n-12">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="26Co9q1GtFJa0rAW2P7n-10" vertex="1">
+            <mxGeometry y="46" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasSignificantDigit" link="https://ptb.de/sis/hasSignificantDigit" id="26Co9q1GtFJa0rAW2P7n-13">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="26Co9q1GtFJa0rAW2P7n-10" vertex="1">
+            <mxGeometry y="66" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasValue" link="https://ptb.de/sis/hasValue" id="26Co9q1GtFJa0rAW2P7n-14">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="26Co9q1GtFJa0rAW2P7n-10" vertex="1">
+            <mxGeometry y="86" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasUnitIdentifier" link="https://ptb.de/sis/hasUnitIdentifier" id="26Co9q1GtFJa0rAW2P7n-15">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="26Co9q1GtFJa0rAW2P7n-10" vertex="1">
+            <mxGeometry y="106" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="26Co9q1GtFJa0rAW2P7n-16" style="edgeStyle=orthogonalEdgeStyle;shape=connector;curved=0;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=block;endFill=0;" parent="1" source="26Co9q1GtFJa0rAW2P7n-10" target="26Co9q1GtFJa0rAW2P7n-1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="500" y="530" as="sourcePoint" />
+            <mxPoint x="570" y="330" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="200" y="360" />
+              <mxPoint x="690" y="360" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="26Co9q1GtFJa0rAW2P7n-17" value="is a" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" parent="26Co9q1GtFJa0rAW2P7n-16" vertex="1" connectable="0">
+          <mxGeometry x="0.037" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <UserObject label="sis:Complex" link="https://ptb.de/sis/Complex" id="26Co9q1GtFJa0rAW2P7n-18">
+          <mxCell style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;verticalAlign=middle;direction=east;" parent="1" vertex="1">
+            <mxGeometry x="1250" y="410" width="140" height="106" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasDateTime" link="https://ptb.de/sis/hasDateTime" id="26Co9q1GtFJa0rAW2P7n-19">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="26Co9q1GtFJa0rAW2P7n-18" vertex="1">
+            <mxGeometry y="26" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasLabel" link="https://ptb.de/sis/hasLabel" id="26Co9q1GtFJa0rAW2P7n-20">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="26Co9q1GtFJa0rAW2P7n-18" vertex="1">
+            <mxGeometry y="46" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasSignificantDigit" link="https://ptb.de/sis/hasSignificantDigit" id="26Co9q1GtFJa0rAW2P7n-21">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="26Co9q1GtFJa0rAW2P7n-18" vertex="1">
+            <mxGeometry y="66" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasUnitIdentifier" link="https://ptb.de/sis/hasUnitIdentifier" id="26Co9q1GtFJa0rAW2P7n-22">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="26Co9q1GtFJa0rAW2P7n-18" vertex="1">
+            <mxGeometry y="86" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="26Co9q1GtFJa0rAW2P7n-23" style="edgeStyle=orthogonalEdgeStyle;shape=connector;curved=0;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=block;endFill=0;" parent="1" source="26Co9q1GtFJa0rAW2P7n-18" target="26Co9q1GtFJa0rAW2P7n-1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="540" y="740" as="sourcePoint" />
+            <mxPoint x="650" y="330" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1320" y="360" />
+              <mxPoint x="830" y="360" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="26Co9q1GtFJa0rAW2P7n-24" value="is a" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" parent="26Co9q1GtFJa0rAW2P7n-23" vertex="1" connectable="0">
+          <mxGeometry x="0.037" relative="1" as="geometry">
+            <mxPoint x="143" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <UserObject label="sis:ComplexCartesian" link="https://ptb.de/sis/CartesianCoordinateForm" id="26Co9q1GtFJa0rAW2P7n-25">
+          <mxCell style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;verticalAlign=middle;direction=east;" parent="1" vertex="1">
+            <mxGeometry x="1180" y="560" width="130" height="66" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasValueReal" link="https://ptb.de/sis/hasValueReal" id="26Co9q1GtFJa0rAW2P7n-26">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="26Co9q1GtFJa0rAW2P7n-25" vertex="1">
+            <mxGeometry y="26" width="130" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasValueImag" link="https://ptb.de/sis/hasValueImag" id="26Co9q1GtFJa0rAW2P7n-27">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="26Co9q1GtFJa0rAW2P7n-25" vertex="1">
+            <mxGeometry y="46" width="130" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="sis:ComplexPolar" link="https://ptb.de/sis/PolarCoordinateForm" id="26Co9q1GtFJa0rAW2P7n-28">
+          <mxCell style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;verticalAlign=middle;direction=east;" parent="1" vertex="1">
+            <mxGeometry x="1330" y="560" width="140" height="86" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasValueMagnitude" link="https://ptb.de/sis/hasValueMagnitude" id="26Co9q1GtFJa0rAW2P7n-29">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="26Co9q1GtFJa0rAW2P7n-28" vertex="1">
+            <mxGeometry y="26" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasValuePhase" link="https://ptb.de/sis/hasValueMagnitude" id="26Co9q1GtFJa0rAW2P7n-30">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="26Co9q1GtFJa0rAW2P7n-28" vertex="1">
+            <mxGeometry y="46" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasUnitPhaseIdentifier" link="https://ptb.de/sis/hasUnitPhaseIdentifier" id="26Co9q1GtFJa0rAW2P7n-31">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="26Co9q1GtFJa0rAW2P7n-28" vertex="1">
+            <mxGeometry y="66" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="sis:QuantityType" link="https://ptb.de/sis/QuantityValue" id="26Co9q1GtFJa0rAW2P7n-42">
+          <mxCell style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;verticalAlign=middle;direction=east;" parent="1" vertex="1">
+            <mxGeometry x="360" y="170" width="120" height="50" as="geometry">
+              <mxRectangle x="20" y="470" width="110" height="50" as="alternateBounds" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <mxCell id="26Co9q1GtFJa0rAW2P7n-43" style="edgeStyle=orthogonalEdgeStyle;shape=connector;curved=0;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=block;endFill=0;" parent="1" source="26Co9q1GtFJa0rAW2P7n-41" target="26Co9q1GtFJa0rAW2P7n-42" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="713.29" y="290" as="sourcePoint" />
+            <mxPoint x="703.29" y="210" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="440" y="150" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="26Co9q1GtFJa0rAW2P7n-44" value="is a" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" parent="26Co9q1GtFJa0rAW2P7n-43" vertex="1" connectable="0">
+          <mxGeometry x="0.037" relative="1" as="geometry">
+            <mxPoint x="20" y="-4" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="26Co9q1GtFJa0rAW2P7n-45" style="edgeStyle=orthogonalEdgeStyle;shape=connector;curved=0;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=block;endFill=0;" parent="1" source="26Co9q1GtFJa0rAW2P7n-47" target="26Co9q1GtFJa0rAW2P7n-42" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="723.29" y="250" as="sourcePoint" />
+            <mxPoint x="713.29" y="170" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="400" y="150" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="26Co9q1GtFJa0rAW2P7n-46" value="is a" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" parent="26Co9q1GtFJa0rAW2P7n-45" vertex="1" connectable="0">
+          <mxGeometry x="0.037" relative="1" as="geometry">
+            <mxPoint x="-30" y="-4" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <UserObject label="qudt:QuantityKind" link="http://qudt.org/schema/qudt/QuantityKind" id="26Co9q1GtFJa0rAW2P7n-47">
+          <mxCell style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#ff99ee;strokeColor=#6c8ebf;fontSize=12;verticalAlign=middle;direction=east;" parent="1" vertex="1">
+            <mxGeometry x="180" y="140" width="120" height="50" as="geometry">
+              <mxRectangle x="20" y="470" width="110" height="50" as="alternateBounds" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="sirp:MeasurementUnit" link="https://si-digital-framework.org/SI#MeasurementUnit" id="26Co9q1GtFJa0rAW2P7n-48">
+          <mxCell style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#ddcc99;strokeColor=#6c8ebf;fontSize=12;verticalAlign=middle;" parent="1" vertex="1">
+            <mxGeometry x="840" y="140" width="140" height="50" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasSIMeasurementUnit" link="https://ptb.de/sis/hasSIMeasurementUnit" id="26Co9q1GtFJa0rAW2P7n-54">
+          <mxCell style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;horizontal=1;fontSize=11;verticalAlign=middle;fontStyle=4;" parent="1" source="26Co9q1GtFJa0rAW2P7n-1" target="26Co9q1GtFJa0rAW2P7n-48" edge="1">
+            <mxGeometry x="-0.2846" width="50" height="50" relative="1" as="geometry">
+              <mxPoint x="370" y="430" as="sourcePoint" />
+              <mxPoint x="410" y="210" as="targetPoint" />
+              <mxPoint x="1" as="offset" />
+              <Array as="points">
+                <mxPoint x="800" y="240" />
+                <mxPoint x="1080" y="240" />
+                <mxPoint x="1080" y="165" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="" link="https://ptb.de/sis/hasQuantityType" id="26Co9q1GtFJa0rAW2P7n-57">
+          <mxCell style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;horizontal=1;fontSize=11;verticalAlign=middle;fontStyle=4;" parent="1" source="26Co9q1GtFJa0rAW2P7n-1" target="26Co9q1GtFJa0rAW2P7n-42" edge="1">
+            <mxGeometry x="-0.151" width="50" height="50" relative="1" as="geometry">
+              <mxPoint x="600" y="420" as="sourcePoint" />
+              <mxPoint x="610" y="170" as="targetPoint" />
+              <mxPoint as="offset" />
+              <Array as="points">
+                <mxPoint x="720" y="240" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="&lt;u&gt;:hasQuantityType&lt;/u&gt;" link="https://ptb.de/sis/QuantityType" id="26Co9q1GtFJa0rAW2P7n-58">
+          <mxCell style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="26Co9q1GtFJa0rAW2P7n-57" vertex="1" connectable="0">
+            <mxGeometry x="0.8304" y="-2" relative="1" as="geometry">
+              <mxPoint x="85" y="-3" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="sis:MeasurementUncertainty" link="#MeasurementUncertainty" id="26Co9q1GtFJa0rAW2P7n-151">
+          <mxCell style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#b0e3e6;strokeColor=#0e8088;verticalAlign=middle;" parent="1" vertex="1">
+            <mxGeometry x="660" y="750" width="200" height="70" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasDistribution" link="https://ptb.de/sis/hasDistribution" id="26Co9q1GtFJa0rAW2P7n-152">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="26Co9q1GtFJa0rAW2P7n-151" vertex="1">
+            <mxGeometry y="50" width="200" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="sis:Measurement-&#xa;UncertaintyUnivariate" link="https://ptb.de/sis/MeasurementUncertaintyUnivariate" id="26Co9q1GtFJa0rAW2P7n-153">
+          <mxCell style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#b0e3e6;strokeColor=#0e8088;verticalAlign=middle;" parent="1" vertex="1">
+            <mxGeometry x="490" y="830" width="140" height="46" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="26Co9q1GtFJa0rAW2P7n-154" style="edgeStyle=orthogonalEdgeStyle;shape=connector;curved=0;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=block;endFill=0;" parent="1" source="26Co9q1GtFJa0rAW2P7n-153" target="26Co9q1GtFJa0rAW2P7n-151" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1160" y="850" as="sourcePoint" />
+            <mxPoint x="770" y="820" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="720" y="840" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="26Co9q1GtFJa0rAW2P7n-155" value="is a" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" parent="26Co9q1GtFJa0rAW2P7n-154" vertex="1" connectable="0">
+          <mxGeometry x="0.037" relative="1" as="geometry">
+            <mxPoint x="-24" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <UserObject label="sis:StandardMU" link="https://ptb.de/sis/StandardMU" id="26Co9q1GtFJa0rAW2P7n-156">
+          <mxCell style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#b0e3e6;strokeColor=#0e8088;verticalAlign=middle;" parent="1" vertex="1">
+            <mxGeometry x="330" y="920" width="140" height="46" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasValueStandardMU" link="https://ptb.de/sis/hasValueStandardMU" id="26Co9q1GtFJa0rAW2P7n-157">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="26Co9q1GtFJa0rAW2P7n-156" vertex="1">
+            <mxGeometry y="26" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="sis:ExpandedMU" link="https://ptb.de/sis/ExpandedMU" id="26Co9q1GtFJa0rAW2P7n-158">
+          <mxCell style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#b0e3e6;strokeColor=#0e8088;verticalAlign=middle;" parent="1" vertex="1">
+            <mxGeometry x="490" y="920" width="140" height="86" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasValueExpandedMU" link="https://ptb.de/sis/hasValueExpandedMU" id="26Co9q1GtFJa0rAW2P7n-159">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="26Co9q1GtFJa0rAW2P7n-158" vertex="1">
+            <mxGeometry y="26" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasCoverageFactor" link="https://ptb.de/sis/hasCoverageFactor" id="26Co9q1GtFJa0rAW2P7n-160">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="26Co9q1GtFJa0rAW2P7n-158" vertex="1">
+            <mxGeometry y="46" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasCoverageProbability" link="https://ptb.de/sis/hasCoverageProbability" id="26Co9q1GtFJa0rAW2P7n-161">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="26Co9q1GtFJa0rAW2P7n-158" vertex="1">
+            <mxGeometry y="66" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="26Co9q1GtFJa0rAW2P7n-167" style="edgeStyle=orthogonalEdgeStyle;shape=connector;curved=0;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=block;endFill=0;" parent="1" source="26Co9q1GtFJa0rAW2P7n-162" target="26Co9q1GtFJa0rAW2P7n-153" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="580" y="1028" as="sourcePoint" />
+            <mxPoint x="662" y="937" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="690" y="900" />
+              <mxPoint x="590" y="900" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="26Co9q1GtFJa0rAW2P7n-168" value="is a" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" parent="26Co9q1GtFJa0rAW2P7n-167" vertex="1" connectable="0">
+          <mxGeometry x="0.037" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="26Co9q1GtFJa0rAW2P7n-169" style="edgeStyle=orthogonalEdgeStyle;shape=connector;curved=0;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=block;endFill=0;" parent="1" source="26Co9q1GtFJa0rAW2P7n-158" target="26Co9q1GtFJa0rAW2P7n-153" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="720" y="830" as="sourcePoint" />
+            <mxPoint x="630" y="860" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="560" y="900" />
+              <mxPoint x="560" y="900" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="26Co9q1GtFJa0rAW2P7n-170" value="is a" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" parent="26Co9q1GtFJa0rAW2P7n-169" vertex="1" connectable="0">
+          <mxGeometry x="0.037" relative="1" as="geometry">
+            <mxPoint y="8" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="26Co9q1GtFJa0rAW2P7n-171" style="edgeStyle=orthogonalEdgeStyle;shape=connector;curved=0;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=block;endFill=0;" parent="1" source="26Co9q1GtFJa0rAW2P7n-156" target="26Co9q1GtFJa0rAW2P7n-153" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="465" y="910" as="sourcePoint" />
+            <mxPoint x="510" y="866" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="440" y="897" />
+              <mxPoint x="530" y="897" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="26Co9q1GtFJa0rAW2P7n-172" value="is a" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" parent="26Co9q1GtFJa0rAW2P7n-171" vertex="1" connectable="0">
+          <mxGeometry x="0.037" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <UserObject label="sis:Measurement-&#xa;UncertaintyMultivariate" link="https://ptb.de/sis/MeasurementUncertaintyMultivariate" id="26Co9q1GtFJa0rAW2P7n-173">
+          <mxCell style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=light-dark(#12A2AC,#12A2AC);strokeColor=#0e8088;verticalAlign=middle;" parent="1" vertex="1">
+            <mxGeometry x="890" y="830" width="140" height="46" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="26Co9q1GtFJa0rAW2P7n-174" style="edgeStyle=orthogonalEdgeStyle;shape=connector;curved=0;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=block;endFill=0;" parent="1" source="26Co9q1GtFJa0rAW2P7n-173" target="26Co9q1GtFJa0rAW2P7n-151" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="880" y="930" as="sourcePoint" />
+            <mxPoint x="830" y="820" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="800" y="840" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="26Co9q1GtFJa0rAW2P7n-175" value="is a" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" parent="26Co9q1GtFJa0rAW2P7n-174" vertex="1" connectable="0">
+          <mxGeometry x="0.037" relative="1" as="geometry">
+            <mxPoint x="24" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <UserObject label="sis:CovarianceMatrix" link="https://ptb.de/sis/CovarianceMatrix" id="26Co9q1GtFJa0rAW2P7n-176">
+          <mxCell style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#FFCCFF;strokeColor=#36393d;verticalAlign=middle;" parent="1" vertex="1">
+            <mxGeometry x="1240" y="820" width="140" height="46" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasCovarianceMatrix" link="https://ptb.de/sis/hasCovarianceMatrix" id="26Co9q1GtFJa0rAW2P7n-177">
+          <mxCell style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;horizontal=1;fontSize=11;verticalAlign=middle;fontStyle=4;" parent="1" source="26Co9q1GtFJa0rAW2P7n-173" target="26Co9q1GtFJa0rAW2P7n-176" edge="1">
+            <mxGeometry x="0.3333" width="50" height="50" relative="1" as="geometry">
+              <mxPoint x="1230" y="990" as="sourcePoint" />
+              <mxPoint x="1520" y="990" as="targetPoint" />
+              <mxPoint as="offset" />
+              <Array as="points">
+                <mxPoint x="1140" y="840" />
+                <mxPoint x="1140" y="840" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="sis:EllipsoidalRegion" link="https://ptb.de/sis/EllipsoidalRegion" id="26Co9q1GtFJa0rAW2P7n-178">
+          <mxCell style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=light-dark(#12A2AC,#12A2AC);strokeColor=#0e8088;verticalAlign=middle;" parent="1" vertex="1">
+            <mxGeometry x="970" y="920" width="140" height="66" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasCoverageProbability" link="https://ptb.de/sis/hasCoverageProbability" id="26Co9q1GtFJa0rAW2P7n-179">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="26Co9q1GtFJa0rAW2P7n-178" vertex="1">
+            <mxGeometry y="26" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasCoverageFactor" link="https://ptb.de/sis/hasCoverageFactor" id="26Co9q1GtFJa0rAW2P7n-180">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="26Co9q1GtFJa0rAW2P7n-178" vertex="1">
+            <mxGeometry y="46" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="sis:RectangularRegion" link="https://ptb.de/sis/RectangularRegion" id="26Co9q1GtFJa0rAW2P7n-181">
+          <mxCell style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=light-dark(#12A2AC,#12A2AC);strokeColor=#0e8088;verticalAlign=middle;" parent="1" vertex="1">
+            <mxGeometry x="810" y="920" width="140" height="66" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasCoverageFactor" link="https://ptb.de/sis/hasCoverageFactor" id="26Co9q1GtFJa0rAW2P7n-182">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="26Co9q1GtFJa0rAW2P7n-181" vertex="1">
+            <mxGeometry y="26" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasCoverageProbability" link="https://ptb.de/sis/hasCoverageProbability" id="26Co9q1GtFJa0rAW2P7n-183">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="26Co9q1GtFJa0rAW2P7n-181" vertex="1">
+            <mxGeometry y="46" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="26Co9q1GtFJa0rAW2P7n-184" style="edgeStyle=orthogonalEdgeStyle;shape=connector;curved=0;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=block;endFill=0;" parent="1" source="26Co9q1GtFJa0rAW2P7n-178" target="26Co9q1GtFJa0rAW2P7n-173" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1040" y="930" as="sourcePoint" />
+            <mxPoint x="1040" y="900" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1040" y="900" />
+              <mxPoint x="990" y="900" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="26Co9q1GtFJa0rAW2P7n-185" value="is a" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" parent="26Co9q1GtFJa0rAW2P7n-184" vertex="1" connectable="0">
+          <mxGeometry x="0.037" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="26Co9q1GtFJa0rAW2P7n-186" style="edgeStyle=orthogonalEdgeStyle;shape=connector;curved=0;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=block;endFill=0;" parent="1" source="26Co9q1GtFJa0rAW2P7n-181" target="26Co9q1GtFJa0rAW2P7n-173" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="880" y="930" as="sourcePoint" />
+            <mxPoint x="1090" y="840" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="880" y="900" />
+              <mxPoint x="930" y="900" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="26Co9q1GtFJa0rAW2P7n-187" value="is a" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" parent="26Co9q1GtFJa0rAW2P7n-186" vertex="1" connectable="0">
+          <mxGeometry x="0.037" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <UserObject label="sis:Covariance" link="https://ptb.de/sis/Covariance" id="26Co9q1GtFJa0rAW2P7n-190">
+          <mxCell style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#FFCCFF;strokeColor=#36393d;verticalAlign=middle;" parent="1" vertex="1">
+            <mxGeometry x="1240" y="920" width="140" height="106" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasColumnIndex" link="https://ptb.de/sis/hasValue" id="ufHI0xhdr3MGU4gKYUBG-1">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="26Co9q1GtFJa0rAW2P7n-190" vertex="1">
+            <mxGeometry y="26" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasRowIndex" link="https://ptb.de/sis/hasValue" id="ufHI0xhdr3MGU4gKYUBG-2">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="26Co9q1GtFJa0rAW2P7n-190" vertex="1">
+            <mxGeometry y="46" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasValue" link="https://ptb.de/sis/hasValue" id="26Co9q1GtFJa0rAW2P7n-191">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="26Co9q1GtFJa0rAW2P7n-190" vertex="1">
+            <mxGeometry y="66" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasUnitIdentifier" link="https://ptb.de/sis/hasUnitIdentifier" id="26Co9q1GtFJa0rAW2P7n-192">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="26Co9q1GtFJa0rAW2P7n-190" vertex="1">
+            <mxGeometry y="86" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasCovariance" link="https://ptb.de/sis/hasCovariance" id="26Co9q1GtFJa0rAW2P7n-193">
+          <mxCell style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;horizontal=1;fontSize=11;verticalAlign=middle;fontStyle=4;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="26Co9q1GtFJa0rAW2P7n-176" target="26Co9q1GtFJa0rAW2P7n-190" edge="1">
+            <mxGeometry x="-0.1133" width="50" height="50" relative="1" as="geometry">
+              <mxPoint x="1380" y="930" as="sourcePoint" />
+              <mxPoint x="1610" y="997" as="targetPoint" />
+              <mxPoint as="offset" />
+              <Array as="points" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasSIMeasurementUnit" link="https://ptb.de/sis/hasSIMeasurementUnit" id="26Co9q1GtFJa0rAW2P7n-195">
+          <mxCell style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;horizontal=1;fontSize=11;verticalAlign=middle;fontStyle=4;" parent="1" source="26Co9q1GtFJa0rAW2P7n-190" target="26Co9q1GtFJa0rAW2P7n-48" edge="1">
+            <mxGeometry x="0.4946" width="50" height="50" relative="1" as="geometry">
+              <mxPoint x="990" y="1059" as="sourcePoint" />
+              <mxPoint x="420" y="350" as="targetPoint" />
+              <mxPoint as="offset" />
+              <Array as="points">
+                <mxPoint x="1490" y="950" />
+                <mxPoint x="1490" y="165" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasMeasurementUncertaintyMultivariate" link="https://ptb.de/sis/hasMeasurementUncertaintyMultivariate" id="26Co9q1GtFJa0rAW2P7n-196">
+          <mxCell style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;horizontal=1;fontSize=11;verticalAlign=middle;fontStyle=4;" parent="1" source="26Co9q1GtFJa0rAW2P7n-18" target="26Co9q1GtFJa0rAW2P7n-173" edge="1">
+            <mxGeometry x="0.6215" width="50" height="50" relative="1" as="geometry">
+              <mxPoint x="210" y="650" as="sourcePoint" />
+              <mxPoint x="520" y="650" as="targetPoint" />
+              <mxPoint as="offset" />
+              <Array as="points">
+                <mxPoint x="1320" y="680" />
+                <mxPoint x="1000" y="680" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasMeasurementUncertaintyUnivariate" link="https://ptb.de/sis/hasMeasurementUncertaintyUnivariate" id="26Co9q1GtFJa0rAW2P7n-197">
+          <mxCell style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;horizontal=1;fontSize=11;verticalAlign=middle;fontStyle=4;" parent="1" source="26Co9q1GtFJa0rAW2P7n-2" target="26Co9q1GtFJa0rAW2P7n-153" edge="1">
+            <mxGeometry x="0.4714" width="50" height="50" relative="1" as="geometry">
+              <mxPoint x="220" y="783" as="sourcePoint" />
+              <mxPoint x="530" y="570" as="targetPoint" />
+              <mxPoint as="offset" />
+              <Array as="points">
+                <mxPoint x="360" y="680" />
+                <mxPoint x="520" y="680" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="sis:CoverageIntervalMU" link="https://ptb.de/sis/CoverageIntervalMU" id="26Co9q1GtFJa0rAW2P7n-162">
+          <mxCell style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#b0e3e6;strokeColor=#0e8088;verticalAlign=middle;" parent="1" vertex="1">
+            <mxGeometry x="650" y="920" width="140" height="106" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasValueStandardMU" link="https://ptb.de/sis/hasStandardUnc" id="26Co9q1GtFJa0rAW2P7n-163">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="26Co9q1GtFJa0rAW2P7n-162" vertex="1">
+            <mxGeometry y="26" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasCoverageProbability" link="https://ptb.de/sis/hasCoverageProbability" id="26Co9q1GtFJa0rAW2P7n-164">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="26Co9q1GtFJa0rAW2P7n-162" vertex="1">
+            <mxGeometry y="46" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasIntervalMax" link="https://ptb.de/sis/hasIntervalMax" id="26Co9q1GtFJa0rAW2P7n-165">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="26Co9q1GtFJa0rAW2P7n-162" vertex="1">
+            <mxGeometry y="66" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasIntervalMin" link="https://ptb.de/sis/hasIntervalMin" id="26Co9q1GtFJa0rAW2P7n-166">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="26Co9q1GtFJa0rAW2P7n-162" vertex="1">
+            <mxGeometry y="86" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasStandardMU" link="https://ptb.de/sis/hasStandardMU" id="26Co9q1GtFJa0rAW2P7n-201">
+          <mxCell style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;horizontal=1;fontSize=11;verticalAlign=middle;fontStyle=4;" parent="1" source="26Co9q1GtFJa0rAW2P7n-10" target="26Co9q1GtFJa0rAW2P7n-156" edge="1">
+            <mxGeometry x="0.0809" width="50" height="50" relative="1" as="geometry">
+              <mxPoint x="690" y="493" as="sourcePoint" />
+              <mxPoint x="1240" y="400" as="targetPoint" />
+              <mxPoint as="offset" />
+              <Array as="points">
+                <mxPoint x="200" y="943" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <mxCell id="Cg1tPHyCNCY3he9LpGlZ-1" style="edgeStyle=orthogonalEdgeStyle;shape=connector;curved=0;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=block;endFill=0;" parent="1" source="26Co9q1GtFJa0rAW2P7n-25" target="26Co9q1GtFJa0rAW2P7n-18" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1340" y="420" as="sourcePoint" />
+            <mxPoint x="1150" y="340" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1250" y="540" />
+              <mxPoint x="1290" y="540" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Cg1tPHyCNCY3he9LpGlZ-2" value="is a" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" parent="Cg1tPHyCNCY3he9LpGlZ-1" vertex="1" connectable="0">
+          <mxGeometry x="0.037" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Cg1tPHyCNCY3he9LpGlZ-3" style="edgeStyle=orthogonalEdgeStyle;shape=connector;curved=0;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=block;endFill=0;" parent="1" source="26Co9q1GtFJa0rAW2P7n-28" target="26Co9q1GtFJa0rAW2P7n-18" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1360" y="590" as="sourcePoint" />
+            <mxPoint x="1435" y="516" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1400" y="540" />
+              <mxPoint x="1350" y="540" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Cg1tPHyCNCY3he9LpGlZ-4" value="is a" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" parent="Cg1tPHyCNCY3he9LpGlZ-3" vertex="1" connectable="0">
+          <mxGeometry x="0.037" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FQqts-xZekKTClPtidKJ-20" style="edgeStyle=orthogonalEdgeStyle;shape=connector;curved=0;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" parent="1" source="FQqts-xZekKTClPtidKJ-1" target="26Co9q1GtFJa0rAW2P7n-173" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="680" y="680" />
+              <mxPoint x="1000" y="680" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FQqts-xZekKTClPtidKJ-22" style="edgeStyle=orthogonalEdgeStyle;shape=connector;curved=0;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=block;endFill=0;" parent="1" source="FQqts-xZekKTClPtidKJ-1" target="26Co9q1GtFJa0rAW2P7n-1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="680" y="390" />
+              <mxPoint x="750" y="390" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FQqts-xZekKTClPtidKJ-23" style="edgeStyle=orthogonalEdgeStyle;shape=connector;curved=0;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" parent="1" source="FQqts-xZekKTClPtidKJ-1" target="FQqts-xZekKTClPtidKJ-7" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="610" y="560" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="650" y="580" />
+              <mxPoint x="550" y="580" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FQqts-xZekKTClPtidKJ-24" value=":hasComponent" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" parent="FQqts-xZekKTClPtidKJ-23" vertex="1" connectable="0">
+          <mxGeometry x="0.0032" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <UserObject label="sis:RealList" link="https://ptb.de/sis/Real" id="FQqts-xZekKTClPtidKJ-1">
+          <mxCell style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#3399FF;strokeColor=#6c8ebf;fontSize=12;verticalAlign=middle;direction=east;" parent="1" vertex="1">
+            <mxGeometry x="610" y="410" width="140" height="126" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasDateTime" link="https://ptb.de/sis/hasDateTime" id="FQqts-xZekKTClPtidKJ-2">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="FQqts-xZekKTClPtidKJ-1" vertex="1">
+            <mxGeometry y="26" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasLabel" link="https://ptb.de/sis/hasLabel" id="FQqts-xZekKTClPtidKJ-3">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="FQqts-xZekKTClPtidKJ-1" vertex="1">
+            <mxGeometry y="46" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasSignificantDigit" link="https://ptb.de/sis/hasSignificantDigit" id="FQqts-xZekKTClPtidKJ-4">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="FQqts-xZekKTClPtidKJ-1" vertex="1">
+            <mxGeometry y="66" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasValue" link="https://ptb.de/sis/hasValue" id="FQqts-xZekKTClPtidKJ-5">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="FQqts-xZekKTClPtidKJ-1" vertex="1">
+            <mxGeometry y="86" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasUnitIdentifier" link="https://ptb.de/sis/hasUnitIdentifier" id="FQqts-xZekKTClPtidKJ-6">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="FQqts-xZekKTClPtidKJ-1" vertex="1">
+            <mxGeometry y="106" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="FQqts-xZekKTClPtidKJ-19" style="edgeStyle=orthogonalEdgeStyle;shape=connector;curved=0;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" parent="1" source="FQqts-xZekKTClPtidKJ-7" target="26Co9q1GtFJa0rAW2P7n-153" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="520" y="670" />
+              <mxPoint x="520" y="670" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <UserObject label="sis:RealInList" link="https://ptb.de/sis/Real" id="FQqts-xZekKTClPtidKJ-7">
+          <mxCell style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;verticalAlign=middle;direction=east;" parent="1" vertex="1">
+            <mxGeometry x="450" y="410" width="140" height="146" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasDateTime" link="https://ptb.de/sis/hasDateTime" id="FQqts-xZekKTClPtidKJ-8">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="FQqts-xZekKTClPtidKJ-7" vertex="1">
+            <mxGeometry y="26" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasLabel" link="https://ptb.de/sis/hasLabel" id="FQqts-xZekKTClPtidKJ-9">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="FQqts-xZekKTClPtidKJ-7" vertex="1">
+            <mxGeometry y="46" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasSignificantDigit" link="https://ptb.de/sis/hasSignificantDigit" id="FQqts-xZekKTClPtidKJ-10">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="FQqts-xZekKTClPtidKJ-7" vertex="1">
+            <mxGeometry y="66" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasValue" link="https://ptb.de/sis/hasValue" id="FQqts-xZekKTClPtidKJ-11">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="FQqts-xZekKTClPtidKJ-7" vertex="1">
+            <mxGeometry y="86" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasUnitIdentifier" link="https://ptb.de/sis/hasUnitIdentifier" id="FQqts-xZekKTClPtidKJ-12">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="FQqts-xZekKTClPtidKJ-7" vertex="1">
+            <mxGeometry y="106" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasListIndex" link="https://ptb.de/sis/hasValue" id="eIVJb5JnSY4cHnXa3mpg-1">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="FQqts-xZekKTClPtidKJ-7">
+            <mxGeometry y="126" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="FQqts-xZekKTClPtidKJ-21" style="edgeStyle=orthogonalEdgeStyle;shape=connector;curved=0;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" parent="1" source="FQqts-xZekKTClPtidKJ-14" target="26Co9q1GtFJa0rAW2P7n-173" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1160" y="680" />
+              <mxPoint x="1000" y="680" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FQqts-xZekKTClPtidKJ-25" style="edgeStyle=orthogonalEdgeStyle;shape=connector;curved=0;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=block;endFill=0;" parent="1" source="FQqts-xZekKTClPtidKJ-14" target="26Co9q1GtFJa0rAW2P7n-1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1160" y="370" />
+              <mxPoint x="810" y="370" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <UserObject label="sis:ComplexInList" link="https://ptb.de/sis/Complex" id="FQqts-xZekKTClPtidKJ-14">
+          <mxCell style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;verticalAlign=middle;direction=east;" parent="1" vertex="1">
+            <mxGeometry x="1090" y="410" width="140" height="126" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasDateTime" link="https://ptb.de/sis/hasDateTime" id="FQqts-xZekKTClPtidKJ-15">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="FQqts-xZekKTClPtidKJ-14" vertex="1">
+            <mxGeometry y="26" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasLabel" link="https://ptb.de/sis/hasLabel" id="FQqts-xZekKTClPtidKJ-16">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="FQqts-xZekKTClPtidKJ-14" vertex="1">
+            <mxGeometry y="46" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasSignificantDigit" link="https://ptb.de/sis/hasSignificantDigit" id="FQqts-xZekKTClPtidKJ-17">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="FQqts-xZekKTClPtidKJ-14" vertex="1">
+            <mxGeometry y="66" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasUnitIdentifier" link="https://ptb.de/sis/hasUnitIdentifier" id="FQqts-xZekKTClPtidKJ-18">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="FQqts-xZekKTClPtidKJ-14" vertex="1">
+            <mxGeometry y="86" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasListIndex" link="https://ptb.de/sis/hasValue" id="eIVJb5JnSY4cHnXa3mpg-2">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="FQqts-xZekKTClPtidKJ-14">
+            <mxGeometry y="106" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="FQqts-xZekKTClPtidKJ-37" style="edgeStyle=orthogonalEdgeStyle;shape=connector;curved=0;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" parent="1" source="FQqts-xZekKTClPtidKJ-26" target="26Co9q1GtFJa0rAW2P7n-173" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="840" y="680" />
+              <mxPoint x="1000" y="680" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FQqts-xZekKTClPtidKJ-38" style="edgeStyle=orthogonalEdgeStyle;shape=connector;curved=0;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=block;endFill=0;" parent="1" source="FQqts-xZekKTClPtidKJ-26" target="26Co9q1GtFJa0rAW2P7n-1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="840" y="390" />
+              <mxPoint x="770" y="390" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6MXuwLk8o_1HH44NI6-B-1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;curved=0;" parent="1" source="FQqts-xZekKTClPtidKJ-26" target="FQqts-xZekKTClPtidKJ-1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="810" y="560" />
+              <mxPoint x="710" y="560" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6MXuwLk8o_1HH44NI6-B-5" value=":hasComponent" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" parent="6MXuwLk8o_1HH44NI6-B-1" vertex="1" connectable="0">
+          <mxGeometry x="0.1387" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6MXuwLk8o_1HH44NI6-B-2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;curved=0;" parent="1" source="FQqts-xZekKTClPtidKJ-26" target="FQqts-xZekKTClPtidKJ-31" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="870" y="560" />
+              <mxPoint x="970" y="560" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6MXuwLk8o_1HH44NI6-B-6" value=":hasComponent" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" parent="6MXuwLk8o_1HH44NI6-B-2" vertex="1" connectable="0">
+          <mxGeometry x="-0.0175" relative="1" as="geometry">
+            <mxPoint x="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <UserObject label="sis:ListList" link="https://ptb.de/sis/Complex" id="FQqts-xZekKTClPtidKJ-26">
+          <mxCell style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#3399FF;strokeColor=#6c8ebf;fontSize=12;verticalAlign=middle;direction=east;" parent="1" vertex="1">
+            <mxGeometry x="770" y="410" width="140" height="106" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasDateTime" link="https://ptb.de/sis/hasDateTime" id="FQqts-xZekKTClPtidKJ-27">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="FQqts-xZekKTClPtidKJ-26" vertex="1">
+            <mxGeometry y="26" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasLabel" link="https://ptb.de/sis/hasLabel" id="FQqts-xZekKTClPtidKJ-28">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="FQqts-xZekKTClPtidKJ-26" vertex="1">
+            <mxGeometry y="46" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasSignificantDigit" link="https://ptb.de/sis/hasSignificantDigit" id="FQqts-xZekKTClPtidKJ-29">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="FQqts-xZekKTClPtidKJ-26" vertex="1">
+            <mxGeometry y="66" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasUnitIdentifier" link="https://ptb.de/sis/hasUnitIdentifier" id="FQqts-xZekKTClPtidKJ-30">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="FQqts-xZekKTClPtidKJ-26" vertex="1">
+            <mxGeometry y="86" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="FQqts-xZekKTClPtidKJ-36" style="edgeStyle=orthogonalEdgeStyle;shape=connector;curved=0;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" parent="1" source="FQqts-xZekKTClPtidKJ-31" target="26Co9q1GtFJa0rAW2P7n-173" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1000" y="660" />
+              <mxPoint x="1000" y="660" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FQqts-xZekKTClPtidKJ-39" style="edgeStyle=orthogonalEdgeStyle;shape=connector;curved=0;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=block;endFill=0;" parent="1" source="FQqts-xZekKTClPtidKJ-31" target="26Co9q1GtFJa0rAW2P7n-1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1000" y="380" />
+              <mxPoint x="790" y="380" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6MXuwLk8o_1HH44NI6-B-3" style="edgeStyle=orthogonalEdgeStyle;shape=connector;curved=0;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" parent="1" source="FQqts-xZekKTClPtidKJ-31" target="FQqts-xZekKTClPtidKJ-14" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1030" y="560" />
+              <mxPoint x="1130" y="560" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6MXuwLk8o_1HH44NI6-B-7" value=":hasComponent" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" parent="6MXuwLk8o_1HH44NI6-B-3" vertex="1" connectable="0">
+          <mxGeometry x="-0.0175" y="-1" relative="1" as="geometry">
+            <mxPoint x="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <UserObject label="sis:ComplexList" link="https://ptb.de/sis/Complex" id="FQqts-xZekKTClPtidKJ-31">
+          <mxCell style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#3399FF;strokeColor=#6c8ebf;fontSize=12;verticalAlign=middle;direction=east;" parent="1" vertex="1">
+            <mxGeometry x="930" y="410" width="140" height="106" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasDateTime" link="https://ptb.de/sis/hasDateTime" id="FQqts-xZekKTClPtidKJ-32">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="FQqts-xZekKTClPtidKJ-31" vertex="1">
+            <mxGeometry y="26" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasLabel" link="https://ptb.de/sis/hasLabel" id="FQqts-xZekKTClPtidKJ-33">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="FQqts-xZekKTClPtidKJ-31" vertex="1">
+            <mxGeometry y="46" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasSignificantDigit" link="https://ptb.de/sis/hasSignificantDigit" id="FQqts-xZekKTClPtidKJ-34">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="FQqts-xZekKTClPtidKJ-31" vertex="1">
+            <mxGeometry y="66" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label=":hasUnitIdentifier" link="https://ptb.de/sis/hasUnitIdentifier" id="FQqts-xZekKTClPtidKJ-35">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="FQqts-xZekKTClPtidKJ-31" vertex="1">
+            <mxGeometry y="86" width="140" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="26Co9q1GtFJa0rAW2P7n-40" value="&lt;b&gt;&lt;font&gt;SIRP&lt;/font&gt;&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#776633;" parent="1" vertex="1">
+          <mxGeometry x="520" y="120" width="67.72639999999998" height="23.07692307692308" as="geometry" />
+        </mxCell>
+        <mxCell id="6MXuwLk8o_1HH44NI6-B-9" style="edgeStyle=orthogonalEdgeStyle;shape=connector;curved=0;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" parent="1" source="26Co9q1GtFJa0rAW2P7n-41" target="26Co9q1GtFJa0rAW2P7n-48" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="6MXuwLk8o_1HH44NI6-B-10" value="sirp:hasUnit" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" parent="6MXuwLk8o_1HH44NI6-B-9" vertex="1" connectable="0">
+          <mxGeometry x="-0.0224" y="-2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <UserObject label="sirp:QuantityKind" link="https://si-digital-framework.org/SI#QuantityKind" id="26Co9q1GtFJa0rAW2P7n-41">
+          <mxCell style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#ddcc99;strokeColor=#6c8ebf;fontSize=12;verticalAlign=middle;direction=east;" parent="1" vertex="1">
+            <mxGeometry x="540" y="140" width="140" height="50" as="geometry" />
+          </mxCell>
+        </UserObject>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
